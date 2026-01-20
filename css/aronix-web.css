@@ -860,26 +860,28 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    padding: 40px 60px;
+    padding: 20px 30px;
     margin-bottom: 20px;
     letter-spacing: -2px;
     position: relative;
     display: inline-block;
-    border-radius: 20px;
+    border-radius: 40px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .vision-title::before {
     content: '';
     position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(ellipse at center, rgba(0, 164, 90, 0.15) 0%, rgba(0, 164, 90, 0.05) 40%, transparent 70%);
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 40px;
     z-index: -1;
-    filter: blur(40px);
 }
 
 .vision-description {

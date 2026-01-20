@@ -360,6 +360,13 @@ function getAARUDevelopersFooter() {
             { name: "Sponsors", href: "#" },
             { name: "Our Testimonial", href: "#" }
         ],
+        services: [
+            { name: "Residential Development", href: "#" },
+            { name: "Commercial Projects", href: "#" },
+            { name: "Infrastructure Development", href: "#" },
+            // { name: "Construction Management", href: "#" },
+            // { name: "Sustainable Building Solutions", href: "#" }
+        ],
         contactEmail: "info@aarudevelopers.com",
         contactAddress: "Dwarka, Delhi",
         socialLinks: [
@@ -376,12 +383,19 @@ function getAARUMobilityFooter() {
     return getSubBrandFooter({
         logoSrc: "images/ventures/aaru-mobility.png",
         logoAlt: "AARU Mobility",
-        description: "Reliable & sustainable transportation solutions.",
+        description: "Reliable and sustainable mobility solutions designed for efficient, safe, and smart transportation.",
         bgColor: "#F5F5F5", // Light gray for AARU Mobility
         quickLinks: [
             { name: "About Us", href: "#" },
             { name: "How it works", href: "#" },
             { name: "Browse Fleet", href: "#" }
+        ],
+        services: [
+            { name: "Corporate Transportation", href: "#" },
+            { name: "Employee Commute Solutions", href: "#" },
+            { name: "Fleet Management", href: "#" },
+            // { name: "Electric Vehicle Mobility", href: "#" },
+            // { name: "On-Demand Mobility Services", href: "#" }
         ],
         contactEmail: "info@aaruobility.com",
         phone: "+91 98765 43210",
@@ -405,6 +419,13 @@ function getAronixFooter() {
             { name: "About Us", href: "#" },
             { name: "Our Programs", href: "#" },
             { name: "Sponsors", href: "#" }
+        ],
+        services: [
+            { name: "Web Development", href: "#" },
+            { name: "Mobile App Development", href: "#" },
+            { name: "UI/UX Design", href: "#" },
+            // { name: "AI & Automation Solutions", href: "#" },
+            // { name: "Cloud & DevOps Services", href: "#" }
         ],
         contactEmail: "info@aarudevelopers.com",
         contactAddress: "Dwarka, Delhi",
