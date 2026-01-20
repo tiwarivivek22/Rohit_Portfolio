@@ -25,5 +25,5 @@ if (sessionStorage.getItem('loaderShown') === 'true') {
                 loader.style.display = 'none';
             }, 500);
         }
-    }, 2000); // Adjust timing as needed
+    }, 1000); // Adjust timing as needed
 }

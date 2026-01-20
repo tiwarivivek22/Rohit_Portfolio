@@ -398,7 +398,8 @@ function getAARUMobilityFooter() {
             // { name: "On-Demand Mobility Services", href: "#" }
         ],
         contactEmail: "info@aaruobility.com",
-        phone: "+91 98765 43210",
+        contactAddress: "Dwarka, Delhi",
+        // phone: "+91 98765 43210",
         socialLinks: [
             { name: "Facebook", href: "#", icon: "images/logos/Facebook.png" },
             { name: "Twitter", href: "#", icon: "images/logos/Twitter.png" },
