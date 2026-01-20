@@ -295,6 +295,13 @@
     z-index: 0;
 }
 
+/* Hide the blue circle on anything smaller than full desktop */
+@media (max-width: 1200px) {
+    .aarudev-circle-bg {
+        display: none;
+    }
+}
+
 .aarudev-project-grid {
     margin-left: 260px;
     height: auto;
@@ -529,8 +536,41 @@
         gap: 30px;
     }
 
-    .aarudev-testimonial-box {
+    /* Remove desktop-only offsets that create overflow/overlap */
+    .aarudev-hero-left {
+        margin-left: 0;
+        max-width: 700px;
+    }
+
+    .aarudev-hero-right {
+        margin-right: 0;
+        width: 100%;
+        max-width: 520px;
+        height: 360px;
+    }
+
+    .aarudev-city-strip {
+        margin-top: 20px;
+    }
+
+    .aarudev-sponsors {
+        margin-top: 0;
+    }
+
+    .aarudev-project-grid {
+        margin-left: 0;
+        width: 100%;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .aarudev-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 30px 5%;
+    }
+
+    .aarudev-stat {
+        min-width: 180px;
     }
 }
 
@@ -551,8 +591,10 @@
         grid-template-columns: 1fr;
     }
 
-    .aarudev-testimonial-box {
+    .aarudev-testimonial-wrapper {
         grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 18px;
     }
 
     .aarudev-footer-grid {
@@ -587,16 +629,14 @@
     }
 
     .aarudev-project-grid {
+        margin-left: 0;
+        width: 100%;
         grid-template-columns: 1fr 1fr;
     }
 
     .aarudev-stats {
         flex-wrap: wrap;
         gap: 30px;
-    }
-
-    .aarudev-testimonial-box {
-        flex-direction: column;
     }
 
     .aarudev-hero-right {
@@ -656,6 +696,34 @@
 
     .aarudev-img-3 {
         width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aarudev-hero {
+        padding: 36px 5% 40px;
+    }
+
+    .aarudev-hero-right {
+        height: 240px;
+    }
+
+    .aarudev-img-1 {
+        width: 170px;
+        top: 30px;
+        left: 10px;
+    }
+
+    .aarudev-img-2 {
+        width: 145px;
+        top: 70px;
+        left: 120px;
+    }
+
+    .aarudev-img-3 {
+        width: 155px;
+        top: 140px;
+        left: 35px;
     }
 }
 
