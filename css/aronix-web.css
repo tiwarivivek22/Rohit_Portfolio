@@ -331,11 +331,11 @@ body::before {
     position: absolute;
     width: 1000px;
     height: 1000px;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 0;
 }
 
 .orbital-circle {
@@ -397,7 +397,8 @@ body::before {
 }
 
 /* Tech Icons Container */
-.tech-icons {
+/* Orbital Rings */
+.tech-icons-container {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -407,8 +408,51 @@ body::before {
     z-index: 3;
 }
 
-.tech-icon {
+.icon-ring {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.ring-1 {
+    width: 300px;
+    height: 300px;
+    --radius: 150px;
+    animation: rotate-ring-cw 20s linear infinite;
+}
+
+.ring-2 {
+    width: 500px;
+    height: 500px;
+    --radius: 250px;
+    animation: rotate-ring-ccw 30s linear infinite;
+}
+
+.ring-3 {
+    width: 700px;
+    height: 700px;
+    --radius: 350px;
+    animation: rotate-ring-cw 40s linear infinite;
+}
+
+/* Icon Slots - Positions elements on the ring but keeps them upright relative to ring */
+.icon-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
+}
+
+.tech-icon {
     width: 60px;
     height: 60px;
     display: flex;
@@ -418,9 +462,31 @@ body::before {
     border: 1px solid rgba(100, 200, 150, 0.3);
     border-radius: 12px;
     padding: 8px;
-    animation: float-icon 6s ease-in-out infinite;
     transition: all 0.3s ease;
     pointer-events: auto;
+}
+
+/* Animate Icons to Counter Rotate */
+.ring-1 .tech-icon,
+.ring-3 .tech-icon {
+    animation: counter-rotate-cw 20s linear infinite;
+}
+
+.ring-2 .tech-icon {
+    animation: counter-rotate-ccw 30s linear infinite;
+}
+
+/* Override animation durations to match parents */
+.ring-1 .tech-icon {
+    animation-duration: 20s;
+}
+
+.ring-2 .tech-icon {
+    animation-duration: 30s;
+}
+
+.ring-3 .tech-icon {
+    animation-duration: 40s;
 }
 
 .tech-icon img {
@@ -434,70 +500,54 @@ body::before {
     background: rgba(20, 20, 20, 0.95);
     border-color: rgba(100, 200, 150, 0.6);
     box-shadow: 0 0 15px rgba(100, 200, 150, 0.3);
+    transform: scale(1.1);
+    /* Simple scale on hover, no float */
+    z-index: 10;
 }
 
 .tech-icon:hover img {
     filter: brightness(1.1) drop-shadow(0 0 8px rgba(100, 200, 150, 0.4));
 }
 
-@keyframes float-icon {
-
-    0%,
-    100% {
-        transform: translateY(0px);
+@keyframes rotate-ring-cw {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 
-    50% {
-        transform: translateY(-15px);
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
-.icon-figma {
-    top: 8%;
-    left: 10%;
-    animation-delay: 0s;
+@keyframes rotate-ring-ccw {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
 }
 
-.icon-python {
-    top: 10%;
-    right: 10%;
-    animation-delay: 0.5s;
+/* Counter Rotations: Must be opposite to Ring rotation */
+@keyframes counter-rotate-cw {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
 }
 
-.icon-github {
-    bottom: 18%;
-    left: 8%;
-    animation-delay: 1s;
-}
+@keyframes counter-rotate-ccw {
+    from {
+        transform: rotate(0deg);
+    }
 
-.icon-aws {
-    bottom: 16%;
-    right: 10%;
-    animation-delay: 1.5s;
-}
-
-.icon-docker {
-    top: 50%;
-    right: 4%;
-    animation-delay: 0.3s;
-}
-
-.icon-react {
-    top: 50%;
-    left: 4%;
-    animation-delay: 0.7s;
-}
-
-.icon-firebase {
-    bottom: 12%;
-    left: 25%;
-    animation-delay: 2s;
-}
-
-.icon-nodejs {
-    bottom: 12%;
-    right: 25%;
-    animation-delay: 2.5s;
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Central AWT Logo */
@@ -644,7 +694,7 @@ body::before {
 /* Hero Content */
 .hero-content {
     position: relative;
-    z-index: 10;
+    z-index: 20;
     text-align: center;
     max-width: 685px;
     margin-bottom: 700px;

@@ -13,8 +13,15 @@
     }
 
     /* normalize vertical spacing: use section padding instead of element margins */
-    .hero-content { margin-bottom: 0 !important; max-width: 80%; }
-    .hero-section, .stats-section, .services-section, .vision-section {
+    .hero-content {
+        margin-bottom: 0 !important;
+        max-width: 80%;
+    }
+
+    .hero-section,
+    .stats-section,
+    .services-section,
+    .vision-section {
         padding-top: 120px;
         padding-bottom: 120px;
     }
@@ -25,79 +32,219 @@
         top: 55%;
     }
 
-    .orbit-1 { width: 26vw; height: 26vw; }
-    .orbit-2 { width: 42vw; height: 42vw; }
-    .orbit-3 { width: 58vw; height: 58vw; }
+    /* Responsive overrides for new orbital structure */
+    .ring-1 {
+        width: 26vw;
+        height: 26vw;
+        --radius: 13vw;
+    }
 
-    .tech-icon { width: 52px; height: 52px; }
-    .awt-logo-center { width: 110px; height: 110px; }
+    .ring-2 {
+        width: 42vw;
+        height: 42vw;
+        --radius: 21vw;
+    }
+
+    .ring-3 {
+        width: 58vw;
+        height: 58vw;
+        --radius: 29vw;
+    }
+
+    .tech-icon,
+    .icon-slot {
+        width: 52px;
+        height: 52px;
+    }
+
+    .awt-logo-center {
+        width: 110px;
+        height: 110px;
+    }
 }
 
 @media (max-width: 1024px) {
-    .hero-section { padding: 100px 16px; }
-    .hero-title { font-size: 56px; width: auto; height: auto; }
-    .hero-subtitle { font-size: 20px; width: auto; }
-    .hero-content { margin-bottom: 0 !important; }
+    .hero-section {
+        padding: 100px 16px;
+        min-height: 80vh;
+        overflow: hidden;
+    }
+
+    .hero-title {
+        font-size: 56px;
+        width: auto;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 20px;
+        width: auto;
+        height: auto;
+    }
 
     .orbital-container {
-        width: 92vw;
-        height: 92vw;
-        top: 52%;
+        width: 100%;
+        height: 100%;
+        top: 50%;
     }
 
-    .orbit-1 { width: 22vw; height: 22vw; }
-    .orbit-2 { width: 38vw; height: 38vw; }
-    .orbit-3 { width: 56vw; height: 56vw; }
+    .ring-1 {
+        width: 30vw;
+        height: 30vw;
+        --radius: 15vw;
+    }
 
-    .tech-icon { width: 48px; height: 48px; }
-    .awt-logo-center { width: 100px; height: 100px; }
+    .ring-2 {
+        width: 50vw;
+        height: 50vw;
+        --radius: 25vw;
+    }
 
-    .services-title { font-size: 72px; white-space: normal; }
-    .world-map-container { max-width: 90%; height: auto; }
+    .ring-3 {
+        width: 70vw;
+        height: 70vw;
+        --radius: 35vw;
+    }
+
+    .tech-icon,
+    .icon-slot {
+        width: 48px;
+        height: 48px;
+    }
+
+    .awt-logo-center {
+        width: 100px;
+        height: 100px;
+    }
+
+    .services-title {
+        font-size: 72px;
+        white-space: normal;
+    }
+
+    .world-map-container {
+        max-width: 90%;
+        height: auto;
+    }
 
     /* normalize vertical spacing on medium screens */
-    .hero-section, .stats-section, .services-section, .vision-section {
-        padding-top: 100px;
-        padding-bottom: 100px;
+    .hero-section,
+    .stats-section,
+    .services-section,
+    .vision-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
     }
-    .main-container { min-height: auto !important; }
+
+    .main-container {
+        min-height: auto !important;
+    }
 }
 
 @media (max-width: 768px) {
-    .main-container { padding: 0 8px; }
-    .hero-section { padding: 80px 12px; min-height: 80vh; }
-    .hero-title { font-size: 40px; line-height: 1.15; margin-bottom: 10px; }
-    .hero-subtitle { font-size: 16px; }
-    .hero-content { max-width: 95%; margin-bottom: 0 !important; }
+    .main-container {
+        padding: 0 8px;
+    }
+
+    /* Stack hero content */
+    .hero-section {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        max-width: 95%;
+        margin-bottom: 350px !important;
+        /* Push content up to make room for orbit below */
+        position: relative;
+        z-index: 20;
+    }
+
+    .hero-title {
+        font-size: 40px;
+        line-height: 1.15;
+        margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
 
     .orbital-container {
         position: absolute;
-        width: 100vw;
-        height: 100vw;
-        top: 50%;
+        width: 100%;
+        height: 100%;
+        top: 70%;
+        /* Move orbit lower */
         left: 50%;
-        transform: translate(-50%, -48%);
+        transform: translate(-50%, -50%);
+        z-index: 1;
     }
 
-    .orbit-1 { width: 20vw; height: 20vw; }
-    .orbit-2 { width: 40vw; height: 40vw; }
-    .orbit-3 { width: 60vw; height: 60vw; }
+    .ring-1 {
+        width: 40vw;
+        height: 40vw;
+        --radius: 20vw;
+    }
 
-    .tech-icon { width: 44px; height: 44px; padding: 6px; }
-    .awt-logo-center { width: 90px; height: 90px; }
+    .ring-2 {
+        width: 65vw;
+        height: 65vw;
+        --radius: 32.5vw;
+    }
 
-    .services-title { font-size: 48px; white-space: normal; letter-spacing: -1px; }
-    .services-image { max-width: 95%; }
+    .ring-3 {
+        width: 90vw;
+        height: 90vw;
+        --radius: 45vw;
+    }
+
+    .tech-icon,
+    .icon-slot {
+        width: 44px;
+        height: 44px;
+    }
+
+    .awt-logo-center {
+        width: 80px;
+        height: 80px;
+    }
+
+    .services-title {
+        font-size: 48px;
+        white-space: normal;
+        letter-spacing: -1px;
+    }
+
+    .services-image {
+        max-width: 95%;
+    }
 
     /* Overlay the title on top of the map on small screens */
-    .stats-section { position: relative; padding-top: 40px; }
-    .stats-content { position: relative; display: flex; flex-direction: column; align-items: center; }
+    .stats-section {
+        position: relative;
+        padding-top: 40px;
+    }
+
+    .stats-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .stats-title {
         position: absolute !important;
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
-        font-size: 40px !important;
+        font-size: 32px !important;
         width: 90% !important;
         z-index: 6 !important;
         text-align: center !important;
@@ -105,78 +252,101 @@
         padding: 0 8px !important;
     }
 
-    .world-map-container { position: relative; z-index: 1; height: auto; padding: 10px 0; margin: 0; display: flex; align-items: center; justify-content: center; }
-    .world-map-container svg { max-width: 92%; height: auto; display: block; }
-
-    /* normalize vertical spacing on small screens */
-    .hero-section, .stats-section, .services-section, .vision-section {
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
+    .world-map-container {
+        position: relative;
+        z-index: 1;
+        height: auto;
+        padding: 10px 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* make sure main container doesn't force big height */
-    .main-container { min-height: auto !important; }
+    .world-map-container svg {
+        max-width: 92%;
+        height: auto;
+        display: block;
+        opacity: 0.6;
+    }
 
     /* Hide many absolute decorative elements that break mobile layout */
-    .ellipse, .ellipse-26, .ellipse-27, .ellipse-28, .ellipse-29, .ellipse-32, .ellipse-33,
-    .decorative-circle, .decorative-group, .group38, .group39, .group40, .sparkling, .group146 {
+    .ellipse,
+    .decorative-circle,
+    .decorative-group {
         display: none !important;
     }
-
-    /* Stack hero content vertically and center */
-    .hero-section {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 100px;
-    }
-
-    .hero-content {
-        text-align: center !important;
-        margin: 0 auto !important;
-        max-width: 95% !important;
-    }
-
-    /* Make orbital elements smaller and centered behind content */
-    .orbital-container {
-        position: absolute !important;
-        width: 80vw !important;
-        height: 80vw !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        top: 55% !important;
-        pointer-events: none !important;
-        z-index: 1 !important;
-    }
-
-    .orbital-circle { left: 50% !important; top: 50% !important; }
-
 }
 
 @media (max-width: 480px) {
-    .hero-section { padding: 60px 12px; }
-    .hero-title { font-size: 32px; }
-    .hero-subtitle { font-size: 14px; }
-    .join-us-btn { width: 140px; height: 48px; }
+    .hero-section {
+        padding-top: 80px;
+        justify-content: flex-start;
+    }
 
-    .orbital-container { width: 110vw; height: 110vw; top: 52%; }
-    .orbit-1 { width: 28vw; height: 28vw; }
-    .orbit-2 { width: 48vw; height: 48vw; }
-    .orbit-3 { width: 72vw; height: 72vw; }
+    .hero-content {
+        margin-bottom: 300px !important;
+    }
 
-    .tech-icon { width: 40px; height: 40px; }
-    .awt-logo-center { width: 72px; height: 72px; }
+    .hero-title {
+        font-size: 32px;
+    }
 
-    .services-title { font-size: 36px; }
-    .vision-title { font-size: 36px; }
-    .vision-description { font-size: 15px; }
+    .orbital-container {
+        top: 65%;
+    }
 
-    .footer-content { gap: 20px; }
+    /* Larger relative rings for mobile to fill space */
+    .ring-1 {
+        width: 50vw;
+        height: 50vw;
+        --radius: 25vw;
+    }
+
+    .ring-2 {
+        width: 80vw;
+        height: 80vw;
+        --radius: 40vw;
+    }
+
+    .ring-3 {
+        width: 110vw;
+        height: 110vw;
+        --radius: 55vw;
+    }
+
+    .tech-icon,
+    .icon-slot {
+        width: 40px;
+        height: 40px;
+    }
+
+    .awt-logo-center {
+        width: 70px;
+        height: 70px;
+    }
+
+    .services-title {
+        font-size: 36px;
+    }
+
+    .vision-title {
+        font-size: 36px;
+    }
+
+    .vision-description {
+        font-size: 15px;
+    }
+
+    .footer-content {
+        gap: 20px;
+    }
 }
 
 /* Minor accessibility / layout helpers */
-.services-title, .vision-title, .hero-title {
+.services-title,
+.vision-title,
+.hero-title {
     word-break: break-word;
 }
 
@@ -188,10 +358,14 @@
 }
 
 @media (max-width: 480px) {
+
     /* slightly smaller offset on very small screens */
     .main-container {
         padding-top: 72px !important;
     }
+
     /* also ensure hero section uses top padding instead of negative margin */
-    .hero-section { padding-top: calc(72px + 20px) !important; }
+    .hero-section {
+        padding-top: calc(72px + 20px) !important;
+    }
 }
