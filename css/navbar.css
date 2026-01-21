@@ -315,12 +315,13 @@
 /* Sub-brand Header */
 .navbar-subbrand {
     background: #ffffff;
-    padding: 0.8rem 5%;
+    padding: 1.1rem 5%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-subbrand .navbar-nav {
     max-width: 1400px;
+    height: auto; /* allow taller logos */
 }
 
 /* Sub-brand Logo */
@@ -331,7 +332,7 @@
 
 /* Sub-brand Logo Image */
 .navbar-subbrand-logo-img {
-    height: 100px !important;
+    height: 160px !important;
     width: auto;
 }
 
@@ -351,11 +352,11 @@
 /* Responsive for Sub-brand */
 @media (max-width: 768px) {
     .navbar-subbrand {
-        padding: 0.7rem 5%;
+        padding: 0.9rem 5%;
     }
 
     .navbar-subbrand-logo-img {
-        height: 30px !important;
+        height: 42px !important;
     }
 
     .navbar-subbrand-back {
@@ -365,7 +366,7 @@
 
 @media (max-width: 480px) {
     .navbar-subbrand-logo-img {
-        height: 28px !important;
+        height: 36px !important;
     }
 
     .navbar-subbrand-back {
@@ -393,7 +394,7 @@
     }
 
     .navbar-jfam .navbar-subbrand-logo-img {
-        height: 30px !important;
+        height: 46px !important;
     }
 
     .navbar-jfam .navbar-subbrand-back {
@@ -403,7 +404,7 @@
 
 @media (max-width: 480px) {
     .navbar-jfam .navbar-subbrand-logo-img {
-        height: 28px !important;
+        height: 40px !important;
     }
 
     .navbar-jfam .navbar-subbrand-back {
@@ -464,13 +465,18 @@
     color: #2c5282;
 }
 
+/* Make AARU Developers logo larger on desktop */
+.navbar-aarudev .navbar-subbrand-logo-img {
+    height: 190px !important;
+}
+
 @media (max-width: 768px) {
     .navbar-aarudev {
-        padding: 0.7rem 5%;
+        padding: 0.9rem 5%;
     }
 
     .navbar-aarudev .navbar-subbrand-logo-img {
-        height: 30px !important;
+        height: 46px !important;
     }
 
     .navbar-aarudev .navbar-subbrand-back {
@@ -480,7 +486,7 @@
 
 @media (max-width: 480px) {
     .navbar-aarudev .navbar-subbrand-logo-img {
-        height: 28px !important;
+        height: 40px !important;
     }
 
     .navbar-aarudev .navbar-subbrand-back {
