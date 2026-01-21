@@ -809,9 +809,8 @@ body::before {
 }
 
 .services-image:hover {
-    /* Disabled hover effect for services image to prevent highlighting */
-    filter: drop-shadow(0 10px 30px rgba(0, 164, 90, 0.2));
-    transform: none;
+    filter: drop-shadow(0 15px 45px rgba(0, 164, 90, 0.4));
+    transform: scale(1.02);
 }
 
 /* Vision Section */

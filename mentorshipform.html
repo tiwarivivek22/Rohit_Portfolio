@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Book Mentorship</title>
+  <link rel="stylesheet" href="css/mentorshipform.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <script src="js/components.js"></script>
+</head>
+
+<body>
+  <!-- <div class="loader-container" id="loader">
+    <div class="loader">
+      <img src="images/loader-animation/rohit.png" alt="Logo" class="logo">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="loading-text">LOADING</div>
+  </div> -->
+
+  <script>document.write(getNavbar());</script>
+
+  <div class="overlay">
+    <div class="mentorship-card">
+      <div class="card-header">
+        <h2>Book Mentorship</h2>
+        <p class="header-subtitle">Schedule your personalized session with our expert mentors</p>
+      </div>
+
+      <form class="mentorship-form">
+
+        <!-- LEFT -->
+        <div class="left">
+          <div class="field-group">
+            <div class="field">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Enter your full name">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label>Contact Number *</label>
+              <input type="tel" placeholder="+91 1234567890">
+            </div>
+          </div>
+
+          <div class="field-group">
+
+            <div class="field">
+              <label>Email Address *</label>
+              <input type="email" placeholder="your@email.com">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label>Plan Name *</label>
+              <select>
+                <option value="">Select a plan</option>
+                <option>Starter - 30 Min Session</option>
+                <option>Professional - 1 Hour Session</option>
+                <option>Premium - 2 Hour Session</option>
+                <option>VIP - Full Day Workshop</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label>Price (₹) *</label>
+              <input type="number" placeholder="Enter amount">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label>Topic for discussion</label>
+              <textarea placeholder="What would you like to discuss? (Optional)"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+
+          <div class="field-group">
+            <div class="field">
+              <label>Duration *</label>
+              <select>
+                <option value="">Select duration</option>
+                <option>30 Minutes</option>
+                <option>1 Hour</option>
+                <option>2 Hours</option>
+                <option>Half Day (4 Hours)</option>
+                <option>Full Day (8 Hours)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- CALENDAR -->
+          <div class="calendar-box">
+            <div class="field-group">
+              <div class="field">
+                <label>Choose Date *</label>
+              </div>
+            </div>
+
+            <div class="calendar">
+              <div class="cal-header">
+                <button type="button" id="prevMonth" class="nav-btn">‹</button>
+                <span id="monthYear" class="month-display"></span>
+                <button type="button" id="nextMonth" class="nav-btn">›</button>
+              </div>
+
+              <div class="days">
+                <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+                <span>Thu</span><span>Fri</span><span>Sat</span>
+              </div>
+
+              <div class="dates" id="dates"></div>
+            </div>
+          </div>
+
+          <!-- TIME -->
+          <div class="time-box">
+            <div class="field-group">
+              <div class="field">
+                <label>Choose Time *</label>
+              </div>
+            </div>
+            <div class="time-slots" id="timeSlots"></div>
+          </div>
+
+
+        </div>
+      </form>
+
+      <div class="payment-section">
+        <h3>Select Payment Method</h3>
+        <div class="payment-options">
+          <label class="payment-option">
+            <input type="radio" name="payment_method" value="upi" required>
+            <div class="payment-card">
+              <span class="payment-text">UPI</span>
+            </div>
+          </label>
+
+          <label class="payment-option">
+            <input type="radio" name="payment_method" value="card" required>
+            <div class="payment-card">
+              <span class="payment-text">Card Payment</span>
+            </div>
+          </label>
+
+          <label class="payment-option">
+            <input type="radio" name="payment_method" value="netbanking" required>
+            <div class="payment-card">
+              <span class="payment-text">Net Banking</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="agree-section">
+        <div class="agree-card">
+          <label class="checkbox-container">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+            <span class="agree-text">
+              <b>I agree,</b> the amount is strictly <span class="highlight">non-refundable</span> under any
+              circumstances. Sessions may be rescheduled with prior notice of at least 24 hours, subject to
+              availability. No-shows or late cancellations will not be eligible for rescheduling or refunds. Booking
+              fees confirm your acceptance of these terms and secure your reserved time slot.
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="book-btn">
+        <!-- <span class="btn-icon">✅</span> -->
+        <span class="btn-text">Book Your Session</span>
+      </button>
+    </div>
+  </div>
+  <script>document.write(getFooter());</script>
+  <script>document.write(getModal());</script>
+
+  <script src="js/mentorshipform.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
