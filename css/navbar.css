@@ -41,8 +41,10 @@
 }
 
 .navbar-logo img {
-    height: 250px;
+    height: 180px;
     width: auto;
+    max-height: 200px;
+    object-fit: contain;
 }
 
 /* Desktop Navigation Links */
@@ -321,7 +323,8 @@
 
 .navbar-subbrand .navbar-nav {
     max-width: 1400px;
-    height: auto; /* allow taller logos */
+    height: auto;
+    /* allow taller logos */
 }
 
 /* Sub-brand Logo */
@@ -356,7 +359,7 @@
     }
 
     .navbar-subbrand-logo-img {
-        height: 42px !important;
+        height: 130px !important;
     }
 
     .navbar-subbrand-back {
@@ -366,7 +369,7 @@
 
 @media (max-width: 480px) {
     .navbar-subbrand-logo-img {
-        height: 36px !important;
+        height: 110px !important;
     }
 
     .navbar-subbrand-back {
@@ -394,7 +397,7 @@
     }
 
     .navbar-jfam .navbar-subbrand-logo-img {
-        height: 46px !important;
+        height: 130px !important;
     }
 
     .navbar-jfam .navbar-subbrand-back {
@@ -404,7 +407,7 @@
 
 @media (max-width: 480px) {
     .navbar-jfam .navbar-subbrand-logo-img {
-        height: 40px !important;
+        height: 110px !important;
     }
 
     .navbar-jfam .navbar-subbrand-back {
@@ -433,7 +436,7 @@
     }
 
     .navbar-aarucare .navbar-subbrand-logo-img {
-        height: 30px !important;
+        height: 130px !important;
     }
 
     .navbar-aarucare .navbar-subbrand-back {
@@ -443,7 +446,7 @@
 
 @media (max-width: 480px) {
     .navbar-aarucare .navbar-subbrand-logo-img {
-        height: 28px !important;
+        height: 110px !important;
     }
 
     .navbar-aarucare .navbar-subbrand-back {
@@ -476,7 +479,7 @@
     }
 
     .navbar-aarudev .navbar-subbrand-logo-img {
-        height: 46px !important;
+        height: 130px !important;
     }
 
     .navbar-aarudev .navbar-subbrand-back {
@@ -486,7 +489,7 @@
 
 @media (max-width: 480px) {
     .navbar-aarudev .navbar-subbrand-logo-img {
-        height: 40px !important;
+        height: 110px !important;
     }
 
     .navbar-aarudev .navbar-subbrand-back {
@@ -518,7 +521,7 @@
     }
 
     .navbar-aaru .navbar-subbrand-logo-img {
-        height: 30px !important;
+        height: 130px !important;
     }
 
     .navbar-aaru .navbar-subbrand-back {
@@ -528,7 +531,7 @@
 
 @media (max-width: 480px) {
     .navbar-aaru .navbar-subbrand-logo-img {
-        height: 28px !important;
+        height: 110px !important;
     }
 
     .navbar-aaru .navbar-subbrand-back {
@@ -561,7 +564,7 @@
     }
 
     .navbar-aronix .navbar-subbrand-logo-img {
-        height: 30px !important;
+        height: 130px !important;
     }
 
     .navbar-aronix .navbar-subbrand-back {
@@ -571,7 +574,7 @@
 
 @media (max-width: 480px) {
     .navbar-aronix .navbar-subbrand-logo-img {
-        height: 28px !important;
+        height: 110px !important;
     }
 
     .navbar-aronix .navbar-subbrand-back {
@@ -595,7 +598,12 @@
 /* Mobile Navigation (up to 768px) */
 @media (max-width: 768px) {
     .navbar-header {
-        padding: 0.8rem 5%;
+        padding: 0.8rem 10px;
+    }
+
+    .navbar-nav {
+        position: relative;
+        justify-content: space-between;
     }
 
     .navbar-links {
@@ -615,18 +623,58 @@
     }
 
     .navbar-logo img {
-        height: 50px;
+        /* Aggressive height target */
+        height: 65px !important;
+        width: auto !important;
+        /* maximize width: 50vw - button half width (approx 40px) - gap */
+        max-width: calc(50vw - 55px) !important;
+        object-fit: contain;
+        object-position: left center;
+        max-height: none !important;
+    }
+
+    /* Resize & Center Connect button for Tablet/Mobile */
+    .navbar-btn {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 7px 14px;
+        font-size: 0.85rem;
+        margin: 0;
+        white-space: nowrap;
     }
 }
 
 /* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
     .navbar-header {
-        padding: 0.7rem 4%;
+        padding: 0.7rem 5px;
+        /* Absolute minimum padding */
     }
 
     .navbar-logo img {
-        height: 40px;
+        /* Extreme height target for mobile */
+        height: 65px !important;
+        width: auto !important;
+        /* Push width close to center button */
+        max-width: calc(50vw - 35px) !important;
+        object-fit: contain;
+        object-position: left center;
+        max-height: none !important;
+        /* Significant visual boost */
+        transform: scale(1.3);
+        transform-origin: left center;
+    }
+
+    /* Resize Connect button for Small Mobile - made compact to free up space */
+    .navbar-btn {
+        padding: 4px 8px;
+        font-size: 0.72rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        white-space: nowrap;
     }
 
     .navbar-hamburger {

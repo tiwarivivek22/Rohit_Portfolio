@@ -1,0 +1,87 @@
+/* Navbar Logo Styling - Overrides for Specific Brands */
+
+/* 
+   We strictly override the 'height' property here because navbar.css 
+   uses !important on height for these elements. 
+   We use high-specificity selectors to ensure these rules apply.
+*/
+
+/* 1. ARONIX - The one that was "miserable" */
+/* Increasing height significantly and ensuring it is not squashed */
+.navbar-aronix .navbar-subbrand-logo-img,
+.navbar-aronix .navbar-aronix-logo-img {
+    height: 90px !important;
+    /* Increased from 50px */
+    width: auto !important;
+    max-width: 250px !important;
+    /* Allow it to be wider */
+    object-fit: contain !important;
+    transform: none !important;
+    /* Reset any potentially weird transforms */
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+    /* Clean up the glow */
+    margin-top: 0 !important;
+    padding: 5px 0;
+    /* Add breathing room */
+}
+
+/* 2. JFAM */
+/* navbar.css sets generic subbrand to 160px, which might be too tall for JFAM */
+.navbar-jfam .navbar-subbrand-logo-img,
+.navbar-jfam .navbar-jfam-logo-img {
+    height: 85px !important;
+    /* More balanced height */
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* 3. AARU CARE */
+.navbar-aarucare .navbar-subbrand-logo-img,
+.navbar-aarucare .navbar-aarucare-logo-img {
+    height: 85px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* 4. AARU DEVELOPERS */
+/* Navbar.css had this at 190px, which is huge. Bringing it to a sensible size */
+.navbar-aarudev .navbar-subbrand-logo-img,
+.navbar-aarudev .navbar-aarudev-logo-img {
+    height: 100px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* 5. AARU MOBILITY */
+.navbar-aaru .navbar-subbrand-logo-img,
+.navbar-aaru .navbar-aaru-logo-img {
+    height: 80px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    filter: brightness(1.2);
+    /* Make it pop against dark bg */
+}
+
+/* Responsive Overrides (Mobile) */
+@media (max-width: 768px) {
+    /* Slightly smaller on mobile but still readable */
+
+    .navbar-aronix .navbar-subbrand-logo-img,
+    .navbar-aronix .navbar-aronix-logo-img {
+        height: 60px !important;
+    }
+
+    .navbar-jfam .navbar-subbrand-logo-img,
+    .navbar-jfam .navbar-jfam-logo-img,
+    .navbar-aarucare .navbar-subbrand-logo-img,
+    .navbar-aarucare .navbar-aarucare-logo-img,
+    .navbar-aaru .navbar-subbrand-logo-img,
+    .navbar-aaru .navbar-aaru-logo-img {
+        height: 55px !important;
+    }
+
+    .navbar-aarudev .navbar-subbrand-logo-img,
+    .navbar-aarudev .navbar-aarudev-logo-img {
+        height: 70px !important;
+    }
+}

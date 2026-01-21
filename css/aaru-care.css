@@ -299,7 +299,9 @@
 /* HANDSHAKE OVERLAY */
 .aarucare-handshake {
     margin-top: -55px;
-    margin-left: 170px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 /* AARU Care CTA */
@@ -451,6 +453,12 @@
         grid-template-columns: 1fr;
     }
 
+    .aarucare-program-card {
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
     .aarucare-impact-stats {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -463,6 +471,39 @@
 
     .aarucare-footer-about p {
         margin: 0 auto;
+    }
+
+    /* Handshake Fix for Mobile */
+    .aarucare-handshake {
+        margin-left: 0;
+        margin-top: 0;
+        /* Align with top section */
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+        /* Ensure on top of gray background */
+    }
+
+    .aarucare-handshake img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        opacity: 1;
+        /* Fully visible */
+    }
+
+    .aarucare-cta {
+        margin-top: -80px;
+        /* Precise alignment with handshake lines */
+        padding-top: 100px;
+        /* Ensure text is below the hands */
+        position: relative;
+        z-index: 5;
     }
 }
 
