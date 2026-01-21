@@ -193,7 +193,7 @@ function getCTA() {
 
         <div class="cta-buttons">
             <a href="pitch.html" class="btn-primary">Pitch Your Idea</a>
-            <a href="https://calendly.com/" target="_blank" class="btn-outline">Book Mentorship</a>
+            <a href="mentorship.html" class="btn-outline">Book Mentorship</a>
         </div>
     </section>
     `;
