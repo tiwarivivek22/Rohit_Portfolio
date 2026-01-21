@@ -1,7 +1,3 @@
-/* MENTORSHIP PAGE RESPONSIVE STYLES */
-
-/* Already has media queries, let me enhance them */
-
 /* MENTORSHIP PAGE */
 .mentorship-hero {
     min-height: 60vh;
@@ -311,9 +307,7 @@
     color: #000000;
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
+/* RESPONSIVE*/
 
 /* Tablet (769px - 992px) */
 @media (max-width: 992px) {

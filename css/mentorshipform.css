@@ -8,20 +8,47 @@ body {
   background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
 }
 
+/* HERO SECTION  */
+.mentorshipform-hero {
+  margin-top: 80px;
+  padding: clamp(60px, 8vw, 100px) 20px;
+  background: linear-gradient(180deg, #101C35 10%, #D4A643 100%);
+  text-align: center;
+}
+
+.mentorshipform-hero h1 {
+  color: #ffffff;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  line-height: 1.2;
+}
+
+.mentorshipform-hero p {
+  color: #cbd5e1;
+  max-width: 780px;
+  margin: 0 auto;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.7;
+}
+
+/* MAIN CONTENT */
 .overlay {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 90px;
-  padding-bottom: 40px;
+  padding-top: clamp(30px, 5vw, 50px);
+  padding-bottom: clamp(30px, 5vw, 50px);
+  background: #f5f7fa;
 }
 
 .mentorship-card {
-  width: 800px;
+  width: clamp(350px, 95%, 800px);
   max-width: 95%;
   background: #ffffff;
-  padding: 25px 30px;
+  padding: clamp(20px, 4vw, 25px) clamp(20px, 4vw, 30px);
   border-radius: 16px;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(212, 166, 67, 0.1);
@@ -30,20 +57,20 @@ body {
 /* Card Header */
 .card-header {
   text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+  margin-bottom: clamp(15px, 3vw, 20px);
+  padding-bottom: clamp(10px, 2vw, 15px);
   border-bottom: 2px solid #f0f0f0;
 }
 
 .card-header h2 {
-  font-size: 22px;
+  font-size: clamp(1.2rem, 3vw, 22px);
   font-weight: 700;
   color: #1a1a2e;
   margin: 0 0 5px 0;
 }
 
 .header-subtitle {
-  font-size: 13px;
+  font-size: clamp(0.8rem, 2vw, 13px);
   color: #666;
   margin: 0;
 }
@@ -51,7 +78,7 @@ body {
 /* Form Layout */
 .mentorship-form {
   display: flex;
-  gap: 25px;
+  gap: clamp(15px, 3vw, 25px);
 }
 
 .left,
@@ -70,7 +97,7 @@ body {
 }
 
 .field label {
-  font-size: 14px;
+  font-size: clamp(0.85rem, 2vw, 14px);
   font-weight: 600;
   color: #333;
   display: block;
@@ -82,10 +109,10 @@ body {
 .field select,
 .field textarea {
   width: 100%;
-  padding: 14px 16px;
+  padding: clamp(10px, 2vw, 14px) clamp(12px, 2vw, 16px);
   border-radius: 12px;
   border: 2px solid #e5e5e5;
-  font-size: 15px;
+  font-size: clamp(0.85rem, 2vw, 15px);
   transition: all 0.3s ease;
   background: #fafafa;
 }
@@ -105,7 +132,7 @@ body {
 }
 
 textarea {
-  height: 130px;
+  height: clamp(100px, 15vw, 130px);
   resize: vertical;
   line-height: 1.5;
 }
@@ -131,7 +158,7 @@ select {
   margin-top: 8px;
   border: 2px solid #e5e5e5;
   border-radius: 16px;
-  padding: 20px;
+  padding: clamp(12px, 2vw, 20px);
   background: #fafafa;
 }
 
@@ -139,11 +166,11 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: clamp(10px, 2vw, 15px);
 }
 
 .month-display {
-  font-size: 16px;
+  font-size: clamp(0.9rem, 2vw, 16px);
   font-weight: 700;
   color: #333;
 }
@@ -151,10 +178,10 @@ select {
 .nav-btn {
   border: none;
   background: #fff;
-  width: 36px;
-  height: 36px;
+  width: clamp(28px, 5vw, 36px);
+  height: clamp(28px, 5vw, 36px);
   border-radius: 10px;
-  font-size: 22px;
+  font-size: clamp(16px, 3vw, 22px);
   cursor: pointer;
   transition: all 0.3s ease;
   color: #666;
@@ -171,12 +198,12 @@ select {
 .dates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: clamp(4px, 1vw, 8px);
   text-align: center;
 }
 
 .days span {
-  font-size: 12px;
+  font-size: clamp(10px, 2vw, 12px);
   font-weight: 600;
   color: #888;
   text-transform: uppercase;
@@ -184,12 +211,12 @@ select {
 }
 
 .dates span {
-  width: 42px;
-  height: 42px;
-  line-height: 42px;
+  width: clamp(28px, 5vw, 42px);
+  height: clamp(28px, 5vw, 42px);
+  line-height: clamp(28px, 5vw, 42px);
   border-radius: 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: clamp(12px, 2vw, 14px);
   font-weight: 500;
   transition: all 0.2s ease;
   background: #fff;
@@ -226,7 +253,7 @@ select {
   margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: clamp(6px, 1.5vw, 10px);
   max-height: 200px;
   overflow-y: auto;
   padding: 5px;
@@ -247,12 +274,12 @@ select {
 }
 
 .time-slots button {
-  padding: 12px 8px;
+  padding: clamp(8px, 2vw, 12px) clamp(4px, 1.5vw, 8px);
   border-radius: 12px;
   border: 2px solid #e5e5e5;
   background: #fff;
   cursor: pointer;
-  font-size: 13px;
+  font-size: clamp(11px, 2vw, 13px);
   font-weight: 500;
   transition: all 0.3s ease;
   color: #444;
@@ -274,21 +301,21 @@ select {
 
 /* Payment Section */
 .payment-section {
-  margin-top: 25px;
-  padding-top: 20px;
+  margin-top: clamp(20px, 4vw, 25px);
+  padding-top: clamp(15px, 3vw, 20px);
   border-top: 2px solid #f0f0f0;
 }
 
 .payment-section h3 {
-  font-size: 16px;
+  font-size: clamp(0.9rem, 2.5vw, 16px);
   font-weight: 700;
   color: #1a1a2e;
-  margin: 0 0 15px 0;
+  margin: 0 0 clamp(10px, 2.5vw, 15px) 0;
 }
 
 .payment-options {
   display: flex;
-  gap: 12px;
+  gap: clamp(8px, 2vw, 12px);
   flex-wrap: wrap;
 }
 
@@ -296,7 +323,7 @@ select {
   cursor: pointer;
   position: relative;
   flex: 1;
-  min-width: 120px;
+  min-width: clamp(100px, 20vw, 120px);
 }
 
 .payment-option input[type="radio"] {
@@ -309,7 +336,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 16px;
+  padding: clamp(10px, 2vw, 14px) clamp(12px, 2vw, 16px);
   background: #fff;
   border: 2px solid #e5e5e5;
   border-radius: 12px;
@@ -330,27 +357,27 @@ select {
 }
 
 .payment-text {
-  font-size: 14px;
+  font-size: clamp(12px, 2vw, 14px);
   font-weight: 600;
   color: #333;
 }
 
 /* Agree Section */
 .agree-section {
-  margin-top: 25px;
+  margin-top: clamp(20px, 4vw, 25px);
 }
 
 .agree-card {
   background: linear-gradient(135deg, #fffcf5 0%, #fff 100%);
   border: 2px solid rgba(212, 166, 67, 0.2);
   border-radius: 16px;
-  padding: 20px 24px;
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 3vw, 24px);
 }
 
 .checkbox-container {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: clamp(10px, 2.5vw, 16px);
   cursor: pointer;
 }
 
@@ -364,9 +391,9 @@ select {
 
 .checkmark {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
+  width: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 3vw, 24px);
+  min-width: clamp(20px, 3vw, 24px);
   border: 2px solid #ddd;
   border-radius: 8px;
   background: #fff;
@@ -379,9 +406,9 @@ select {
   content: '✓';
   position: absolute;
   display: none;
-  left: 6px;
-  top: 0px;
-  font-size: 15px;
+  left: clamp(4px, 1vw, 6px);
+  top: clamp(-1px, 0.5vw, 0px);
+  font-size: clamp(11px, 2vw, 15px);
   color: #fff;
   font-weight: bold;
 }
@@ -401,7 +428,7 @@ select {
 }
 
 .agree-text {
-  font-size: 14px;
+  font-size: clamp(12px, 2vw, 14px);
   line-height: 1.7;
   color: #555;
 }
@@ -418,15 +445,15 @@ select {
 /* Book Button */
 .book-btn {
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: clamp(20px, 4vw, 30px);
   width: 100%;
-  padding: 18px 28px;
+  padding: clamp(14px, 3vw, 18px) clamp(16px, 3vw, 28px);
   background: linear-gradient(135deg, #d4a437 0%, #e8c06a 50%, #d4a437 100%);
   background-size: 200% 200%;
   border: none;
   border-radius: 16px;
   color: #fff;
-  font-size: 17px;
+  font-size: clamp(14px, 2.5vw, 17px);
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -439,7 +466,7 @@ select {
 }
 
 .btn-icon {
-  font-size: 22px;
+  font-size: clamp(18px, 3vw, 22px);
 }
 
 .btn-text {
@@ -457,46 +484,64 @@ select {
   box-shadow: 0 4px 15px rgba(212, 166, 67, 0.4);
 }
 
-/* Responsive Styles */
+/* RESPONSIVE STYLES */
+
+/* Tablet (769px - 992px) */
 @media (max-width: 992px) {
+  .mentorshipform-hero {
+    padding: clamp(50px, 6vw, 80px) 5% clamp(40px, 5vw, 60px);
+  }
+
+  .overlay {
+    padding-top: clamp(25px, 4vw, 40px);
+    padding-bottom: clamp(25px, 4vw, 40px);
+  }
+
   .mentorship-card {
-    padding: 30px 30px;
+    padding: clamp(20px, 3vw, 30px);
   }
 
   .mentorship-form {
-    gap: 30px;
+    gap: 20px;
+  }
+
+  .time-slots {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
 }
 
+/* Mobile Navigation (up to 768px) */
 @media (max-width: 768px) {
+  .mentorshipform-hero {
+    margin-top: 70px;
+    padding: clamp(40px, 6vw, 60px) 5% clamp(30px, 4vw, 40px);
+  }
+
+  .mentorshipform-hero h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+
   .overlay {
-    padding-top: 80px;
-    padding-bottom: 30px;
+    padding-top: clamp(20px, 4vw, 30px);
+    padding-bottom: clamp(20px, 4vw, 30px);
     padding-left: 15px;
     padding-right: 15px;
   }
 
   .mentorship-card {
-    padding: 25px 22px;
+    padding: clamp(18px, 3vw, 25px) clamp(16px, 3vw, 22px);
     border-radius: 20px;
   }
 
   .card-header {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-  }
-
-  .header-icon {
-    font-size: 40px;
-  }
-
-  .card-header h2 {
-    font-size: 24px;
+    margin-bottom: clamp(18px, 3vw, 25px);
+    padding-bottom: clamp(12px, 2.5vw, 20px);
   }
 
   .mentorship-form {
     flex-direction: column;
-    gap: 25px;
+    gap: clamp(18px, 3vw, 25px);
   }
 
   .left,
@@ -510,49 +555,49 @@ select {
   }
 
   .field label {
-    font-size: 13px;
+    font-size: clamp(12px, 2.5vw, 14px);
     margin-bottom: 6px;
   }
 
   .field input,
   .field select,
   .field textarea {
-    padding: 12px 14px;
-    font-size: 14px;
+    padding: clamp(10px, 2vw, 12px) clamp(10px, 2vw, 14px);
+    font-size: clamp(13px, 2.5vw, 14px);
   }
 
   textarea {
-    height: 110px;
+    height: clamp(90px, 12vw, 110px);
   }
 
   .calendar {
-    padding: 15px;
+    padding: clamp(10px, 2vw, 15px);
   }
 
   .dates span {
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    font-size: 13px;
+    width: clamp(28px, 5vw, 36px);
+    height: clamp(28px, 5vw, 36px);
+    line-height: clamp(28px, 5vw, 36px);
+    font-size: clamp(11px, 2.5vw, 13px);
   }
 
   .time-slots {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: clamp(6px, 1.5vw, 8px);
   }
 
   .time-slots button {
-    padding: 10px 6px;
-    font-size: 12px;
+    padding: clamp(8px, 2vw, 10px) clamp(4px, 1.5vw, 6px);
+    font-size: clamp(11px, 2.5vw, 12px);
   }
 
   .payment-section {
-    margin-top: 25px;
+    margin-top: clamp(18px, 3vw, 25px);
   }
 
   .payment-options {
     flex-direction: column;
-    gap: 12px;
+    gap: clamp(8px, 2vw, 12px);
   }
 
   .payment-option {
@@ -562,156 +607,145 @@ select {
   .payment-card {
     flex-direction: row;
     justify-content: flex-start;
-    padding: 16px 20px;
-    gap: 15px;
-  }
-
-  .payment-icon {
-    font-size: 26px;
-  }
-
-  .payment-badge {
-    margin-left: auto;
+    padding: clamp(12px, 2.5vw, 16px) clamp(14px, 2.5vw, 20px);
+    gap: clamp(10px, 2.5vw, 15px);
   }
 
   .agree-card {
-    padding: 16px 18px;
+    padding: clamp(12px, 2.5vw, 16px) clamp(14px, 2.5vw, 18px);
   }
 
   .checkbox-container {
-    gap: 12px;
+    gap: clamp(10px, 2vw, 12px);
   }
 
   .checkmark {
-    width: 22px;
-    height: 22px;
-    min-width: 22px;
+    width: clamp(18px, 3vw, 22px);
+    height: clamp(18px, 3vw, 22px);
+    min-width: clamp(18px, 3vw, 22px);
   }
 
   .agree-text {
-    font-size: 13px;
+    font-size: clamp(12px, 2.5vw, 13px);
     line-height: 1.6;
   }
 
   .book-btn {
-    margin-top: 25px;
-    padding: 16px 20px;
-    font-size: 15px;
+    margin-top: clamp(18px, 3vw, 25px);
+    padding: clamp(12px, 2.5vw, 16px) clamp(14px, 2.5vw, 20px);
+    font-size: clamp(13px, 2.5vw, 15px);
   }
 }
 
+/* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
+  .mentorshipform-hero {
+    margin-top: 60px;
+    padding: clamp(35px, 5vw, 50px) 4% clamp(25px, 4vw, 30px);
+  }
+
+  .mentorshipform-hero h1 {
+    font-size: clamp(1.4rem, 5vw, 1.7rem);
+  }
+
+  .mentorshipform-hero p {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+  }
+
   .overlay {
-    padding-top: 70px;
-    padding-bottom: 20px;
+    padding-top: clamp(15px, 3vw, 20px);
+    padding-bottom: clamp(15px, 3vw, 20px);
     padding-left: 10px;
     padding-right: 10px;
   }
 
   .mentorship-card {
-    padding: 20px 18px;
+    padding: clamp(14px, 3vw, 20px) clamp(12px, 3vw, 18px);
     border-radius: 16px;
   }
 
-  .header-icon {
-    font-size: 36px;
-  }
-
-  .card-header h2 {
-    font-size: 22px;
-  }
-
   .header-subtitle {
-    font-size: 13px;
+    font-size: clamp(0.75rem, 2vw, 13px);
   }
 
   .field input,
   .field select,
   .field textarea {
-    padding: 11px 12px;
-    font-size: 14px;
+    padding: clamp(9px, 2vw, 11px) clamp(9px, 2vw, 12px);
+    font-size: clamp(12px, 2.5vw, 14px);
   }
 
   textarea {
-    height: 100px;
+    height: clamp(80px, 12vw, 100px);
   }
 
   .calendar {
-    padding: 12px;
+    padding: clamp(8px, 2vw, 12px);
   }
 
   .cal-header {
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 2vw, 12px);
   }
 
   .nav-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
+    font-size: clamp(14px, 3vw, 18px);
   }
 
   .days span {
-    font-size: 11px;
+    font-size: clamp(9px, 2vw, 11px);
   }
 
   .dates span {
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    font-size: 12px;
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
+    line-height: clamp(24px, 5vw, 32px);
+    font-size: clamp(10px, 2.5vw, 12px);
   }
 
   .time-slots {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: clamp(5px, 1.5vw, 8px);
   }
 
   .time-slots button {
-    padding: 10px 8px;
-    font-size: 12px;
+    padding: clamp(8px, 2vw, 10px) clamp(4px, 1.5vw, 8px);
+    font-size: clamp(10px, 2.5vw, 12px);
     border-radius: 10px;
   }
 
   .payment-card {
-    padding: 14px 16px;
-  }
-
-  .payment-icon {
-    font-size: 22px;
+    padding: clamp(10px, 2.5vw, 14px) clamp(12px, 2.5vw, 16px);
   }
 
   .payment-text {
-    font-size: 14px;
-  }
-
-  .payment-badge {
-    font-size: 10px;
-    padding: 3px 8px;
+    font-size: clamp(12px, 2.5vw, 14px);
   }
 
   .agree-text {
-    font-size: 12px;
+    font-size: clamp(11px, 2vw, 12px);
   }
 
   .checkmark {
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
+    width: clamp(16px, 3vw, 20px);
+    height: clamp(16px, 3vw, 20px);
+    min-width: clamp(16px, 3vw, 20px);
   }
 
   .checkmark::after {
-    left: 5px;
-    font-size: 13px;
+    left: clamp(3px, 1vw, 5px);
+    font-size: clamp(10px, 2vw, 13px);
   }
 
   .book-btn {
-    margin-top: 20px;
-    padding: 14px 16px;
-    font-size: 14px;
+    margin-top: clamp(15px, 3vw, 20px);
+    padding: clamp(12px, 2.5vw, 14px) clamp(12px, 2.5vw, 16px);
+    font-size: clamp(12px, 2.5vw, 14px);
     border-radius: 12px;
   }
 
   .btn-icon {
-    font-size: 18px;
+    font-size: clamp(16px, 3vw, 18px);
   }
 }
