@@ -54,6 +54,8 @@
     align-items: center;
     border: none;
     margin-top: 20px;
+    margin-left: 0;
+    justify-content: flex-start;
 }
 
 .btn h6 {
@@ -235,7 +237,7 @@
 
 .aarudev-projects {
     position: relative;
-    padding: 80px 8%;
+    padding: 80px 8% 280px;
     background: #f8f8f8;
     overflow: hidden;
     /* Prevent circle background from causing scroll */
@@ -246,36 +248,30 @@
     font-size: 28px;
     color: #000;
     margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
 }
 
 .aarudev-circle-bg {
-    margin-top: -50px;
     position: absolute;
     width: 900px;
     height: 900px;
-    max-width: 100vw;
     background: #d9e7f8;
     border-radius: 50%;
-    top: 180px;
+    top: 43%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 0;
-}
-
-/* Hide the blue circle on anything smaller than full desktop */
-@media (max-width: 1200px) {
-    .aarudev-circle-bg {
-        display: none;
-    }
+    pointer-events: none;
 }
 
 .aarudev-project-grid {
-    margin-left: 260px;
-    height: auto;
-    width: 60%;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 850px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
     position: relative;
     z-index: 1;
 }
@@ -618,7 +614,6 @@
     .aarudev-circle-bg {
         width: 400px;
         height: 400px;
-        top: 200px;
     }
 
     .aarudev-hero-right {

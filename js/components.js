@@ -450,11 +450,11 @@ function getModal() {
             <p class="subtitle">Stay up to date with all the latest from us.</p>
             <form class="connect-form" id="connect-form">
                 <label>Name*</label>
-                <input type="text" id="connect-name" name="name" required>
+                <input type="text" id="connect-name" name="name" minlength="2" title="Please enter a valid name" required>
                 <label>Email*</label>
-                <input type="email" id="connect-email" name="email" required>
+                <input type="email" id="connect-email" name="email" inputmode="email" title="Please enter a valid email address" required>
                 <label>Purpose*</label>
-                <input type="text" id="connect-purpose" name="purpose" required>
+                <input type="text" id="connect-purpose" name="purpose" minlength="2" title="Please enter the purpose" required>
                 <label>Message*</label>
                 <textarea id="connect-message" name="message" rows="3" required></textarea>
                 <button type="submit">SEND MESSAGE</button>

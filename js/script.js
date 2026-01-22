@@ -976,7 +976,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let currentScroll = 0;
-    let scrollSpeed = 1.5;
+    let scrollSpeed = 1.0;
 
     function animate() {
         currentScroll += scrollSpeed;
