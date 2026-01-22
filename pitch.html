@@ -80,27 +80,27 @@
                 <div class="form-grid">
                     <div class="form-field">
                         <label for="name">Your Name *</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        <input type="text" placeholder="Enter your full name" maxlength="50" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" required>
                         <small class="error-message"></small>
                     </div>
 
                     <div class="form-field">
                         <label for="company">Company / Startup Name *</label>
-                        <input type="text" id="company" name="company" placeholder="Enter company name" required>
+                        <input type="text" placeholder="Enter company name" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" required>
                         <small class="error-message"></small>
                     </div>
 
                     <div class="form-field">
                         <label for="sector">Sector *</label>
-                        <input type="text" id="sector" name="sector" placeholder="e.g., Technology, Healthcare, Finance"
-                            required>
+                        <input type="text" placeholder="e.g., Technology, Healthcare, Finance"
+                         oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" required>
                         <small class="error-message"></small>
                     </div>
 
                     <div class="form-field">
                         <label for="investment">Investment Required *</label>
-                        <input type="text" id="investment" name="investment" placeholder="e.g., ₹10 Lakhs, ₹1 Crore"
-                            required>
+                        <input type="text" placeholder="e.g., ₹10 Lakhs, ₹1 Crore"
+                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')" required>
                         <small class="error-message"></small>
                     </div>
 
@@ -121,6 +121,7 @@
                 <div class="form-field">
                     <label for="Pitch">Pitch Summary *</label>
                     <textarea id="pitch-summary" name="pitchSummary" rows="5"
+                        maxlength="1000"
                         placeholder="Describe your business idea, market opportunity, and growth potential"
                         required></textarea>
                     <small class="error-message"></small>
