@@ -787,6 +787,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/* Mentorship Steps Scroll Reveal Animation */
+document.addEventListener("DOMContentLoaded", () => {
+    const mentorshipSteps = document.querySelectorAll('.mentorship-step');
+
+    if (mentorshipSteps.length === 0) return;
+
+    // Create Intersection Observer
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Add visible class to trigger animation
+                    entry.target.classList.add('visible');
+                    // Stop observing once animated
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.2, // Trigger when 20% of element is visible
+            rootMargin: '0px 0px -50px 0px' // Trigger slightly before bottom
+        }
+    );
+
+    // Observe each mentorship step
+    mentorshipSteps.forEach((step) => {
+        observer.observe(step);
+    });
+});
+
 /* SCROLL REVEAL ANIMATIONS */
 
 document.addEventListener('DOMContentLoaded', function () {
