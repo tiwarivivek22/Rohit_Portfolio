@@ -88,10 +88,9 @@
                 <label>Plan Name *</label>
                 <select name="planName" required>
                   <option value="">Select a plan</option>
-                  <option value="starter-30min">Starter - 30 Min Session</option>
-                  <option value="professional-1hr">Professional - 1 Hour Session</option>
-                  <option value="premium-2hr">Premium - 2 Hour Session</option>
-                  <option value="vip-fullday">VIP - Full Day Workshop</option>
+                  <option value="30-min Quick Call">30-min Quick Call</option>
+                  <option value="1-hour Strategy Session">1-hour Strategy Session</option>
+                  <option value="Startup Deep-Dive">Startup Deep-Dive</option>
                 </select>
                 <span class="error-message">Please select a plan</span>
               </div>
@@ -174,23 +173,9 @@
           <h3>Select Payment Method</h3>
           <div class="payment-options">
             <label class="payment-option">
-              <input type="radio" name="payment_method" value="upi" required>
+              <input type="radio" name="payment_method" value="razorpay" required>
               <div class="payment-card">
-                <span class="payment-text">UPI</span>
-              </div>
-            </label>
-
-            <label class="payment-option">
-              <input type="radio" name="payment_method" value="card" required>
-              <div class="payment-card">
-                <span class="payment-text">Card Payment</span>
-              </div>
-            </label>
-
-            <label class="payment-option">
-              <input type="radio" name="payment_method" value="netbanking" required>
-              <div class="payment-card">
-                <span class="payment-text">Net Banking</span>
+                <span class="payment-text">💳 Razorpay (Cards, UPI, Net Banking)</span>
               </div>
             </label>
           </div>
@@ -225,6 +210,9 @@
 
   <script>document.write(getFooter());</script>
   <script>document.write(getModal());</script>
+
+  <!-- Razorpay Payment SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <script src="js/mentorshipform.js"></script>
   <script src="js/script.js"></script>
