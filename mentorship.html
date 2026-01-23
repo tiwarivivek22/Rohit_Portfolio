@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/loader.css">
     <script src="js/components.js"></script>
+    <script src="js/api.js"></script>
 </head>
 
 <body>
@@ -189,32 +190,7 @@
     <script>document.write(getModal());</script>
 
     <script src="js/script.js"></script>
-
-    <!-- Mentorship Steps Animation -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mentorshipSteps = document.querySelectorAll('.mentorship-step');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            mentorshipSteps.forEach(function (step) {
-                observer.observe(step);
-            });
-        });
-    </script>
-
+    <script src="js/connect-form.js"></script>
     <script src="js/loader.js"></script>
 </body>
 

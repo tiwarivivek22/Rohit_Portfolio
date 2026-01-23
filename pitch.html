@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/loader.css">
     <script src="js/components.js"></script>
     <script src="js/api.js"></script>
-    <!-- remember to add form validation script -->
+    <script src="js/pitch-form.js"></script>
 </head>
 
 <body>
@@ -80,27 +80,27 @@
                 <div class="form-grid">
                     <div class="form-field">
                         <label for="name">Your Name *</label>
-                        <input type="text" placeholder="Enter your full name" maxlength="50" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" required>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                         <small class="error-message"></small>
                     </div>
 
                     <div class="form-field">
                         <label for="company">Company / Startup Name *</label>
-                        <input type="text" placeholder="Enter company name" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" required>
+                        <input type="text" id="company" name="company" placeholder="Enter company name" required>
                         <small class="error-message"></small>
                     </div>
 
                     <div class="form-field">
                         <label for="sector">Sector *</label>
-                        <input type="text" placeholder="e.g., Technology, Healthcare, Finance"
-                         oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" required>
+                        <input type="text" id="sector" name="sector" placeholder="e.g., Technology, Healthcare, Finance"
+                            required>
                         <small class="error-message"></small>
                     </div>
 
                     <div class="form-field">
                         <label for="investment">Investment Required *</label>
-                        <input type="text" placeholder="e.g., ₹10 Lakhs, ₹1 Crore"
-                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')" required>
+                        <input type="text" id="investment" name="investment" placeholder="e.g., ₹10 Lakhs, ₹1 Crore"
+                            required>
                         <small class="error-message"></small>
                     </div>
 
@@ -121,7 +121,6 @@
                 <div class="form-field">
                     <label for="Pitch">Pitch Summary *</label>
                     <textarea id="pitch-summary" name="pitchSummary" rows="5"
-                        maxlength="1000"
                         placeholder="Describe your business idea, market opportunity, and growth potential"
                         required></textarea>
                     <small class="error-message"></small>
@@ -197,164 +196,8 @@
     <script>document.write(getModal());</script>
 
     <script src="js/script.js"></script>
-
-    <!-- Pitch Form Submission Handler -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const pitchForm = document.querySelector('.pitch-form');
-            const submitBtn = document.getElementById('submit-btn');
-            const formMessage = document.getElementById('form-message');
-            const uploadBox = document.getElementById('upload-box');
-            const fileInput = document.getElementById('file-upload');
-            const fileInfo = uploadBox.querySelector('.file-info');
-            const fileName = fileInfo.querySelector('.file-name');
-            const removeFileBtn = fileInfo.querySelector('.remove-file');
-
-            // File upload handling
-            uploadBox.addEventListener('click', () => fileInput.click());
-
-            uploadBox.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadBox.style.borderColor = '#007bff';
-            });
-
-            uploadBox.addEventListener('dragleave', () => {
-                uploadBox.style.borderColor = '#ccc';
-            });
-
-            uploadBox.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    fileInput.files = files;
-                    updateFileDisplay();
-                }
-            });
-
-            fileInput.addEventListener('change', updateFileDisplay);
-
-            function updateFileDisplay() {
-                if (fileInput.files.length > 0) {
-                    const file = fileInput.files[0];
-                    fileName.textContent = file.name;
-                    uploadBox.querySelector('.upload-content').style.display = 'none';
-                    fileInfo.style.display = 'flex';
-                }
-            }
-
-            removeFileBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                fileInput.value = '';
-                uploadBox.querySelector('.upload-content').style.display = 'block';
-                fileInfo.style.display = 'none';
-            });
-
-            // Form validation
-            function validateForm() {
-                let isValid = true;
-                const requiredFields = pitchForm.querySelectorAll('[required]');
-
-                requiredFields.forEach(field => {
-                    const errorElement = field.parentElement.querySelector('.error-message');
-                    if (!field.value.trim()) {
-                        errorElement.textContent = 'This field is required';
-                        isValid = false;
-                    } else {
-                        errorElement.textContent = '';
-                    }
-
-                    // Email validation
-                    if (field.type === 'email' && field.value.trim()) {
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailRegex.test(field.value)) {
-                            field.parentElement.querySelector('.error-message').textContent = 'Please enter a valid email';
-                            isValid = false;
-                        }
-                    }
-                });
-
-                return isValid;
-            }
-
-            // Form submission
-            pitchForm.addEventListener('submit', async function (e) {
-                e.preventDefault();
-
-                // Validate form
-                if (!validateForm()) {
-                    formMessage.style.color = '#f44336';
-                    formMessage.textContent = '✗ Please fill all required fields correctly.';
-                    return;
-                }
-
-                // Show loading state
-                submitBtn.disabled = true;
-                const btnText = submitBtn.querySelector('.btn-text');
-                const btnLoader = submitBtn.querySelector('.btn-loader');
-                btnText.style.display = 'none';
-                btnLoader.style.display = 'inline';
-
-                try {
-                    // Collect form data including file
-                    const formData = formatPitchData(pitchForm.elements);
-
-                    console.log("Form data prepared:", {
-                        ...formData,
-                        file: formData.file ? `${formData.file.name} (${formData.file.size} bytes)` : 'No file'
-                    });
-
-                    // Submit pitch data
-                    const result = await submitPitch(formData);
-
-                    if (result.success) {
-                        formMessage.style.color = '#4CAF50';
-                        formMessage.textContent = '✓ Pitch submitted successfully! We\'ll review and get back to you soon.';
-                        pitchForm.reset();
-                        uploadBox.querySelector('.upload-content').style.display = 'block';
-                        fileInfo.style.display = 'none';
-                        fileInput.value = '';
-                    } else {
-                        formMessage.style.color = '#f44336';
-                        formMessage.textContent = '✗ Error submitting pitch: ' + result.error;
-                    }
-                } catch (error) {
-                    formMessage.style.color = '#f44336';
-                    formMessage.textContent = '✗ Error submitting pitch. Please try again.';
-                    console.error('Error:', error);
-                } finally {
-                    submitBtn.disabled = false;
-                    btnText.style.display = 'inline';
-                    btnLoader.style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <!-- Process Steps Animation -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const processSteps = document.querySelectorAll('.process-step');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            processSteps.forEach(function (step) {
-                observer.observe(step);
-            });
-        });
-    </script>
-
+    <script src="js/pitch-form.js"></script>
+    <script src="js/connect-form.js"></script>
     <script src="js/loader.js"></script>
 </body>
 

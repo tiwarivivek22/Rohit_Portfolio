@@ -79,57 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
-    // Connect form submission handler
-    const connectForm = document.getElementById('connect-form');
-    if (connectForm) {
-        connectForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const submitBtn = connectForm.querySelector('button[type="submit"]');
-            const formMessage = document.getElementById('connect-form-message');
-
-            // Show loading state
-            submitBtn.disabled = true;
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'SENDING...';
-
-            try {
-                // Collect form data
-                const formData = {
-                    name: document.getElementById('connect-name').value,
-                    email: document.getElementById('connect-email').value,
-                    purpose: document.getElementById('connect-purpose').value,
-                    message: document.getElementById('connect-message').value,
-                };
-
-                // Submit to backend
-                const result = await submitConnect(formData);
-
-                if (result.success) {
-                    formMessage.style.color = '#4CAF50';
-                    formMessage.textContent = '✓ Message sent successfully!';
-                    connectForm.reset();
-
-                    // Close modal after 2 seconds
-                    setTimeout(() => {
-                        closeModal();
-                        formMessage.textContent = '';
-                    }, 2000);
-                } else {
-                    formMessage.style.color = '#f44336';
-                    formMessage.textContent = '✗ Error sending message: ' + result.error;
-                }
-            } catch (error) {
-                formMessage.style.color = '#f44336';
-                formMessage.textContent = '✗ Error sending message. Please try again.';
-                console.error('Error:', error);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            }
-        });
-    }
 });
 
 const slides = document.querySelectorAll('.slide');

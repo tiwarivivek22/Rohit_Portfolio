@@ -463,3 +463,6 @@ function getModal() {
         </div>
     `;
 }
+
+// Connect form validation script - loaded separately
+

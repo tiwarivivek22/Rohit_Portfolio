@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/loader.css">
   <script src="js/components.js"></script>
+  <script src="js/api.js"></script>
 </head>
 
 <body>
@@ -52,56 +53,63 @@
           <p class="header-subtitle">Schedule your personalized session with our expert mentors</p>
         </div>
 
-        <form class="mentorship-form">
+        <form class="mentorship-form" id="mentorshipForm" novalidate>
 
           <!-- LEFT -->
           <div class="left">
             <div class="field-group">
               <div class="field">
                 <label>Your Name *</label>
-                <input type="text" placeholder="Enter your full name">
+                <input type="text" name="fullName" placeholder="Enter your full name" required minlength="2"
+                  pattern="[a-zA-Z\s]+" autocomplete="name">
+                <span class="error-message">Please enter a valid name (letters only, minimum 2 characters)</span>
               </div>
             </div>
 
             <div class="field-group">
               <div class="field">
                 <label>Contact Number *</label>
-                <input type="tel" placeholder="+91 1234567890">
+                <input type="tel" name="contactNumber" placeholder="Enter 10-digit mobile number" required
+                  pattern="[0-9]{10}" maxlength="10" autocomplete="tel">
+                <span class="error-message">Please enter a valid 10-digit mobile number</span>
               </div>
             </div>
 
             <div class="field-group">
-
               <div class="field">
                 <label>Email Address *</label>
-                <input type="email" placeholder="your@email.com">
+                <input type="email" name="emailAddress" placeholder="your@email.com" required autocomplete="email">
+                <span class="error-message">Please enter a valid email address</span>
               </div>
             </div>
 
             <div class="field-group">
               <div class="field">
                 <label>Plan Name *</label>
-                <select>
+                <select name="planName" required>
                   <option value="">Select a plan</option>
-                  <option>Starter - 30 Min Session</option>
-                  <option>Professional - 1 Hour Session</option>
-                  <option>Premium - 2 Hour Session</option>
-                  <option>VIP - Full Day Workshop</option>
+                  <option value="starter-30min">Starter - 30 Min Session</option>
+                  <option value="professional-1hr">Professional - 1 Hour Session</option>
+                  <option value="premium-2hr">Premium - 2 Hour Session</option>
+                  <option value="vip-fullday">VIP - Full Day Workshop</option>
                 </select>
+                <span class="error-message">Please select a plan</span>
               </div>
             </div>
 
             <div class="field-group">
               <div class="field">
                 <label>Price (₹) *</label>
-                <input type="number" placeholder="Enter amount">
+                <input type="number" name="priceAmount" placeholder="Enter amount" required min="1" step="1"
+                  autocomplete="off">
+                <span class="error-message">Please enter a valid price amount</span>
               </div>
             </div>
 
             <div class="field-group">
               <div class="field">
                 <label>Topic for discussion</label>
-                <textarea placeholder="What would you like to discuss? (Optional)"></textarea>
+                <textarea name="discussionTopic" placeholder="What would you like to discuss? (Optional)"></textarea>
               </div>
             </div>
           </div>
@@ -112,14 +120,15 @@
             <div class="field-group">
               <div class="field">
                 <label>Duration *</label>
-                <select>
+                <select name="duration" required>
                   <option value="">Select duration</option>
-                  <option>30 Minutes</option>
-                  <option>1 Hour</option>
-                  <option>2 Hours</option>
-                  <option>Half Day (4 Hours)</option>
-                  <option>Full Day (8 Hours)</option>
+                  <option value="30min">30 Minutes</option>
+                  <option value="1hr">1 Hour</option>
+                  <option value="2hr">2 Hours</option>
+                  <option value="4hr">Half Day (4 Hours)</option>
+                  <option value="8hr">Full Day (8 Hours)</option>
                 </select>
+                <span class="error-message">Please select a duration</span>
               </div>
             </div>
 
@@ -219,6 +228,7 @@
 
   <script src="js/mentorshipform.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/connect-form.js"></script>
 </body>
 
 </html>
