@@ -81,64 +81,87 @@
 
 /* PACKAGES SECTION */
 .mentorship-packages {
-    padding: 80px 5%;
+    padding: 30px 5%;
     text-align: center;
-    background-color: #0B1C3F;
+    background-color: #F7F7F7;
 }
 
 .mentorship-packages h2 {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 15px;
     text-align: center;
 }
 
 .mentorship-packages .subtext {
     max-width: 700px;
-    margin: 0 auto 40px;
-    color: #ffffff;
+    margin: 0 auto 50px;
+    color: #000000;
     font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.8;
 }
 
 .mentorship-packages-grid {
     max-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
 .mentorship-package-box {
     background: #ffffff;
-    border-radius: 18px;
+    border-radius: 12px;
     padding: 40px 30px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: left;
     transition: all 0.3s ease;
-    border: 3px solid #d4a643;
+    border: 1px solid #eeeeee;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+.mentorship-package-box.highlight {
+    /* border: 1px solid #d4a643; */
+    /* Removed as requested */
+    /* box-shadow: 0 8px 30px rgba(212, 166, 67, 0.15); */
+    border: 1px solid #eeeeee;
+    /* Match others or default */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+
 .mentorship-package-box:hover {
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
+    /* HUD Disabled */
+    /* box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); */
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* Keep original shadow */
 }
 
 .mentorship-package-box h3 {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #000000;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .mentorship-package-box .price {
     display: block;
-    font-weight: 700;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 600;
+    font-size: 1.1rem;
     color: #d4a643;
+    margin-top: 0;
 }
 
 .pricing-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin: 10px 0 20px;
     gap: 5px;
 }
@@ -155,27 +178,36 @@
 }
 
 .original-price {
-    display: block;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    color: #999999;
+    display: none;
+    /* Often hidden in clean cards, or keep small */
+}
+
+/* If preserving content is strict, we show them but styled minimally */
+.mentorship-package-box .original-price {
+    display: inline-block;
     text-decoration: line-through;
-    font-weight: 500;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-right: 5px;
 }
 
 .mentorship-package-box ul {
     text-align: left;
     font-size: 0.9rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     list-style: none;
     padding: 0;
+    flex-grow: 1;
+    /* Pushes button down */
 }
 
 .mentorship-package-box li {
-    margin-bottom: 10px;
-    padding-left: 25px;
+    margin-bottom: 12px;
+    padding-left: 24px;
     position: relative;
-    color: #000000;
-    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    color: #333333;
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 .mentorship-package-box li::before {
@@ -183,16 +215,36 @@
     position: absolute;
     left: 0;
     color: #d4a643;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.mentorship-package-box a {
+    display: block;
+    width: 100%;
 }
 
 .mentorship-package-box button {
-    padding: 12px 28px;
-    border-radius: 25px;
-    border: 1px solid #000000;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 6px;
+    border: 1px solid #333333;
     background: transparent;
     cursor: pointer;
     font-size: 0.9rem;
+    font-weight: 600;
     transition: all 0.3s ease;
+    margin-top: 10px;
+    color: #333333;
+}
+
+.mentorship-package-box p {
+    margin: 0 0 24px 0;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.5;
+    min-height: 60px;
+    /* Aligns content roughly */
 }
 
 .mentorship-package-box button:hover {
@@ -348,6 +400,22 @@
     .mentorship-steps {
         padding: 60px 5%;
     }
+
+    .mentorship-packages-grid {
+        max-width: 700px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mentorship-package-box {
+        padding: 40px 30px;
+        max-width: 100%;
+    }
+
+    .mentorship-package-box:nth-child(3) {
+        grid-column: 1 / -1;
+        margin: 0 auto;
+        max-width: 50%;
+    }
 }
 
 /* Mobile Navigation (up to 768px) */
@@ -378,6 +446,21 @@
     .mentorship-steps h2 {
         font-size: clamp(1.4rem, 4vw, 1.8rem);
         margin-bottom: 30px;
+    }
+
+    .mentorship-packages-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .mentorship-package-box {
+        max-width: 100%;
+    }
+
+    .mentorship-package-box:nth-child(3) {
+        grid-column: auto;
+        margin: 0 auto;
+        max-width: 100%;
     }
 
     .mentorship-topics-grid {
