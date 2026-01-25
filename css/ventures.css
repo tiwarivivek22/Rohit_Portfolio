@@ -327,9 +327,9 @@
 
 @media (max-width: 992px) {
     .ventures-map-box {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: auto;
         height: auto;
-        min-height: 400px;
+        min-height: auto;
     }
 
     .ventures-infographics {
@@ -337,10 +337,10 @@
     }
 
     .ventures-map-box {
-        background-image: url('../images/ventures/Infographics.svg');
-        background-size: contain;
-        background-position: center;
+        background-image: none;
+        background-color: transparent;
         border: none;
+        box-shadow: none;
     }
 
     .infographic-box {
@@ -388,6 +388,24 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
         padding: 20px;
+    }
+
+    .infographic-box.infographic-box-media {
+        order: -1;
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        max-width: 180px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .infographic-box.infographic-box-media img {
+        width: 120px;
+        height: auto;
     }
 }
 
