@@ -7,11 +7,12 @@
     <title>ARONIX WEB TECHNOLOGY</title>
     <link rel="icon" type="image/png" href="images/aronix/AWT.png">
     <link rel="stylesheet" href="css/aronix-web.css">
-    <link rel="stylesheet" href="css/aronix-web.responsive.css">
     <link rel="stylesheet" href="css/loader.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/navbar-logos.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/aronix-custom.css">
+    <link rel="stylesheet" href="css/aronix-web.responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -35,7 +36,17 @@
         </div>
         <div class="loading-text">LOADING</div>
     </div>
-    <script>document.write(getAronixNavbar());</script>
+    <!-- Custom Aronix Navbar -->
+    <header class="aronix-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/aronix/logo-AWT.png" alt="AWT Logo" class="logo-icon">
+            </a>
+            <a href="ventures.html" class="back-btn">
+                <img src="images/aronix/b.png" alt="Back" class="back-icon">
+            </a>
+        </div>
+    </header>
 
     <div class="main-container">
         <!-- Hero Section -->
@@ -60,62 +71,74 @@
 
             <!-- Orbital Background - Below Main Content -->
             <div class="orbital-container">
-                <div class="orbital-circle orbit-1"></div>
-                <div class="orbital-circle orbit-2"></div>
-                <div class="orbital-circle orbit-3"></div>
+                <div class="orbital-system">
+                    <div class="orbital-circle orbit-1"></div>
+                    <div class="orbital-circle orbit-1-5"></div> <!-- New Empty Ring -->
+                    <div class="orbital-circle orbit-2"></div>
+                    <div class="orbital-circle orbit-2-5"></div> <!-- New Empty Ring -->
+                    <div class="orbital-circle orbit-3"></div>
 
-                <!-- Tech Icons -->
-                <!-- Tech Icons Container -->
-                <div class="tech-icons-container">
-                    <!-- Ring 1 (Inner - 300px dia / 150px radius) - CW -->
-                    <div class="icon-ring ring-1">
-                        <!-- HTML5 (0 deg) -->
-                        <div class="icon-slot" style="--angle: 0deg;">
-                            <div class="tech-icon"><img src="images/aronix/HTML5.png" alt="HTML5"></div>
+                    <!-- Tech Icons -->
+                    <!-- Tech Icons Container -->
+                    <div class="tech-icons-container">
+                        <!-- Ring 1 (Inner - 300px dia / 150px radius) - CW -->
+                        <div class="icon-ring ring-1">
+                            <!-- HTML5 (0 deg) -->
+                            <div class="icon-slot" style="--angle: 0deg;">
+                                <div class="tech-icon"><img src="images/aronix/HTML5.png" alt="HTML5"></div>
+                            </div>
+                            <!-- Python (120 deg) -->
+                            <div class="icon-slot" style="--angle: 120deg;">
+                                <div class="tech-icon"><img src="images/aronix/Python.png" alt="Python"></div>
+                            </div>
+                            <!-- Figma (240 deg) -->
+                            <div class="icon-slot" style="--angle: 240deg;">
+                                <div class="tech-icon"><img src="images/aronix/figma.png" alt="Figma"></div>
+                            </div>
                         </div>
-                        <!-- Python (120 deg) -->
-                        <div class="icon-slot" style="--angle: 120deg;">
-                            <div class="tech-icon"><img src="images/aronix/Python.png" alt="Python"></div>
-                        </div>
-                        <!-- Figma (240 deg) -->
-                        <div class="icon-slot" style="--angle: 240deg;">
-                            <div class="tech-icon"><img src="images/aronix/figma.png" alt="Figma"></div>
-                        </div>
-                    </div>
 
-                    <!-- Ring 2 (Middle - 500px dia / 250px radius) - CCW -->
-                    <div class="icon-ring ring-2">
-                        <!-- React (0 deg) -->
-                        <div class="icon-slot" style="--angle: 0deg;">
-                            <div class="tech-icon"><img src="images/aronix/React.png" alt="React"></div>
+                        <!-- Ring 2 (Middle - 500px dia / 250px radius) - CCW -->
+                        <div class="icon-ring ring-2">
+                            <!-- React (0 deg) -->
+                            <div class="icon-slot" style="--angle: 0deg;">
+                                <div class="tech-icon"><img src="images/aronix/React.png" alt="React"></div>
+                            </div>
+                            <!-- Node (90 deg) -->
+                            <div class="icon-slot" style="--angle: 90deg;">
+                                <div class="tech-icon"><img src="images/aronix/Node.js.png" alt="NodeJS"></div>
+                            </div>
+                            <!-- Firebase (180 deg) -->
+                            <div class="icon-slot" style="--angle: 180deg;">
+                                <div class="tech-icon"><img src="images/aronix/Firebase.png" alt="Firebase"></div>
+                            </div>
+                            <!-- Docker (270 deg) -->
+                            <div class="icon-slot" style="--angle: 270deg;">
+                                <div class="tech-icon"><img src="images/aronix/Docker.png" alt="Docker"></div>
+                            </div>
                         </div>
-                        <!-- Docker (90 deg) -->
-                        <div class="icon-slot" style="--angle: 90deg;">
-                            <div class="tech-icon"><img src="images/aronix/Docker.png" alt="Docker"></div>
-                        </div>
-                        <!-- Kubernetes (180 deg) -->
-                        <div class="icon-slot" style="--angle: 180deg;">
-                            <div class="tech-icon"><img src="images/aronix/Kubernetes.png" alt="Kubernetes"></div>
-                        </div>
-                        <!-- Node.js (270 deg) -->
-                        <div class="icon-slot" style="--angle: 270deg;">
-                            <div class="tech-icon"><img src="images/aronix/Node.js.png" alt="Node.js"></div>
-                        </div>
-                    </div>
 
-                    <!-- Ring 3 (Outer - 700px dia / 350px radius) - CW -->
-                    <div class="icon-ring ring-3">
-                        <!-- GitHub (0 deg) -->
-                        <div class="icon-slot" style="--angle: 0deg;">
-                            <div class="tech-icon"><img src="images/aronix/github.png" alt="GitHub"></div>
-                        </div>
-                        <!-- AWS (120 deg) -->
-                        <div class="icon-slot" style="--angle: 120deg;">
-                            <div class="tech-icon"><img src="images/aronix/aws.png" alt="AWS"></div>
-                        </div>
-                        <!-- Firebase (240 deg) -->
-                        <div class="icon-slot" style="--angle: 240deg;">
-                            <div class="tech-icon"><img src="images/aronix/Firebase.png" alt="Firebase"></div>
+                        <!-- Ring 3 (Outer - 700px dia / 350px radius) - CW -->
+                        <div class="icon-ring ring-3">
+                            <!-- JS (0 deg) -->
+                            <div class="icon-slot" style="--angle: 0deg;">
+                                <div class="tech-icon"><img src="images/aronix/js.png" alt="JS"></div>
+                            </div>
+                            <!-- AWS (72 deg) -->
+                            <div class="icon-slot" style="--angle: 72deg;">
+                                <div class="tech-icon"><img src="images/aronix/aws.png" alt="AWS"></div>
+                            </div>
+                            <!-- Kubernetes (144 deg) -->
+                            <div class="icon-slot" style="--angle: 144deg;">
+                                <div class="tech-icon"><img src="images/aronix/Kubernetes.png" alt="Kubernetes"></div>
+                            </div>
+                            <!-- CSS (216 deg) -->
+                            <div class="icon-slot" style="--angle: 216deg;">
+                                <div class="tech-icon"><img src="images/aronix/css.png" alt="CSS"></div>
+                            </div>
+                            <!-- Github (288 deg) -->
+                            <div class="icon-slot" style="--angle: 288deg;">
+                                <div class="tech-icon"><img src="images/aronix/github.png" alt="Github"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,7 +214,76 @@
     <script src="js/connect-form.js"></script>
     <script src="js/loader.js"></script>
 
-    <script>document.write(getAronixFooter());</script>
+    <!-- Custom Aronix Footer -->
+    <footer class="aronix-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo-container footer-logo">
+                    <!-- <img src="images/aronix/AWT.png" alt="AWT Logo" class="logo-icon"> -->
+                    <img src="images/aronix/logo-AWT.png" alt="AWT Logo" class="logo-icon">
+                    <!-- <div class="logo-text-container">
+                        <span class="logo-title">ARONIX WEB TECH</span>
+                    </div> -->
+                </div>
+                <p class="footer-desc">
+                    Aronix Technologies is a technology-driven company<br>
+                    providing innovative digital solutions.
+                </p>
+            </div>
+
+            <div class="footer-center">
+                <div class="footer-center-content">
+                    <h3 class="footer-column-title">Quick Links</h3>
+                    <ul class="footer-nav">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Our Programs</a></li>
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-right-content">
+                    <h3 class="footer-column-title">Contact Us</h3>
+
+                    <div class="footer-contact">
+                        <div class="contact-row">
+                            <span class="icon-mail">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                </svg>
+                            </span>
+                            <a href="mailto:Info@aarudevelopers.com">Info@aarudevelopers.com</a>
+                        </div>
+                        <div class="contact-row">
+                            <span class="icon-pin">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <span>Dwarka , Delhi</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com" target="_blank"><img src="images/logos/Facebook.png"
+                                alt="FB"></a>
+                        <a href="https://twitter.com" target="_blank"><img src="images/logos/Twitter.png" alt="TW"></a>
+                        <a href="https://www.instagram.com" target="_blank"><img src="images/logos/Instagram.png"
+                                alt="IG"></a>
+                        <a href="https://www.linkedin.com" target="_blank"><img src="images/logos/LinkedIn.png"
+                                alt="LI"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="js/script.js"></script>
 </body>
 

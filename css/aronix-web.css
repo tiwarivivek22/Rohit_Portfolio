@@ -329,49 +329,69 @@ body::before {
 /* Orbital Circles */
 .orbital-container {
     position: absolute;
-    width: 1000px;
-    height: 1000px;
-    top: 65%;
+    width: 1600px;
+    /* Scaled up for full screen */
+    height: 1600px;
+    top: 72%;
+    /* Adjusted to sit just below button */
     left: 50%;
     transform: translate(-50%, -50%);
+    /* Centered */
     pointer-events: none;
     z-index: 0;
 }
 
+.orbital-system {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0.55);
+    /* 2D Oval effect */
+}
+
 .orbital-circle {
     position: absolute;
-    border: 1px solid rgba(100, 200, 150, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* White, non-glow, subtle opacity */
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: rotate-orbit linear infinite;
-    box-shadow: 0 0 20px rgba(100, 200, 150, 0.1), inset 0 0 20px rgba(100, 200, 150, 0.05);
+    box-shadow: none;
+    /* Removed glow */
 }
 
+/* Scaled up rings */
 .orbit-1 {
-    width: 300px;
-    height: 300px;
-    animation-duration: 20s;
-    border-color: rgba(100, 200, 150, 0.3);
-    box-shadow: 0 0 15px rgba(100, 200, 150, 0.12), inset 0 0 15px rgba(100, 200, 150, 0.06);
+    width: 600px;
+    height: 600px;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.orbit-1-5 {
+    width: 800px;
+    height: 800px;
+    border-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
 }
 
 .orbit-2 {
-    width: 500px;
-    height: 500px;
-    animation-duration: 30s;
-    animation-direction: reverse;
-    border-color: rgba(100, 200, 150, 0.2);
-    box-shadow: 0 0 25px rgba(100, 200, 150, 0.08), inset 0 0 25px rgba(100, 200, 150, 0.04);
+    width: 1000px;
+    height: 1000px;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.orbit-2-5 {
+    width: 1200px;
+    height: 1200px;
+    border-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
 }
 
 .orbit-3 {
-    width: 700px;
-    height: 700px;
-    animation-duration: 40s;
-    border-color: rgba(100, 200, 150, 0.15);
-    box-shadow: 0 0 30px rgba(100, 200, 150, 0.06), inset 0 0 30px rgba(100, 200, 150, 0.03);
+    width: 1400px;
+    height: 1400px;
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 @keyframes rotate-orbit {
@@ -401,6 +421,7 @@ body::before {
 .tech-icons-container {
     position: absolute;
     width: 100%;
+    /* Match orbital-container */
     height: 100%;
     top: 0;
     left: 0;
@@ -416,29 +437,9 @@ body::before {
     border-radius: 50%;
 }
 
-.ring-1 {
-    width: 300px;
-    height: 300px;
-    --radius: 150px;
-    animation: rotate-ring-cw 20s linear infinite;
-}
-
-.ring-2 {
-    width: 500px;
-    height: 500px;
-    --radius: 250px;
-    animation: rotate-ring-ccw 30s linear infinite;
-}
-
-.ring-3 {
-    width: 700px;
-    height: 700px;
-    --radius: 350px;
-    animation: rotate-ring-cw 40s linear infinite;
-}
-
 /* Icon Slots - Positions elements on the ring but keeps them upright relative to ring */
 .icon-slot {
+    /* Simplified slot logic */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -466,27 +467,30 @@ body::before {
     pointer-events: auto;
 }
 
-/* Animate Icons to Counter Rotate */
+/* Animate Icons for 2D Oval - Counter Rotate + Scale Correction */
+/* Scale Factor = 1 / 0.55 = ~1.82 */
+/* Animate Icons for 2D Oval - Counter Rotate + Scale Correction */
+/* Scale Factor = 1 / 0.55 = ~1.82 */
 .ring-1 .tech-icon,
 .ring-3 .tech-icon {
-    animation: counter-rotate-cw 20s linear infinite;
+    animation: counter-rotate-cw-2d-oval 80s linear infinite;
 }
 
 .ring-2 .tech-icon {
-    animation: counter-rotate-ccw 30s linear infinite;
+    animation: counter-rotate-ccw-2d-oval 120s linear infinite;
 }
 
-/* Override animation durations to match parents */
+/* Override animation durations */
 .ring-1 .tech-icon {
-    animation-duration: 20s;
+    animation-duration: 80s;
 }
 
 .ring-2 .tech-icon {
-    animation-duration: 30s;
+    animation-duration: 120s;
 }
 
 .ring-3 .tech-icon {
-    animation-duration: 40s;
+    animation-duration: 160s;
 }
 
 .tech-icon img {
@@ -500,8 +504,8 @@ body::before {
     background: rgba(20, 20, 20, 0.95);
     border-color: rgba(100, 200, 150, 0.6);
     box-shadow: 0 0 15px rgba(100, 200, 150, 0.3);
-    transform: scale(1.1);
-    /* Simple scale on hover, no float */
+    scale: 1.1;
+    /* Use scale property to compose with transform animation */
     z-index: 10;
 }
 
@@ -530,31 +534,32 @@ body::before {
 }
 
 /* Counter Rotations: Must be opposite to Ring rotation */
-@keyframes counter-rotate-cw {
+/* Counter Rotations for 2D Oval (Un-squash) */
+@keyframes counter-rotate-cw-2d-oval {
     from {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scaleY(1.82);
     }
 
     to {
-        transform: rotate(-360deg);
+        transform: rotate(-360deg) scaleY(1.82);
     }
 }
 
-@keyframes counter-rotate-ccw {
+@keyframes counter-rotate-ccw-2d-oval {
     from {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scaleY(1.82);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotate(360deg) scaleY(1.82);
     }
 }
 
 /* Central AWT Logo */
 .awt-logo-center {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -562,7 +567,7 @@ body::before {
     align-items: center;
     justify-content: center;
     z-index: 5;
-    animation: pulse-logo 4s ease-in-out infinite;
+    /* animation: pulse-logo 4s ease-in-out infinite; REMOVED GLOW ANIMATION */
     pointer-events: auto;
 }
 
@@ -570,7 +575,7 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 30px rgba(100, 200, 150, 0.2));
+    /* filter: drop-shadow(0 0 30px rgba(100, 200, 150, 0.2)); REMOVED GLOW */
 }
 
 @keyframes pulse-logo {
@@ -946,7 +951,7 @@ body::before {
 /* Stats Section */
 .stats-section {
     position: relative;
-    padding: 150px 0 200px;
+    padding: 50px 0 50px;
     text-align: center;
     background-color: transparent;
     overflow: hidden;
@@ -990,7 +995,7 @@ body::before {
     width: 100%;
     max-width: 800px;
     height: 400px;
-    margin: 0 auto 80px;
+    margin: 0 auto;
     position: relative;
     display: flex;
     align-items: center;
@@ -1230,4 +1235,26 @@ body::before {
         width: 100%;
         max-width: 940px;
     }
+}
+
+/* Orbital Rings Logic - Scaled Up - FIX MISSING BLOCKS */
+.ring-1 {
+    width: 600px;
+    height: 600px;
+    --radius: 300px;
+    animation: rotate-ring-cw 80s linear infinite;
+}
+
+.ring-2 {
+    width: 1000px;
+    height: 1000px;
+    --radius: 500px;
+    animation: rotate-ring-ccw 120s linear infinite;
+}
+
+.ring-3 {
+    width: 1400px;
+    height: 1400px;
+    --radius: 700px;
+    animation: rotate-ring-cw 160s linear infinite;
 }

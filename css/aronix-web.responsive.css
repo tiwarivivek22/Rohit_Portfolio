@@ -27,28 +27,43 @@
     }
 
     .orbital-container {
-        width: min(85vw, 900px);
-        height: min(85vw, 900px);
-        top: 55%;
+        width: 100%;
+        height: 100%;
+        top: 60%;
+        max-width: none;
+        /* Remove max-width constraint */
     }
 
     /* Responsive overrides for new orbital structure */
-    .ring-1 {
-        width: 26vw;
-        height: 26vw;
-        --radius: 13vw;
+    .ring-1,
+    .orbit-1 {
+        width: 30vw;
+        height: 30vw;
+        --radius: 15vw;
     }
 
-    .ring-2 {
-        width: 42vw;
-        height: 42vw;
-        --radius: 21vw;
+    .orbit-1-5 {
+        width: 40vw;
+        height: 40vw;
     }
 
-    .ring-3 {
-        width: 58vw;
-        height: 58vw;
-        --radius: 29vw;
+    .ring-2,
+    .orbit-2 {
+        width: 50vw;
+        height: 50vw;
+        --radius: 25vw;
+    }
+
+    .orbit-2-5 {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .ring-3,
+    .orbit-3 {
+        width: 70vw;
+        height: 70vw;
+        --radius: 35vw;
     }
 
     .tech-icon,
@@ -58,8 +73,8 @@
     }
 
     .awt-logo-center {
-        width: 110px;
-        height: 110px;
+        width: 140px;
+        height: 140px;
     }
 }
 
@@ -89,22 +104,35 @@
         top: 50%;
     }
 
-    .ring-1 {
-        width: 30vw;
-        height: 30vw;
-        --radius: 15vw;
+    .ring-1,
+    .orbit-1 {
+        width: 35vw;
+        height: 35vw;
+        --radius: 17.5vw;
     }
 
-    .ring-2 {
-        width: 50vw;
-        height: 50vw;
-        --radius: 25vw;
+    .orbit-1-5 {
+        width: 47.5vw;
+        height: 47.5vw;
     }
 
-    .ring-3 {
-        width: 70vw;
-        height: 70vw;
-        --radius: 35vw;
+    .ring-2,
+    .orbit-2 {
+        width: 60vw;
+        height: 60vw;
+        --radius: 30vw;
+    }
+
+    .orbit-2-5 {
+        width: 72.5vw;
+        height: 72.5vw;
+    }
+
+    .ring-3,
+    .orbit-3 {
+        width: 85vw;
+        height: 85vw;
+        --radius: 42.5vw;
     }
 
     .tech-icon,
@@ -187,22 +215,35 @@
         z-index: 1;
     }
 
-    .ring-1 {
-        width: 40vw;
-        height: 40vw;
-        --radius: 20vw;
+    .ring-1,
+    .orbit-1 {
+        width: 50vw;
+        height: 50vw;
+        --radius: 25vw;
     }
 
-    .ring-2 {
+    .orbit-1-5 {
         width: 65vw;
         height: 65vw;
-        --radius: 32.5vw;
     }
 
-    .ring-3 {
-        width: 90vw;
-        height: 90vw;
-        --radius: 45vw;
+    .ring-2,
+    .orbit-2 {
+        width: 80vw;
+        height: 80vw;
+        --radius: 40vw;
+    }
+
+    .orbit-2-5 {
+        width: 95vw;
+        height: 95vw;
+    }
+
+    .ring-3,
+    .orbit-3 {
+        width: 110vw;
+        height: 110vw;
+        --radius: 55vw;
     }
 
     .tech-icon,
@@ -212,8 +253,8 @@
     }
 
     .awt-logo-center {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 
     .services-title {
@@ -297,22 +338,35 @@
     }
 
     /* Larger relative rings for mobile to fill space */
-    .ring-1 {
-        width: 50vw;
-        height: 50vw;
-        --radius: 25vw;
+    .ring-1,
+    .orbit-1 {
+        width: 60vw;
+        height: 60vw;
+        --radius: 30vw;
     }
 
-    .ring-2 {
+    .orbit-1-5 {
         width: 80vw;
         height: 80vw;
-        --radius: 40vw;
     }
 
-    .ring-3 {
-        width: 110vw;
-        height: 110vw;
-        --radius: 55vw;
+    .ring-2,
+    .orbit-2 {
+        width: 100vw;
+        height: 100vw;
+        --radius: 50vw;
+    }
+
+    .orbit-2-5 {
+        width: 120vw;
+        height: 120vw;
+    }
+
+    .ring-3,
+    .orbit-3 {
+        width: 140vw;
+        height: 140vw;
+        --radius: 70vw;
     }
 
     .tech-icon,
@@ -340,6 +394,11 @@
 
     .footer-content {
         gap: 20px;
+    }
+
+    .footer-right {
+        justify-content: flex-start;
+        /* Ensure left alignment on mobile */
     }
 }
 
@@ -369,3 +428,40 @@
         padding-top: calc(72px + 20px) !important;
     }
 }
+/* Large Screen Optimizations (1440px and up - e.g. 1920x1080) */
+@media (min-width: 1441px) {
+    .aronix-navbar .navbar-container,
+    .footer-container,
+    .main-container {
+        max-width: 1800px; /* Allow wider spread on 1920px screens */
+    }
+
+    /* Ensure padding scales nicely */
+    .aronix-footer {
+        padding: 60px 8% 40px; /* Adjust padding for wider layout */
+    }
+
+    .aronix-navbar {
+        padding: 30px 4%;
+    }
+}
+
+
+/* Large Screen Optimizations (1440px and up - e.g. 1920x1080) */
+@media (min-width: 1441px) {
+    .aronix-navbar .navbar-container,
+    .footer-container,
+    .main-container {
+        max-width: 1800px; /* Allow wider spread on 1920px screens */
+    }
+
+    /* Ensure padding scales nicely */
+    .aronix-footer {
+        padding: 60px 8% 40px; /* Adjust padding for wider layout */
+    }
+
+    .aronix-navbar {
+        padding: 30px 4%;
+    }
+}
+

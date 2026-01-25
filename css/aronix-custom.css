@@ -1,0 +1,321 @@
+/* =========================================
+   CUSTOM NAVBAR & FOOTER STYLES (ARONIX)
+   ========================================= */
+
+/* --- Navbar --- */
+.aronix-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 30px 5%;
+    background: transparent;
+}
+
+.aronix-navbar .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* To match footer width which is 1400px */
+}
+
+.aronix-navbar .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.aronix-navbar .logo-icon {
+    width: auto;
+    max-height: 80px;
+    /* Increased to allow for larger/wider logo if needed */
+    object-fit: contain;
+}
+
+.aronix-navbar .logo-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.aronix-navbar .logo-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.aronix-navbar .logo-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-row a:hover {
+    color: #00D4AA;
+}
+
+/* Responsive adjustments */
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns on tablet */
+        gap: 40px;
+    }
+
+    .footer-left {
+        grid-column: 1 / -1;
+        /* Full width for logo/desc on tablet */
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-center,
+    .footer-right {
+        /* center alignments inside columns for symmetry on tablet layout if desired, 
+           BUT user asked for left aligned list. Let's keep them left aligned but centered roughly in their grid cells?
+           Actually, let's keep them left aligned. */
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .aronix-navbar {
+        padding: 20px;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Two columns for links side-by-side */
+        gap: 30px;
+        padding-left: 0;
+    }
+
+    .footer-left {
+        grid-column: 1 / -1;
+        /* Logo and description span full width */
+        text-align: left;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Override default flex behavior for mobile consistency */
+    .footer-center,
+    .footer-right {
+        grid-column: span 1;
+        /* Each takes 1 column */
+        width: 100%;
+    }
+
+    .logo-title {
+        font-size: 20px;
+    }
+
+    .aronix-navbar .logo-icon {
+        width: 45px;
+    }
+}
+
+/* Back Button */
+.back-btn {
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    opacity: 1;
+    transform: translateX(-5px);
+}
+
+.back-icon {
+    height: 35px;
+    /* Adjust based on image aspect ratio */
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .back-icon {
+        height: 25px;
+    }
+}
+
+/* --- Footer --- */
+.aronix-footer {
+    position: relative;
+    background: #0B0B0B;
+    /* Dark background as per new image */
+    padding: 60px 10% 40px;
+    /* Adjusted padding for better visual balance */
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    z-index: 10;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    /* 2 parts left, 1 part center, 1 part right */
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 60px;
+    /* Generous gap between columns */
+    align-items: start;
+}
+
+/* Footer Left */
+.footer-left {
+    /* Grid item, no specific flex properties needed */
+}
+
+.footer-left .logo-container.footer-logo {
+    margin-bottom: 25px;
+}
+
+.footer-left .footer-desc {
+    font-size: 14px;
+    /* Smaller font for tidy look */
+    line-height: 1.5;
+    color: #CCCCCC;
+    /* Softer white */
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+
+/* Footer Center (Links) */
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Explicitly left align links if column is centered, or keep centered? 
+   Ref image: "Quick Links" is left aligned relative to its list, but the block looks somewhat centered-ish or offset.
+   Let's keep text left aligned but block centered.
+*/
+.footer-center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-column-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    /* Slightly smaller title */
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    /* Tighter spacing below title */
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* Very tight gap as per reference */
+}
+
+.footer-nav li a {
+    color: #CCCCCC;
+    text-decoration: none;
+    font-size: 14px;
+    /* Match desc font size */
+    font-weight: 400;
+    line-height: 1.4;
+    /* Tighter line height to reduce visual spacing */
+    transition: color 0.3s ease;
+}
+
+.footer-nav li a:hover {
+    color: #00D4AA;
+}
+
+/* Footer Right */
+/* Footer Right */
+/* Footer Right */
+.footer-right {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 0;
+}
+
+/* This targets the container DIV inside footer-right if we added it,
+   OR we can style the direct children if we don't change HTML.
+   But to get the 'Block on Right, Content Left' effect without HTML change:
+   We can make the footer-right a flex column with align-items: flex-end,
+   AND make the children have a fixed width or fit-content.
+   BUT simpler is to wrap. I will use a wrapper in HTML modification below.
+   For now, strictly CSS fix for the icons and alignment assuming wrapper.
+*/
+/* Wait, I will inject the wrapper in HTML. */
+.footer-right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.footer-socials a img {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    /* White/Grey filter matches 'Contact Us' text color usually */
+    filter: brightness(0) saturate(100%) invert(80%);
+    /* Light Grey */
+    opacity: 1;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #CCCCCC;
+    margin-bottom: 12px;
+}
+
+/* Update icons to be white/light grey to match text */
+.contact-row svg {
+    stroke: #CCCCCC;
+    width: 18px;
+    height: 18px;
+}
+
+.contact-row a {
+    color: #CCCCCC;
+    text-decoration: none;
+    transition: color 0.3s;
+}
