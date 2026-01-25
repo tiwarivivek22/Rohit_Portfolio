@@ -1,13 +1,4 @@
-/* Navbar Logo Styling - Overrides for Specific Brands */
-
-/* 
-   We strictly override the 'height' property here because navbar.css 
-   uses !important on height for these elements. 
-   We use high-specificity selectors to ensure these rules apply.
-*/
-
 /* 1. ARONIX - The one that was "miserable" */
-/* Increasing height significantly and ensuring it is not squashed */
 .navbar-aronix .navbar-subbrand-logo-img,
 .navbar-aronix .navbar-aronix-logo-img {
     height: 90px !important;

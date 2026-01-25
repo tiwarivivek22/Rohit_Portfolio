@@ -80,36 +80,42 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* CONNECT MODAL */
+/* CONNECT MODAL*/
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 9999;
     padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .modal-overlay.active {
     display: flex;
+    opacity: 1;
 }
 
 .connect-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: url('../images/resources/connect.png') center/cover;
     width: 100%;
-    max-width: 460px;
+    max-width: 560px;
+    height: auto;
     padding: 50px 40px;
-    border-radius: 20px;
     position: relative;
     text-align: center;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+}
+
+.modal-overlay.active .connect-card {
+    transform: scale(1) translateY(0);
+    opacity: 1;
 }
 
 .close-btn {
@@ -197,9 +203,7 @@
     box-shadow: 0 12px 28px rgba(212, 166, 67, 0.45);
 }
 
-/* ========================================
-   CTA SECTION RESPONSIVE STYLES
-   ======================================== */
+/* =CTA SECTION RESPONSIVE STYLES*/
 
 /* Tablet (769px - 992px) */
 @media (max-width: 992px) {
@@ -214,6 +218,11 @@
     .cta-section p {
         font-size: 16px;
         max-width: 600px;
+    }
+
+    .connect-card {
+        max-width: 480px;
+        padding: 45px 35px;
     }
 }
 
@@ -245,13 +254,24 @@
         min-width: 150px;
     }
 
+    .modal-overlay {
+        padding: 15px;
+        align-items: center;
+    }
+
     .connect-card {
         padding: 40px 30px;
-        max-width: 420px;
+        max-width: 100%;
+        width: 100%;
     }
 
     .connect-card h2 {
         font-size: 1.3rem;
+    }
+
+    .connect-card .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
     }
 }
 
@@ -285,13 +305,18 @@
         font-size: 0.9rem;
     }
 
+    .modal-overlay {
+        padding: 10px;
+    }
+
     .connect-card {
-        padding: 35px 20px;
+        padding: 30px 20px;
         max-width: 100%;
+        width: 100%;
     }
 
     .connect-card h2 {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
     .connect-card .subtitle {
@@ -299,10 +324,22 @@
         margin-bottom: 20px;
     }
 
+    .close-btn {
+        top: 12px;
+        right: 15px;
+        font-size: 24px;
+    }
+
+    .connect-form label {
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+    }
+
     .connect-form input,
     .connect-form textarea {
         padding: 10px 12px;
         font-size: 0.9rem;
+        margin-bottom: 15px;
     }
 
     .connect-form button {

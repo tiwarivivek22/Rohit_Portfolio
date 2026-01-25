@@ -128,9 +128,7 @@ section {
     flex-wrap: wrap;
 }
 
-/* ========================================
-   GLOBAL MEDIA QUERIES
-   ======================================== */
+/* GLOBAL MEDIA QUERIES */
 
 /* Small Mobile (320px - 480px) */
 @media (max-width: 480px) {
