@@ -415,6 +415,9 @@ function validateField(field) {
     if (field.value.trim().length < 2) {
       isValid = false;
       errorText = "Name must be at least 2 characters";
+    } else if (field.value.trim().length > 50) {
+      isValid = false;
+      errorText = "Name cannot exceed 50 characters";
     } else if (!/^[a-zA-Z\s]+$/.test(field.value)) {
       isValid = false;
       errorText = "Name should only contain letters";
