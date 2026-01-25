@@ -3,14 +3,43 @@
 .aaru-body {
     font-family: "Inter", sans-serif;
     margin: 0;
-    padding-top: 70px;
+    padding-top: 0;
+}
+
+.aaru-custom-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.aaru-header-logo img {
+    height: 130px;
+    width: auto;
+}
+
+.aaru-header-back img {
+    height: 35px;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.aaru-header-back img:hover {
+    transform: none;
 }
 
 .aaru-hero {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 80px 5% 40px;
+    padding: 100px 5% 40px;
     min-height: 80vh;
     background-image: url('../images/aaru-mobility/hero-aaeu-mob.svg');
     background-size: cover;
@@ -57,23 +86,28 @@
 }
 
 .aaru-visit-site-text {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 40px;
-    padding: 14px 22px;
-    font-size: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #000;
     text-align: center;
-    border: 1px solid #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     margin: 0;
 }
 
 .aaru-visit-site-icon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
 }
 
 .aaru-hero-badges {
@@ -97,7 +131,7 @@
 .aaru-brands {
     display: flex;
     padding: 40px 0;
-    background: #f8f8f8;
+    background: transparent;
     overflow: hidden;
     margin-top: 40px;
 }
@@ -110,9 +144,9 @@
 }
 
 .aaru-brands-track .brand-logo {
-    height: 35px;
+    height: 70px;
     width: auto;
-    opacity: 0.6;
+    opacity: 0.8;
     flex-shrink: 0;
     object-fit: contain;
 }
@@ -274,12 +308,11 @@
     position: absolute;
     top: 40%;
     left: 50%;
-    margin-left: 170px;
     transform: translate(-50%, -50%);
     width: 200px;
     height: auto;
     cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.8s ease-in-out;
 }
 
 /* OFF image visible by default (on top) */
@@ -291,20 +324,20 @@
 /* ON image hidden below */
 .aaru-btn-off {
     opacity: 0;
-    transform: translate(-50%, 70px);
+    transform: translate(-50%, -50%);
     z-index: 1;
 }
 
 /* Hover state - Trigger on entire section hover - OFF image moves up, ON image appears */
 .aaru-engine-section:hover .aaru-btn-on {
     opacity: 0;
-    transform: translate(-50%, -70px);
+    transform: translate(-50%, -120px);
     pointer-events: none;
 }
 
 .aaru-engine-section:hover .aaru-btn-off {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -120px);
 }
 
 /* Jeep Image Container */
@@ -323,8 +356,8 @@
     width: 550px;
     height: 345px;
     opacity: 0;
-    transform: translateX(-120px);
-    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translateX(200px);
+    transition: all 1s ease-out;
 }
 
 /* Jeep slides in from left on hover */
@@ -334,21 +367,33 @@
 }
 
 .aaru-fleet {
-    padding: 80px 5%;
+    position: relative;
+    padding: 80px 40px;
     text-align: center;
-    background-color: #999;
-    border-radius: 8px;
+    background-color: #d4d4d4;
+    border-radius: 50px;
+    margin: 80px 5%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .aaru-fleet h2 {
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     color: #FFFFFF;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .aaru-fleet>p {
     color: #000000;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    font-weight: 500;
 }
 
 .aaru-fleet-img {
@@ -365,27 +410,30 @@
 .aaru-fleet-img img {
     position: absolute;
     width: auto;
-    height: 260px;
+    height: 200px;
     object-fit: contain;
     border-radius: 16px;
     transition: transform 0.3s ease;
+    bottom: 40px;
 }
 
 .aaru-fleet-BMW-img img {
-    left: 10%;
+    left: 8%;
     z-index: 1;
-    transform: scale(0.95);
+    transform: scale(1.0);
 }
 
 .aaru-fleet-Hunda-img img {
-    transform: scale(1.1);
-    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%) scale(1.2);
+    z-index: 10;
+    bottom: 20px;
 }
 
 .aaru-fleet-bus-img img {
-    right: 10%;
+    right: 8%;
     z-index: 2;
-    transform: scale(0.95);
+    transform: scale(1.0);
 }
 
 /* Hover effect - only car headlights blink */
@@ -403,74 +451,30 @@
     }
 }
 
-.aaru-fleet-img {
-    position: relative;
+
+
+.fleet-hover {
+    opacity: 0;
 }
 
-.aaru-fleet-img img {
-    position: relative;
+.aaru-fleet-BMW-img:hover .fleet-hover,
+.aaru-fleet-Hunda-img:hover .fleet-hover,
+.aaru-fleet-bus-img:hover .fleet-hover {
+    opacity: 1;
 }
 
-.aaru-fleet-img img:hover {
+.aaru-fleet-BMW-img:hover .fleet-main,
+.aaru-fleet-Hunda-img:hover .fleet-main,
+.aaru-fleet-bus-img:hover .fleet-main {
+    opacity: 0;
+}
+
+/* .aaru-fleet-img img:hover {
     transform: scale(1.02);
-}
+} */
 
-/* Headlight pseudo-elements - positioned over the headlights */
-.aaru-fleet-img img:nth-child(1):hover::before {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 12px;
-    background: rgba(255, 255, 200, 0.9);
-    border-radius: 50%;
-    top: 58%;
-    left: 22%;
-    animation: blinkHeadlights 0.8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.aaru-fleet-img img:nth-child(1):hover::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 12px;
-    background: rgba(255, 255, 200, 0.9);
-    border-radius: 50%;
-    top: 58%;
-    left: 64%;
-    animation: blinkHeadlights 0.8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.aaru-fleet-img img:nth-child(2):hover::before {
-    content: '';
-    position: absolute;
-    width: 35px;
-    height: 14px;
-    background: rgba(255, 255, 200, 0.9);
-    border-radius: 50%;
-    top: 55%;
-    left: 12%;
-    animation: blinkHeadlights 0.8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.aaru-fleet-img img:nth-child(2):hover::after {
-    content: '';
-    position: absolute;
-    width: 35px;
-    height: 14px;
-    background: rgba(255, 255, 200, 0.9);
-    border-radius: 50%;
-    top: 55%;
-    left: 55%;
-    animation: blinkHeadlights 0.8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 10;
-}
+/* Headlight animations disabled 
+.aaru-fleet-img img:nth-child(1):hover::before, ... */
 
 .aaru-fleet-img img:nth-child(3):hover::before {
     content: '';
@@ -563,12 +567,24 @@
 
 /* RESPONSIVE STYLES - TABLET (769px - 992px)*/
 @media (max-width: 992px) {
+    .aaru-custom-header {
+        padding: 0 5%;
+    }
+
+    .aaru-header-logo img {
+        height: 90px;
+    }
+
+    .aaru-header-back img {
+        height: 30px;
+    }
+
     .aaru-body {
-        padding-top: 65px;
+        padding-top: 0;
     }
 
     .aaru-hero {
-        padding: 60px 5% 40px;
+        padding: 80px 5% 40px;
         min-height: 70vh;
         height: auto;
     }
@@ -592,8 +608,8 @@
     }
 
     .aaru-visit-site-text {
-        padding: 12px 18px;
-        font-size: 1.2rem;
+        padding: 10px 20px;
+        font-size: 0.95rem;
     }
 
     .aaru-brands {
@@ -606,7 +622,7 @@
     }
 
     .aaru-brands-track .brand-logo {
-        height: 30px;
+        height: 60px;
     }
 
     .aaru-about {
@@ -720,7 +736,7 @@
         width: 100%;
         max-width: 350px;
         height: auto;
-        transform: translateX(-80px);
+        transform: translateX(100px);
     }
 
     .aaru-engine-section:hover .aaru-jeep-img {
@@ -728,15 +744,18 @@
     }
 
     .aaru-fleet {
-        padding: 60px 5%;
+        padding: 60px 20px;
+        margin: 60px 4%;
+        border-radius: 40px;
+        width: auto;
     }
 
     .aaru-fleet h2 {
-        font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
     }
 
     .aaru-fleet>p {
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 
     .aaru-fleet-img {
@@ -768,12 +787,24 @@
 
 /* RESPONSIVE STYLES - MOBILE (up to 768px)*/
 @media (max-width: 768px) {
+    .aaru-custom-header {
+        padding: 0 5%;
+    }
+
+    .aaru-header-logo img {
+        height: 60px;
+    }
+
+    .aaru-header-back img {
+        height: 25px;
+    }
+
     .aaru-body {
-        padding-top: 60px;
+        padding-top: 0;
     }
 
     .aaru-hero {
-        padding: 50px 5% 30px;
+        padding: 60px 5% 30px;
         min-height: 60vh;
         height: auto;
     }
@@ -819,7 +850,7 @@
     }
 
     .aaru-brands-track .brand-logo {
-        height: 25px;
+        height: 50px;
     }
 
     .aaru-about {
@@ -914,47 +945,53 @@
     }
 
     .aaru-fleet {
-        padding: 50px 5%;
-        border-radius: 0;
+        padding: 40px 20px;
+        margin: 40px 4%;
+        border-radius: 30px;
     }
 
     .aaru-fleet h2 {
-        font-size: clamp(1.3rem, 3vw, 2rem);
-        margin-bottom: 10px;
-    }
-
-    .aaru-fleet>p {
-        margin-bottom: 25px;
-        font-size: 0.9rem;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
     }
 
     .aaru-fleet-img {
-        flex-direction: column;
-        height: auto;
-        padding: 40px 15px;
-        gap: 15px;
+        height: 200px;
+        padding: 40px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .aaru-fleet-img img {
-        position: relative;
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-        transform: scale(1) !important;
-        left: auto !important;
-        right: auto !important;
-    }
-
-    .aaru-fleet-img img:hover {
-        transform: scale(1.02);
-    }
-
-    .aaru-fleet-BMW-img img,
-    .aaru-fleet-Hunda-img img,
-    .aaru-fleet-bus-img img {
+        position: absolute;
+        width: auto;
+        height: 100px;
+        /* Reduced for mobile */
+        max-height: none;
         left: auto;
         right: auto;
         transform: none;
+        bottom: 20px;
+    }
+
+    /* Reset specific car positioning for mobile scaling */
+    .aaru-fleet-BMW-img img {
+        left: 0%;
+        transform: scale(0.85);
+        z-index: 1;
+    }
+
+    .aaru-fleet-Hunda-img img {
+        left: 50%;
+        transform: translateX(-50%) scale(1.1);
+        z-index: 5;
+        bottom: 10px;
+    }
+
+    .aaru-fleet-bus-img img {
+        right: 0%;
+        transform: scale(0.9);
+        z-index: 2;
     }
 
     .aaru-footer {
@@ -982,7 +1019,7 @@
 /* RESPONSIVE STYLES - SMALL MOBILE (up to 480px) */
 @media (max-width: 480px) {
     .aaru-body {
-        padding-top: 55px;
+        padding-top: 0;
     }
 
     .aaru-hero {
@@ -1027,7 +1064,7 @@
     }
 
     .aaru-brands-track .brand-logo {
-        height: 20px;
+        height: 40px;
     }
 
     .aaru-about {
@@ -1114,7 +1151,7 @@
 
     .aaru-jeep-img {
         max-width: 220px;
-        transform: translateX(-50px);
+        transform: translateX(60px);
     }
 
     .aaru-engine-section:hover .aaru-jeep-img {
