@@ -945,53 +945,86 @@
     }
 
     .aaru-fleet {
-        padding: 40px 20px;
+        padding: 40px 10px;
         margin: 40px 4%;
         border-radius: 30px;
+        height: auto;
     }
 
     .aaru-fleet h2 {
         font-size: clamp(1.5rem, 4vw, 2.2rem);
+        margin-bottom: 15px;
     }
 
     .aaru-fleet-img {
-        height: 200px;
-        padding: 40px 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 220px;
+        padding: 0;
+        display: block;
+        position: relative;
+        margin-top: 20px;
+        width: 100%;
+        overflow: visible;
     }
 
-    .aaru-fleet-img img {
-        position: absolute;
+    /* RESET wrappers to not interfere */
+    .aaru-fleet-BMW-img,
+    .aaru-fleet-Hunda-img,
+    .aaru-fleet-bus-img {
+        position: static;
         width: auto;
-        height: 100px;
-        /* Reduced for mobile */
-        max-height: none;
-        left: auto;
-        right: auto;
+        height: auto;
+        display: inline;
+    }
+
+    /* Common image styles for mobile */
+    .aaru-fleet-img img {
+        position: absolute !important;
+        bottom: 0px !important;
+        height: auto;
+        object-fit: contain;
         transform: none;
-        bottom: 20px;
     }
 
-    /* Reset specific car positioning for mobile scaling */
+    /* BMW - Left */
     .aaru-fleet-BMW-img img {
-        left: 0%;
-        transform: scale(0.85);
+        left: -5% !important;
+        top: auto !important;
+        width: 50%;
         z-index: 1;
+        bottom: 40px !important;
+        transform: scale(1) !important;
     }
 
+    /* Honda - Center */
     .aaru-fleet-Hunda-img img {
-        left: 50%;
-        transform: translateX(-50%) scale(1.1);
-        z-index: 5;
-        bottom: 10px;
+        left: 50% !important;
+        top: auto !important;
+        width: 70%;
+        z-index: 10;
+        bottom: 0px !important;
+        transform: translateX(-50%) !important;
     }
 
+    /* Bus - Right */
     .aaru-fleet-bus-img img {
-        right: 0%;
-        transform: scale(0.9);
-        z-index: 2;
+        right: -5% !important;
+        left: auto !important;
+        top: auto !important;
+        width: 50%;
+        z-index: 1;
+        bottom: 40px !important;
+        transform: scale(1) !important;
+    }
+
+    /* Fix hover state opacity */
+    .aaru-fleet-img img.fleet-hover {
+        opacity: 0;
+    }
+
+    .aaru-fleet-BMW-img:hover .fleet-hover,
+    .aaru-fleet-Hunda-img:hover .fleet-hover,
+    .aaru-fleet-bus-img:hover .fleet-hover {
+        opacity: 1;
     }
 
     .aaru-footer {
@@ -1159,7 +1192,7 @@
     }
 
     .aaru-fleet {
-        padding: 40px 4%;
+        padding: 30px 4%;
     }
 
     .aaru-fleet h2 {
@@ -1172,13 +1205,38 @@
         font-size: 0.85rem;
     }
 
+    .aaru-fleet {
+        padding: 30px 4%;
+    }
+
     .aaru-fleet-img {
-        padding: 30px 10px;
-        gap: 12px;
+        height: 180px;
+        /* Smaller height for small screens */
+        padding: 0;
+        gap: 0;
+        margin-top: 10px;
     }
 
     .aaru-fleet-img img {
-        max-height: 120px;
+        /* Remove strict bottom override to allow staggering */
+        max-height: none;
+    }
+
+    /* Minor adjustments for very small screens */
+    .aaru-fleet-BMW-img img,
+    .aaru-fleet-bus-img img {
+        width: 45% !important;
+        bottom: 30px !important;
+    }
+
+    .aaru-fleet-Hunda-img img {
+        width: 65% !important;
+        bottom: 5px !important;
+    }
+
+    .aaru-fleet-Hunda-img img {
+        width: 55% !important;
+        bottom: 10px !important;
     }
 
     .aaru-footer {
