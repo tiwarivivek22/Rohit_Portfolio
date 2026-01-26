@@ -778,6 +778,7 @@ body::before {
     background-color: transparent;
     overflow: visible;
     z-index: 2;
+    align-items: center;
 }
 
 .services-section::before {
@@ -863,13 +864,190 @@ body::before {
     transition: all 0.3s ease;
 }
 
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card {
+    background: rgba(20, 20, 20, 0.7);
+    border: 1px solid rgba(100, 200, 150, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(100, 200, 150, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 164, 90, 0.2);
+}
+
+.service-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(200, 200, 200, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.service-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+/* Services Cards Wrapper - for overlay on image */
+.services-cards-wrapper {
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.services-cards-wrapper .services-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.service-overlay-card {
+    position: absolute;
+    width: 28%;
+    padding: 15px;
+    text-align: center;
+}
+
+.service-overlay-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(200, 200, 200, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.service-overlay-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for specific highlighted text */
+.hover-highlight {
+    transition: all 0.3s ease;
+    display: inline;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.service-overlay-card:hover .hover-highlight {
+    color: #00A45A;
+    text-shadow: 0 0 8px rgba(21, 76, 51, 0.6);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Card Positioning Classes */
+.card-1 {
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    transform: rotate(30deg) translateY(20px);
+}
+
+
+.card-2 {
+    position: absolute;
+    top: 35%;
+    left: 22%;
+    transform: rotate(330deg) translateY(20px);
+}
+
+.card-3 {
+    position: absolute;
+    top: 10%;
+    left: 57%;
+    transform: rotate(330deg) translateY(20px);
+
+}
+
+.card-5 {
+    position: absolute;
+    top: 60%;
+    left: 14%;
+    transform: rotate(30deg) translateY(20px);
+}
+
+.card-4 {
+    position: absolute;
+    top: 33%;
+    left: 52%;
+    transform: rotate(30deg) translateY(20px);
+}
+
+.card-6 {
+    position: absolute;
+    top: 60%;
+    left: 58%;
+    transform: rotate(330deg) translateY(20px);
+
+}
+
+/* Responsive for Services Grid */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+        gap: 20px;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .service-heading {
+        font-size: 20px;
+    }
+
+    .service-paragraph {
+        font-size: 14px;
+    }
+}
+
 
 
 /* Vision Section */
 .vision-section {
     position: relative;
-    padding: 150px 20px;
-    margin-top: 100px;
     background-color: transparent;
 }
 
@@ -1027,7 +1205,7 @@ body::before {
 .footer {
     position: relative;
     padding: 100px 20px 50px;
-    margin-top: 200px;
+    margin-top: 0px;
     background-color: transparent;
 }
 
