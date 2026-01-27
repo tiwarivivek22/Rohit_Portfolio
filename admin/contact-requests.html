@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Contact Requests</title>
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/auth-guard.js"></script>
 </head>
 
 <body>
@@ -55,6 +56,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Date</th>
                             <th>Purpose</th>
                             <th>Details</th>
                         </tr>
@@ -124,10 +126,14 @@
 
                 // Main Row
                 const trMain = document.createElement('tr');
+                const dateStr = contact.createdAt || contact.created_at || contact.date || contact.timestamp;
+                const dateDisplay = dateStr ? new Date(dateStr).toLocaleDateString() : 'N/A';
+
                 trMain.innerHTML = `
                     <td>
                         <div style="font-weight: 500; color: var(--text-primary);">${contact.name || 'N/A'}</div>
                     </td>
+                    <td>${dateDisplay}</td>
                     <td>${contact.purpose || 'N/A'}</td>
                     <td style="text-align: center;">
                         <button id="btn-${uniqueId}" class="expand-btn" onclick="toggleRow('${uniqueId}')" title="View Details">▼</button>

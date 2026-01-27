@@ -215,7 +215,8 @@ function formatConnectData(formElements) {
         name: formElements[0]?.value || '',
         email: formElements[1]?.value || '',
         purpose: formElements[2]?.value || '',
-        message: formElements[3]?.value || ''
+        message: formElements[3]?.value || '',
+        created_at: new Date().toISOString() // Attempting to send date from frontend
     };
 }
 

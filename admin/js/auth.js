@@ -13,9 +13,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   const result = await loginAdmin(user, pass);
 
   if (result.success) {
+    // Store simple auth flag
+    localStorage.setItem("admin_logged_in", "true");
+
     // If token is returned in the future, store it here.
     // localStorage.setItem("admin_token", result.token);
-    window.location.href = "dashboard.html";
+
+    // Use replace to prevent back button from showing login page again after login
+    window.location.replace("dashboard.html");
   }
   else {
     alert(result.error || "Invalid Username or Password ❌");
