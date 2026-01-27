@@ -71,6 +71,89 @@
     </main>
 
     <script>
+        // API Base URL
+        const API_BASE_URL = 'https://rohit-portfolio-backend.vercel.app/api/v1';
+
+        /**
+         * Get Connect Requests (Admin)
+         * GET /api/v1/connect/?skip=0&limit=10
+         */
+        async function getConnectRequests(skip = 0, limit = 10) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/connect/?skip=${skip}&limit=${limit}`);
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                const data = await response.json();
+                return { success: true, ...data };
+            } catch (error) {
+                console.error("Get Connect Requests Error:", error);
+                return { success: false, error: error.message, data: [], count: 0 };
+            }
+        }
+
+        /**
+         * Format date from ISO string
+         */
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        /**
+         * Get contact ID safely (handles both 'id' and '_id' fields)
+         */
+        function getContactId(contact) {
+            return contact._id || contact.id || '';
+        }
+
+        /**
+         * Render Connect Requests Table
+         */
+        async function renderConnectRequests() {
+            const tableBody = document.getElementById('contactTableBody');
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Loading...</td></tr>';
+
+            const result = await getConnectRequests(0, 50); // Fetch up to 50 records
+
+            tableBody.innerHTML = '';
+
+            if (!result.success || !result.data || result.data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No contact requests found</td></tr>';
+                return;
+            }
+
+            result.data.forEach(contact => {
+                const tr = document.createElement('tr');
+                const contactId = getContactId(contact);
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight: 500; color: var(--text-primary);">${contact.name || 'N/A'}</div>
+                    </td>
+                    <td>${contact.email || 'N/A'}</td>
+                    <td>${contact.purpose || 'N/A'}</td>
+                    <td>${contact.created_at ? formatDate(contact.created_at) : 'N/A'}</td>
+                    <td><span class="status-badge status-active">New</span></td>
+                    <td><button class="action-btn" onclick="viewContact('${contactId}')">View</button></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        /**
+         * View Contact Details
+         */
+        function viewContact(id) {
+            if (!id) {
+                console.log('Contact ID not available');
+                return;
+            }
+            alert('Contact ID: ' + id + '\n\nThis feature can be expanded to show full message details.');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Mobile Menu Toggle
             const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -91,35 +174,8 @@
             const today = new Date();
             dateElement.textContent = today.toLocaleDateString('en-US', options);
 
-            // 3. Dummy Data for Contacts
-            const contacts = [
-                { name: "John Smith", email: "john@example.com", subject: "Partnership Opportunity", date: "Jan 23, 2026", status: "Unread" },
-                { name: "Alicia Keys", email: "alicia@designstudio.com", subject: "Project Inquiry", date: "Jan 22, 2026", status: "Read" },
-                { name: "Robert Fox", email: "robert@foxenterprises.com", subject: "Speaking Invitation", date: "Jan 21, 2026", status: "Replied" },
-                { name: "Emily Blunt", email: "emily@movies.com", subject: "General Question", date: "Jan 20, 2026", status: "Unread" },
-            ];
-
-            const tableBody = document.getElementById('contactTableBody');
-
-            contacts.forEach(contact => {
-                const tr = document.createElement('tr');
-
-                let statusClass = 'status-pending';
-                if (contact.status === 'Unread') statusClass = 'status-active';
-                if (contact.status === 'Replied') statusClass = 'status-completed';
-
-                tr.innerHTML = `
-                    <td>
-                        <div style="font-weight: 500; color: var(--text-primary);">${contact.name}</div>
-                    </td>
-                    <td>${contact.email}</td>
-                    <td>${contact.subject}</td>
-                    <td>${contact.date}</td>
-                    <td><span class="status-badge ${statusClass}">${contact.status}</span></td>
-                    <td><button class="action-btn">Reply</button></td>
-                `;
-                tableBody.appendChild(tr);
-            });
+            // 3. Load Connect Requests from API
+            renderConnectRequests();
         });
     </script>
 </body>

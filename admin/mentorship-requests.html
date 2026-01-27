@@ -71,6 +71,92 @@
     </main>
 
     <script>
+        // API Base URL
+        const API_BASE_URL = 'https://rohit-portfolio-backend.vercel.app/api/v1';
+
+        /**
+         * Get Mentorship Requests (Admin)
+         * GET /api/v1/mentorship/?skip=0&limit=20
+         */
+        async function getMentorshipRequests(skip = 0, limit = 20) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/mentorship/?skip=${skip}&limit=${limit}`);
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                const data = await response.json();
+                return { success: true, ...data };
+            } catch (error) {
+                console.error("Get Mentorship Requests Error:", error);
+                return { success: false, error: error.message, data: [], count: 0 };
+            }
+        }
+
+        /**
+         * Format date from ISO string
+         */
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        /**
+         * Get mentorship ID safely (handles both 'id' and '_id' fields)
+         */
+        function getMentorshipId(request) {
+            return request._id || request.id || '';
+        }
+
+        /**
+         * Render Mentorship Requests Table
+         */
+        async function renderMentorshipRequests() {
+            const tableBody = document.getElementById('mentorshipTableBody');
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Loading...</td></tr>';
+
+            const result = await getMentorshipRequests(0, 50); // Fetch up to 50 records
+
+            tableBody.innerHTML = '';
+
+            if (!result.success || !result.data || result.data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No mentorship requests found</td></tr>';
+                return;
+            }
+
+            result.data.forEach(request => {
+                const tr = document.createElement('tr');
+                const mentorshipId = getMentorshipId(request);
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight: 500; color: var(--text-primary);">${request.full_name || 'N/A'}</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">${request.email || 'N/A'}</div>
+                    </td>
+                    <td>${request.plan_name || 'N/A'}</td>
+                    <td>${request.duration_minutes ? request.duration_minutes + ' mins' : 'N/A'}</td>
+                    <td>${request.created_at ? formatDate(request.created_at) : 'N/A'}</td>
+                    <td><span class="status-badge status-active">New</span></td>
+                    <td>
+                        <button class="action-btn" onclick="viewMentorship('${mentorshipId}')">Review</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        /**
+         * View Mentorship Details
+         */
+        function viewMentorship(id) {
+            if (!id) {
+                console.log('Mentorship ID not available');
+                return;
+            }
+            alert('Mentorship ID: ' + id + '\n\nThis feature can be expanded to show full booking details.');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Mobile Menu Toggle
             const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -91,37 +177,8 @@
             const today = new Date();
             dateElement.textContent = today.toLocaleDateString('en-US', options);
 
-            // 3. Dummy Data for Mentorship
-            const mentorships = [
-                { name: "Liam Nesson", field: "Cybersecurity", experience: "Junior", date: "Jan 23, 2026", status: "Pending" },
-                { name: "Olivia Rodrigo", field: "Frontend Dev", experience: "Student", date: "Jan 22, 2026", status: "Approved" },
-                { name: "Noah Schnapp", field: "Data Science", experience: "Beginner", date: "Jan 21, 2026", status: "Pending" },
-                { name: "Millie Brown", field: "Product Design", experience: "Intermediate", date: "Jan 19, 2026", status: "Rejected" },
-            ];
-
-            const tableBody = document.getElementById('mentorshipTableBody');
-
-            mentorships.forEach(request => {
-                const tr = document.createElement('tr');
-
-                let statusClass = 'status-pending';
-                if (request.status === 'Approved') statusClass = 'status-active';
-                if (request.status === 'Rejected') statusClass = 'status-rejected';
-
-                tr.innerHTML = `
-                    <td>
-                        <div style="font-weight: 500; color: var(--text-primary);">${request.name}</div>
-                    </td>
-                    <td>${request.field}</td>
-                    <td>${request.experience}</td>
-                    <td>${request.date}</td>
-                    <td><span class="status-badge ${statusClass}">${request.status}</span></td>
-                    <td>
-                        <button class="action-btn">Review</button>
-                    </td>
-                `;
-                tableBody.appendChild(tr);
-            });
+            // 3. Load Mentorship Requests from API
+            renderMentorshipRequests();
         });
     </script>
 </body>

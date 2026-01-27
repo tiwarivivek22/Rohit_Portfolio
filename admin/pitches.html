@@ -71,6 +71,92 @@
     </main>
 
     <script>
+        // API Base URL
+        const API_BASE_URL = 'https://rohit-portfolio-backend.vercel.app/api/v1';
+
+        /**
+         * Get Pitch Requests (Admin)
+         * GET /api/v1/pitch/?skip=0&limit=10
+         */
+        async function getPitchRequests(skip = 0, limit = 10) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/pitch/?skip=${skip}&limit=${limit}`);
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                const data = await response.json();
+                return { success: true, ...data };
+            } catch (error) {
+                console.error("Get Pitch Requests Error:", error);
+                return { success: false, error: error.message, data: [], count: 0 };
+            }
+        }
+
+        /**
+         * Format date from ISO string
+         */
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        /**
+         * Get pitch ID safely (handles both 'id' and '_id' fields)
+         */
+        function getPitchId(pitch) {
+            return pitch._id || pitch.id || '';
+        }
+
+        /**
+         * Render Pitch Requests Table
+         */
+        async function renderPitchRequests() {
+            const tableBody = document.getElementById('pitchesTableBody');
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Loading...</td></tr>';
+
+            const result = await getPitchRequests(0, 50); // Fetch up to 50 records
+
+            tableBody.innerHTML = '';
+
+            if (!result.success || !result.data || result.data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No pitches found</td></tr>';
+                return;
+            }
+
+            result.data.forEach(pitch => {
+                const tr = document.createElement('tr');
+                const pitchId = getPitchId(pitch);
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight: 500; color: var(--text-primary);">${pitch.pitch_summary ? (pitch.pitch_summary.substring(0, 50) + '...') : 'Untitled Pitch'}</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">${pitch.company_name || 'N/A'}</div>
+                    </td>
+                    <td>${pitch.name || 'N/A'}</td>
+                    <td>${pitch.sector || 'N/A'}</td>
+                    <td>${pitch.created_at ? formatDate(pitch.created_at) : 'N/A'}</td>
+                    <td><span class="status-badge status-active">New</span></td>
+                    <td>
+                        <button class="action-btn" onclick="viewPitch('${pitchId}')">View Details</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        /**
+         * View Pitch Details
+         */
+        function viewPitch(id) {
+            if (!id) {
+                console.log('Pitch ID not available');
+                return;
+            }
+            alert('Pitch ID: ' + id + '\n\nThis feature can be expanded to show full pitch details including proposal file.');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Mobile Menu Toggle
             const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -91,37 +177,8 @@
             const today = new Date();
             dateElement.textContent = today.toLocaleDateString('en-US', options);
 
-            // 3. Dummy Data for Pitches
-            const pitches = [
-                { title: "AI-Powered Recruiter", founder: "Alex Johnson", category: "SaaS", date: "Jan 22, 2026", status: "New" },
-                { title: "Green Energy Grid", founder: "Sarah Lee", category: "CleanTech", date: "Jan 21, 2026", status: "Reviewing" },
-                { title: "Crypto Wallet Defi", founder: "Mike Chen", category: "FinTech", date: "Jan 20, 2026", status: "Pending" },
-                { title: "Virtual Classroom VR", founder: "Emma Wilson", category: "EdTech", date: "Jan 19, 2026", status: "New" },
-                { title: "HealthTrack Wearable", founder: "David Kim", category: "Health", date: "Jan 18, 2026", status: "Rejected" },
-            ];
-
-            const tableBody = document.getElementById('pitchesTableBody');
-
-            pitches.forEach(pitch => {
-                const tr = document.createElement('tr');
-
-                let statusClass = 'status-pending';
-                if (pitch.status === 'New') statusClass = 'status-active';
-                if (pitch.status === 'Rejected') statusClass = 'status-rejected';
-                if (pitch.status === 'Reviewing') statusClass = 'status-completed';
-
-                tr.innerHTML = `
-                    <td>
-                        <div style="font-weight: 500; color: var(--text-primary);">${pitch.title}</div>
-                    </td>
-                    <td>${pitch.founder}</td>
-                    <td>${pitch.category}</td>
-                    <td>${pitch.date}</td>
-                    <td><span class="status-badge ${statusClass}">${pitch.status}</span></td>
-                    <td><button class="action-btn">View Details</button></td>
-                `;
-                tableBody.appendChild(tr);
-            });
+            // 3. Load Pitch Requests from API
+            renderPitchRequests();
         });
     </script>
 </body>

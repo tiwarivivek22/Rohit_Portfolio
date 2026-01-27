@@ -1,4 +1,4 @@
-document.getElementById("loginForm").addEventListener("submit", function(e){
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const btn = document.querySelector("button");
@@ -7,31 +7,33 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
 
   // loading start
   btn.classList.add("loading");
-  btn.innerText = "Logging in";
+  btn.innerText = "Logging in...";
+  btn.disabled = true;
 
-  setTimeout(() => {
+  const result = await loginAdmin(user, pass);
 
-    if(user === "admin" && pass === "admin123"){
-      window.location.href = "dashboard.html";
-    } 
-    else {
-      alert("Invalid Username or Password ❌");
-      btn.classList.remove("loading");
-      btn.innerText = "Login";
-    }
-
-  }, 1500);
+  if (result.success) {
+    // If token is returned in the future, store it here.
+    // localStorage.setItem("admin_token", result.token);
+    window.location.href = "dashboard.html";
+  }
+  else {
+    alert(result.error || "Invalid Username or Password ❌");
+    btn.classList.remove("loading");
+    btn.innerText = "Login";
+    btn.disabled = false;
+  }
 });
 
 // Password Toggle Logic
 const togglePassword = document.getElementById('togglePassword');
 const passwordInput = document.getElementById('password');
 
-if(togglePassword && passwordInput){
+if (togglePassword && passwordInput) {
   togglePassword.addEventListener('click', function () {
     const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
     passwordInput.setAttribute('type', type);
-    
+
     // Toggle Icon
     if (type === 'text') {
       // Show Eye Slash (Password Visible)

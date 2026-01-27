@@ -45,7 +45,7 @@ async function submitPitch(formData) {
 
 async function submitConnect(formData) {
     try {
-        const response = await fetch(`${API_BASE_URL}/connect`, {
+        const response = await fetch(`${API_BASE_URL}/connect/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
@@ -66,18 +66,23 @@ async function submitConnect(formData) {
 /* 
    MENTORSHIP APIs  */
 
+/* 
+   MENTORSHIP APIs  */
+
 /**
  * Step 1️⃣ Get Available Mentorship Slots
  */
 async function getMentorshipAvailability(meetingDate, durationMinutes) {
     try {
-        const response = await fetch(`${API_BASE_URL}/mentorship/availability`, {
+        // Send params as query string for GET request
+        const queryParams = new URLSearchParams({
+            meeting_date: meetingDate,
+            duration_minutes: durationMinutes
+        }).toString();
+
+        const response = await fetch(`${API_BASE_URL}/mentorship/availability?${queryParams}`, {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                meeting_date: meetingDate,
-                duration_minutes: Number(durationMinutes)
-            })
+            headers: { 'Content-Type': 'application/json' }
         });
 
         if (!response.ok) {
@@ -217,3 +222,99 @@ function formatConnectData(formElements) {
 
 
 const RAZORPAY_KEY = 'rzp_test_RS3fi4SsM1ltwU';
+
+/* ADMIN GET APIs */
+
+/**
+ * Get Connect Requests (Admin)
+ * GET /api/v1/connect/?skip=0&limit=10
+ */
+async function getConnectRequests(skip = 0, limit = 10) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/connect/?skip=${skip}&limit=${limit}`);
+
+        if (!response.ok) {
+            throw new Error(await response.text());
+        }
+
+        const data = await response.json();
+        return { success: true, ...data };
+    } catch (error) {
+        console.error("Get Connect Requests Error:", error);
+        return { success: false, error: error.message, data: [], count: 0 };
+    }
+}
+
+/**
+ * Get Pitch Requests (Admin)
+ * GET /api/v1/pitch/?skip=0&limit=10
+ */
+async function getPitchRequests(skip = 0, limit = 10) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/pitch/?skip=${skip}&limit=${limit}`);
+
+        if (!response.ok) {
+            throw new Error(await response.text());
+        }
+
+        const data = await response.json();
+        return { success: true, ...data };
+    } catch (error) {
+        console.error("Get Pitch Requests Error:", error);
+        return { success: false, error: error.message, data: [], count: 0 };
+    }
+}
+
+/**
+ * Get Mentorship Requests (Admin)
+ * GET /api/v1/mentorship/?skip=0&limit=20
+ */
+async function getMentorshipRequests(skip = 0, limit = 20) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/mentorship/?skip=${skip}&limit=${limit}`);
+
+        if (!response.ok) {
+            throw new Error(await response.text());
+        }
+
+        const data = await response.json();
+        return { success: true, ...data };
+    } catch (error) {
+        console.error("Get Mentorship Requests Error:", error);
+        return { success: false, error: error.message, data: [], count: 0 };
+    }
+}
+
+/**
+ * Admin Login
+ * POST /api/v1/admin/login
+ */
+async function loginAdmin(username, password) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/admin/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (!response.ok) {
+            const errText = await response.text();
+            throw new Error(errText);
+        }
+
+        const data = await response.json();
+        return { success: true, ...data };
+
+    } catch (error) {
+        console.error("Login Error:", error);
+        let errorMessage = "Login failed";
+        try {
+            const parsed = JSON.parse(error.message);
+            if (parsed.detail) errorMessage = parsed.detail;
+            else errorMessage = error.message;
+        } catch (e) {
+            errorMessage = error.message;
+        }
+        return { success: false, error: errorMessage };
+    }
+}
