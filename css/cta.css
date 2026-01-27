@@ -263,6 +263,7 @@
         padding: 40px 30px;
         max-width: 100%;
         width: 100%;
+        background-size: 100% 100%;
     }
 
     .connect-card h2 {
