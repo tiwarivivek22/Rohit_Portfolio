@@ -2,17 +2,18 @@
 
 /* VENTURES PAGE*/
 .ventures-hero {
-    min-height: 60vh;
+    min-height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(180deg, #101C35 20%, #D4A643 100%);
-    padding: 120px 20px 60px;
     text-align: center;
+    margin-top: 30px;
 }
 
 .ventures-hero-content {
     max-width: 900px;
+    margin-top: 20px;
 }
 
 .ventures-hero h1 {
