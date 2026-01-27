@@ -54,12 +54,11 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Pitch Title</th>
-                            <th>Founder</th>
-                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Company</th>
+                            <th>Sector</th>
                             <th>Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody id="pitchesTableBody">
@@ -76,18 +75,12 @@
 
         /**
          * Get Pitch Requests (Admin)
-         * GET /api/v1/pitch/?skip=0&limit=10
          */
         async function getPitchRequests(skip = 0, limit = 10) {
             try {
                 const response = await fetch(`${API_BASE_URL}/pitch/?skip=${skip}&limit=${limit}`);
-
-                if (!response.ok) {
-                    throw new Error(await response.text());
-                }
-
-                const data = await response.json();
-                return { success: true, ...data };
+                if (!response.ok) throw new Error(await response.text());
+                return { success: true, ...await response.json() };
             } catch (error) {
                 console.error("Get Pitch Requests Error:", error);
                 return { success: false, error: error.message, data: [], count: 0 };
@@ -95,18 +88,28 @@
         }
 
         /**
-         * Format date from ISO string
+         * Format date
          */
         function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('en-US', options);
+            return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
         }
 
         /**
-         * Get pitch ID safely (handles both 'id' and '_id' fields)
+         * Toggle Row Visibility
          */
-        function getPitchId(pitch) {
-            return pitch._id || pitch.id || '';
+        function toggleRow(id) {
+            const detailRow = document.getElementById(`detail-${id}`);
+            const btn = document.getElementById(`btn-${id}`);
+
+            if (detailRow.style.display === 'table-row') {
+                detailRow.style.display = 'none';
+                btn.classList.remove('active');
+                btn.innerHTML = '▼'; // Down arrow
+            } else {
+                detailRow.style.display = 'table-row';
+                btn.classList.add('active');
+                btn.innerHTML = '▲'; // Up arrow
+            }
         }
 
         /**
@@ -114,35 +117,74 @@
          */
         async function renderPitchRequests() {
             const tableBody = document.getElementById('pitchesTableBody');
-            tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Loading...</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Loading...</td></tr>';
 
-            const result = await getPitchRequests(0, 50); // Fetch up to 50 records
+            const result = await getPitchRequests(0, 50);
 
             tableBody.innerHTML = '';
 
             if (!result.success || !result.data || result.data.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No pitches found</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No pitches found</td></tr>';
                 return;
             }
 
-            result.data.forEach(pitch => {
-                const tr = document.createElement('tr');
-                const pitchId = getPitchId(pitch);
+            result.data.forEach((pitch, index) => {
+                const uniqueId = `pitch-${index}`;
 
-                tr.innerHTML = `
+                // File link
+                let fileLink = 'None';
+                if (pitch.proposal_file) {
+                    fileLink = `<a href="${pitch.proposal_file}" target="_blank" style="color: var(--primary-color); font-weight: 500;">Download Proposal</a>`;
+                }
+
+                // Main Row
+                const trMain = document.createElement('tr');
+                trMain.innerHTML = `
                     <td>
-                        <div style="font-weight: 500; color: var(--text-primary);">${pitch.pitch_summary ? (pitch.pitch_summary.substring(0, 50) + '...') : 'Untitled Pitch'}</div>
-                        <div style="font-size: 12px; color: var(--text-secondary);">${pitch.company_name || 'N/A'}</div>
+                        <div style="font-weight: 500; color: var(--text-primary);">${pitch.name || 'N/A'}</div>
                     </td>
-                    <td>${pitch.name || 'N/A'}</td>
+                    <td>${pitch.company_name || 'N/A'}</td>
                     <td>${pitch.sector || 'N/A'}</td>
                     <td>${pitch.created_at ? formatDate(pitch.created_at) : 'N/A'}</td>
-                    <td><span class="status-badge status-active">New</span></td>
-                    <td>
-                        <button class="action-btn" onclick="viewPitch('${pitchId}')">View Details</button>
+                    <td style="text-align: center;">
+                        <button id="btn-${uniqueId}" class="expand-btn" onclick="toggleRow('${uniqueId}')" title="View Details">▼</button>
                     </td>
                 `;
-                tableBody.appendChild(tr);
+                tableBody.appendChild(trMain);
+
+                // Details Row
+                const trDetail = document.createElement('tr');
+                trDetail.id = `detail-${uniqueId}`;
+                trDetail.style.display = 'none'; // Hidden by default
+                trDetail.className = 'details-row hidden-row';
+
+                trDetail.innerHTML = `
+                    <td colspan="5">
+                        <div class="details-content">
+                            <div class="detail-group">
+                                <span class="detail-label">Investment Required</span>
+                                <span class="detail-value" style="color: #16a34a; font-weight: 600;">${pitch.investment_required || 'N/A'}</span>
+                            </div>
+                            <div class="detail-group">
+                                <span class="detail-label">Contact Email</span>
+                                <span class="detail-value">${pitch.email || 'N/A'}</span>
+                            </div>
+                            <div class="detail-group">
+                                <span class="detail-label">Contact Phone</span>
+                                <span class="detail-value">${pitch.contact_number || 'N/A'}</span>
+                            </div>
+                            <div class="detail-group">
+                                <span class="detail-label">Proposal File</span>
+                                <span class="detail-value">${fileLink}</span>
+                            </div>
+                            <div class="detail-group" style="grid-column: 1 / -1;">
+                                <span class="detail-label">Pitch Summary</span>
+                                <div class="detail-value long-text">${pitch.pitch_summary || 'No summary provided.'}</div>
+                            </div>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(trDetail);
             });
         }
 
