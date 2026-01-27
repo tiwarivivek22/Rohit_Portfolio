@@ -309,7 +309,7 @@ body::before {
     margin: 0 auto;
     position: relative;
     background-color: transparent;
-    min-height: 4010px;
+    min-height: auto;
     z-index: 1;
 }
 
@@ -1049,6 +1049,8 @@ body::before {
 .vision-section {
     position: relative;
     background-color: transparent;
+    padding-bottom: 120px;
+    /* Minimal gap before footer */
 }
 
 .vision-container {
@@ -1091,7 +1093,7 @@ body::before {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     padding: 20px 30px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     letter-spacing: -2px;
     position: relative;
     display: inline-block;
