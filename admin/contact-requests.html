@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Contact Requests</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            Portfolio Admin
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="pitches.html" class="nav-link">Pitches</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact-requests.html" class="nav-link active">Contact Requests</a>
+            </li>
+            <li class="nav-item">
+                <a href="mentorship-requests.html" class="nav-link">Mentorship Requests</a>
+            </li>
+        </ul>
+        <div class="logout-section">
+            <a href="login.html" class="nav-link" style="color: #ef4444;">Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    ☰
+                </button>
+                <div class="welcome-text">Contact Requests</div>
+            </div>
+            <div class="date-display" id="currentDate"></div>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="section-title">New Messages</div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactTableBody">
+                        <!-- Content will be seeded by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            const toggleSidebar = () => {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            };
+
+            hamburgerBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // 2. Set Date
+            const dateElement = document.getElementById('currentDate');
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            dateElement.textContent = today.toLocaleDateString('en-US', options);
+
+            // 3. Dummy Data for Contacts
+            const contacts = [
+                { name: "John Smith", email: "john@example.com", subject: "Partnership Opportunity", date: "Jan 23, 2026", status: "Unread" },
+                { name: "Alicia Keys", email: "alicia@designstudio.com", subject: "Project Inquiry", date: "Jan 22, 2026", status: "Read" },
+                { name: "Robert Fox", email: "robert@foxenterprises.com", subject: "Speaking Invitation", date: "Jan 21, 2026", status: "Replied" },
+                { name: "Emily Blunt", email: "emily@movies.com", subject: "General Question", date: "Jan 20, 2026", status: "Unread" },
+            ];
+
+            const tableBody = document.getElementById('contactTableBody');
+
+            contacts.forEach(contact => {
+                const tr = document.createElement('tr');
+
+                let statusClass = 'status-pending';
+                if (contact.status === 'Unread') statusClass = 'status-active';
+                if (contact.status === 'Replied') statusClass = 'status-completed';
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight: 500; color: var(--text-primary);">${contact.name}</div>
+                    </td>
+                    <td>${contact.email}</td>
+                    <td>${contact.subject}</td>
+                    <td>${contact.date}</td>
+                    <td><span class="status-badge ${statusClass}">${contact.status}</span></td>
+                    <td><button class="action-btn">Reply</button></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+
+</html>

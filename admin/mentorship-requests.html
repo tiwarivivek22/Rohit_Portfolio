@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Mentorship Requests</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            Portfolio Admin
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="pitches.html" class="nav-link">Pitches</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact-requests.html" class="nav-link">Contact Requests</a>
+            </li>
+            <li class="nav-item">
+                <a href="mentorship-requests.html" class="nav-link active">Mentorship Requests</a>
+            </li>
+        </ul>
+        <div class="logout-section">
+            <a href="login.html" class="nav-link" style="color: #ef4444;">Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    ☰
+                </button>
+                <div class="welcome-text">Mentorship Requests</div>
+            </div>
+            <div class="date-display" id="currentDate"></div>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="section-title">Pending Requests</div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Field of Interest</th>
+                            <th>Experience Level</th>
+                            <th>Request Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mentorshipTableBody">
+                        <!-- Content will be seeded by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            const toggleSidebar = () => {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            };
+
+            hamburgerBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // 2. Set Date
+            const dateElement = document.getElementById('currentDate');
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            dateElement.textContent = today.toLocaleDateString('en-US', options);
+
+            // 3. Dummy Data for Mentorship
+            const mentorships = [
+                { name: "Liam Nesson", field: "Cybersecurity", experience: "Junior", date: "Jan 23, 2026", status: "Pending" },
+                { name: "Olivia Rodrigo", field: "Frontend Dev", experience: "Student", date: "Jan 22, 2026", status: "Approved" },
+                { name: "Noah Schnapp", field: "Data Science", experience: "Beginner", date: "Jan 21, 2026", status: "Pending" },
+                { name: "Millie Brown", field: "Product Design", experience: "Intermediate", date: "Jan 19, 2026", status: "Rejected" },
+            ];
+
+            const tableBody = document.getElementById('mentorshipTableBody');
+
+            mentorships.forEach(request => {
+                const tr = document.createElement('tr');
+
+                let statusClass = 'status-pending';
+                if (request.status === 'Approved') statusClass = 'status-active';
+                if (request.status === 'Rejected') statusClass = 'status-rejected';
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight: 500; color: var(--text-primary);">${request.name}</div>
+                    </td>
+                    <td>${request.field}</td>
+                    <td>${request.experience}</td>
+                    <td>${request.date}</td>
+                    <td><span class="status-badge ${statusClass}">${request.status}</span></td>
+                    <td>
+                        <button class="action-btn">Review</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+
+</html>

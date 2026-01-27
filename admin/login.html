@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="bg"></div>
+
+  <div class="login-wrapper">
+    <div class="login-card">
+
+      <h2>Admin Panel</h2>
+      <p class="subtitle">Secure Login</p>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <input type="text" id="username" required>
+          <label>Username</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password" required>
+          <label>Password</label>
+          <span id="togglePassword" class="password-toggle">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+            </svg>
+          </span>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p class="hint">Only authorized admins allowed</p>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+
+</html>
+<!--
+This is a multi-line comment
+It will not be displayed in the browser
+-->

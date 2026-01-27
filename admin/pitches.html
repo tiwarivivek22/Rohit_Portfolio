@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Pitches</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            Portfolio Admin
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="pitches.html" class="nav-link active">Pitches</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact-requests.html" class="nav-link">Contact Requests</a>
+            </li>
+            <li class="nav-item">
+                <a href="mentorship-requests.html" class="nav-link">Mentorship Requests</a>
+            </li>
+        </ul>
+        <div class="logout-section">
+            <a href="login.html" class="nav-link" style="color: #ef4444;">Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    ☰
+                </button>
+                <div class="welcome-text">Pitches Received</div>
+            </div>
+            <div class="date-display" id="currentDate"></div>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="section-title">New Pitches</div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pitch Title</th>
+                            <th>Founder</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pitchesTableBody">
+                        <!-- Content will be seeded by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            const toggleSidebar = () => {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            };
+
+            hamburgerBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // 2. Set Date
+            const dateElement = document.getElementById('currentDate');
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            dateElement.textContent = today.toLocaleDateString('en-US', options);
+
+            // 3. Dummy Data for Pitches
+            const pitches = [
+                { title: "AI-Powered Recruiter", founder: "Alex Johnson", category: "SaaS", date: "Jan 22, 2026", status: "New" },
+                { title: "Green Energy Grid", founder: "Sarah Lee", category: "CleanTech", date: "Jan 21, 2026", status: "Reviewing" },
+                { title: "Crypto Wallet Defi", founder: "Mike Chen", category: "FinTech", date: "Jan 20, 2026", status: "Pending" },
+                { title: "Virtual Classroom VR", founder: "Emma Wilson", category: "EdTech", date: "Jan 19, 2026", status: "New" },
+                { title: "HealthTrack Wearable", founder: "David Kim", category: "Health", date: "Jan 18, 2026", status: "Rejected" },
+            ];
+
+            const tableBody = document.getElementById('pitchesTableBody');
+
+            pitches.forEach(pitch => {
+                const tr = document.createElement('tr');
+
+                let statusClass = 'status-pending';
+                if (pitch.status === 'New') statusClass = 'status-active';
+                if (pitch.status === 'Rejected') statusClass = 'status-rejected';
+                if (pitch.status === 'Reviewing') statusClass = 'status-completed';
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight: 500; color: var(--text-primary);">${pitch.title}</div>
+                    </td>
+                    <td>${pitch.founder}</td>
+                    <td>${pitch.category}</td>
+                    <td>${pitch.date}</td>
+                    <td><span class="status-badge ${statusClass}">${pitch.status}</span></td>
+                    <td><button class="action-btn">View Details</button></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+
+</html>

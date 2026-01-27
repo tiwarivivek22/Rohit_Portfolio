@@ -22,14 +22,16 @@
 
 .logo {
     position: absolute;
-    width: 45px;
-    height: 45px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     z-index: 10;
     pointer-events: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
 }
 
 .dot {
@@ -90,15 +92,22 @@
 }
 
 @keyframes dotColor {
-    0%, 50%, 100% {
+
+    0%,
+    50%,
+    100% {
         background-color: #9ca3af;
     }
+
     6.25% {
         background-color: #6b9bb8;
     }
-    12.5%, 18.75% {
+
+    12.5%,
+    18.75% {
         background-color: #4dd0e1;
     }
+
     31.25% {
         background-color: #6b9bb8;
     }
