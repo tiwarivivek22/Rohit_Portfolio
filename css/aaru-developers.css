@@ -118,6 +118,12 @@
     font-size: 15px;
 }
 
+.btn {
+    width: 260px;
+    height: 60px;
+}
+
+
 .aarudev-hero-right {
     margin-right: -200px;
     height: 80%;
