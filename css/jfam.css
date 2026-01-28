@@ -1,14 +1,23 @@
 /* JFAM Styles */
 
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 /* JFAM Body */
 .jfam-body {
     font-family: "Inter", sans-serif;
-    margin: 0;
-    padding: 0;
     padding-top: 70px;
     background: #EFEBE2;
-    overflow-x: hidden;
-
+    min-height: 100vh;
 }
 
 .jfam-navbar {
@@ -24,7 +33,7 @@
 }
 
 .jfam-container {
-    max-width: 1200px;
+    max-width: 100%;
     width: 100%;
     margin: auto;
     display: flex;
@@ -43,7 +52,7 @@
 }
 
 .jfam-logo img {
-    height: 80px;
+    height: 60px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -55,20 +64,18 @@
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #222;
-    font-size: 14px;
-    font-weight: 900;
-    padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
+    cursor: pointer;
     transition: all 0.3s ease;
-    white-space: nowrap;
     flex-shrink: 0;
 }
 
 .jfam-back:hover {
     opacity: 0.7;
-    background: rgba(255, 255, 255, 1);
+}
+
+.jfam-back img {
+    height: 60px;
+    width: auto;
 }
 
 /* Tablet */
@@ -83,12 +90,15 @@
     }
 
     .jfam-logo img {
-        height: 70px;
+        height: 50px;
     }
 
     .jfam-back {
-        font-size: 13px;
-        padding: 8px 14px;
+        padding: 0;
+    }
+
+    .jfam-back img {
+        height: 50px;
     }
 }
 
@@ -108,13 +118,15 @@
     }
 
     .jfam-logo img {
-        height: 55px;
+        height: 40px;
     }
 
     .jfam-back {
-        font-size: 12px;
-        padding: 8px 12px;
-        border-radius: 6px;
+        padding: 0;
+    }
+
+    .jfam-back img {
+        height: 40px;
     }
 }
 
@@ -130,13 +142,15 @@
     }
 
     .jfam-logo img {
-        height: 48px;
+        height: 35px;
     }
 
     .jfam-back {
-        font-size: 11px;
-        padding: 6px 10px;
-        gap: 5px;
+        padding: 0;
+    }
+
+    .jfam-back img {
+        height: 35px;
     }
 }
 
@@ -147,11 +161,11 @@
     height: min(90vh, 680px);
     min-height: 360px;
     overflow: hidden;
-    margin-top: -25px;
+    margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     background-color: transparent;
-    border-radius: 12px;
+    border-radius: 24px;
 }
 
 .jfam-hero-img {
@@ -160,7 +174,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 24px;
     display: block;
 }
 
@@ -181,7 +195,7 @@
     transform: translate(-50%, -50%);
     color: #fff;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     padding: 0 20px;
     text-align: left;
     z-index: 2;
@@ -335,7 +349,7 @@
     .jfam-hero {
         margin-left: 10px;
         margin-right: 10px;
-        margin-top: -20px;
+        margin-top: 10px;
         height: auto;
         min-height: 400px;
         padding: 20px 0;
@@ -909,10 +923,14 @@
 
 
 /* JFAM Testimonials */
-.jfam-testimonials-v2 {
-    background: #EFEADF;
-    padding: 60px 20px;
-    margin-left: 0;
+.jfam-testimonials-v2 h2 {
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 60px;
+    text-align: left;
+    margin-left: 40%;
+
 }
 
 .about-us {
@@ -927,43 +945,33 @@
 
 .jfam-testimonial-layout {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
 }
+
 
 .jfam-testimonial-image {
-    margin-top: 0;
-    text-align: center;
+    margin-top: -180px;
+    margin-left: 10px;
 }
-
-.jfam-testimonial-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 12px;
-}
-
 
 .jfam-testimonial-cards {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 2fr 1fr;
+    gap: 110px;
 }
 
 .jfam-testimonial-card {
     background: #1c1c1c;
-    margin-left: 0;
-    margin-top: 0;
-    padding: 30px 25px;
-    width: 100%;
+    margin-left: -87%;
+    margin-top: -4.5%;
+    padding: 50px 40px;
+    width: 400px;
     height: auto;
     position: relative;
-    min-height: auto;
+    min-height: 420px;
     color: #fff;
-    border-radius: 12px;
 }
 
 .jfam-testimonial-card .quote {
@@ -997,6 +1005,90 @@
     opacity: 0.6;
     font-weight: 400;
 }
+
+/* .jfam-testimonials-v2 h2 {
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 60px;
+    text-align: left;
+    margin-left: 40%;
+}
+
+.about-us {
+    font-size: 45px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-right: -10%;
+    margin-bottom: -180px;
+
+} */
+
+
+/* MAIN GRID */
+/* .jfam-testimonial-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+
+.jfam-testimonial-image {
+    margin-top: -180px;
+    margin-left: 20px;
+}
+
+.jfam-testimonial-cards {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 110px;
+}
+
+.jfam-testimonial-card {
+    background: #1c1c1c;
+    margin-left: -76.3%;
+    margin-top: -4.2%;
+    padding: 50px 40px;
+    width: 470px;
+    height: 500px;
+    position: relative;
+    min-height: 420px;
+    color: #fff;
+}
+
+.jfam-testimonial-card .quote {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 160px;
+    line-height: 1;
+    opacity: 0.9;
+} */
+
+/* TEXT */
+/* .jfam-testimonial-card p {
+    margin-top: 120px;
+    font-size: 24px;
+    line-height: 2;
+    color: #f1f1f1;
+} */
+
+/* AUTHOR */
+/* .jfam-testimonial-card .author {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    text-align: left;
+    font-weight: 25px;
+}
+
+.jfam-testimonial-card .author small {
+    display: block;
+    opacity: 0.6;
+    font-weight: 400;
+} */
+
 
 /* Tablet: 2 testimonial cards side by side */
 @media (min-width: 768px) {
@@ -1406,10 +1498,36 @@
 
     .jfam-testimonial-layout {
         grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .jfam-testimonials-v2 h2 {
+        margin-left: 0;
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .jfam-testimonial-cards {
+        gap: 30px;
+        grid-template-columns: 1fr;
+    }
+
+    .jfam-testimonial-card {
+        width: 100%;
+        margin: 0;
+        min-height: auto;
+        height: auto;
+        padding: 40px 30px;
     }
 
     .jfam-testimonial-image {
-        order: -1;
+        display: none;
+    }
+
+    .jfam-testimonial-image img {
+        max-width: 100%;
+        height: auto;
     }
 
     .jfam-footer-grid {
