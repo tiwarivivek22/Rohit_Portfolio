@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/navbar-logos.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- <link rel="stylesheet" href="css/navbar.css"> -->
+    <!-- <link rel="stylesheet" href="css/navbar-logos.css"> -->
     <link rel="stylesheet" href="css/jfam.css">
     <link rel="stylesheet" href="css/loader.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <!-- <link rel="stylesheet" href="css/animations.css"> -->
     <script src="js/components.js"></script>
     <script src="js/api.js"></script>
 </head>
@@ -34,12 +34,30 @@
         <div class="loading-text">LOADING</div>
     </div>
 
-    <script>document.write(getJFAMNavbar());</script>
+    <header class="jfam-navbar">
+        <div class="jfam-container">
+    
+            <!-- Left Logo -->
+            <div class="jfam-logo">
+                <img src="images/jfam/jfam.logo.png" alt="JFAM Logo">
+            </div>
+
+            <!-- Right Back -->
+                <a href="ventures.html" class="jfam-back">
+                <span>← BACK</span>
+                </a>
+
+        </div>
+    </header>
+
+    
+
+    <!-- <script>document.write(getJFAMNavbar());</script> -->
 
     <!-- HERO -->
     <section class="jfam-hero">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Hero Interior"
-            class="jfam-hero-img">
+            <img src="images/jfam/Home Image.png" alt="Hero Interior"
+             class="jfam-hero-img">
 
         <div class="jfam-hero-overlay"></div>
 
@@ -48,18 +66,18 @@
         </div>
 
         <div class="jfam-hero-float1 jfam-float-left">
-            <div class="jfam-float-text">The company delivers innovative solutions tailored for modern living.</div>
             <img src="images/jfam/jfam-hero1.png" alt="small" />
+            <div class="jfam-float-text">The company delivers innovative solutions tailored for modern living.</div>
         </div>
 
         <div class="jfam-hero-float2 jfam-float-right">
             <div class="float">
-                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265" alt="workspace" />
+                <img src="images/jfam/Mask group.png" alt="workspace" />
             </div>
 
             <div class="btn">
                 <button>
-                    <span>Visit Site</span>
+                    <p>Visit Site</p>
                     <img src="images/icons/search icon.png" alt="search icon" />
                 </button>
             </div>
@@ -117,7 +135,7 @@
                     We manage the entire construction process, ensuring every project is completed on time, within
                     budget, and to the highest standards.
                 </p>
-                <div class="jfam-count">1</div>
+                <div class="jfam-count"><p>1</p></div>
             </div>
 
             <div class="jfam-expert-card">
@@ -129,7 +147,7 @@
                     Our integrated design & build approach streamlines construction by handling architectural planning
                     and a smooth workflow from concept to completion.
                 </p>
-                <div class="jfam-count">2</div>
+                <div class="jfam-count"><p>2</p></div>
             </div>
 
             <div class="jfam-expert-card">
@@ -141,7 +159,7 @@
 
                     We take charge of every detail, from budgeting and scheduling to risk management and quality
                     control. </p>
-                <div class="jfam-count">3</div>
+                <div class="jfam-count"><p>3</p></div>
             </div>
 
         </div>
@@ -178,8 +196,8 @@
                 <div class="jfam-why-text">
                     <strong>On-time & execution</strong>
                     <p>
-                        We prioritize efficient planning and cost-effective solutions to meet
-                        deadlines without exceeding budgets.
+                        We prioritize efficient planning and cost-effective solutions
+                        to meet deadlines without exceeding budgets.
                     </p>
                 </div>
                 <button class="jfam-toggle close">×</button>
@@ -194,16 +212,18 @@
                 <span>Sustainable & modern building practices</span>
                 <button class="jfam-toggle">+</button>
             </div>
+        </div>
     </section>
 
     <!-- TESTIMONIALS -->
     <section class="jfam-testimonials-v2">
-        <h2>What Our Customers<br>Say About Us</h2>
-
+        <div class="about-us">
+            <h2>What Our Customers<br>Say About Us</h2>
+        </div>
         <div class="jfam-testimonial-layout">
-            <!-- Left Image -->
+
             <div class="jfam-testimonial-image">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Interior">
+                <img src="images/jfam/Mask group (2).png">
             </div>
             <!-- Testimonial Cards -->
             <div class="jfam-testimonial-cards">
@@ -234,13 +254,50 @@
     </section>
 
     <!-- NEAR FOOTER -->
-    <section class="jfam-nearfooter">
-        <img src="images/jfam/NEAR-FOOTER-1.png" alt="Near Footer 1" class="jfam-nearfooter-left">
-        <img src="images/jfam/NEAR-FOOTER-2.png" alt="Near Footer 2" class="jfam-nearfooter-right">
-    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
 
-    <!-- FOOTER -->
-    <script>document.write(getJFAMFooter());</script>
+                <!-- Logo + About -->
+                <div class="footer-section about">
+                    <img src="images/jfam/J F A M logo  1.png" alt="JFAM Logo" class="footer-logo">
+                    <p>
+                        JFAM is an interior design and architecture company specializing in innovative,
+                        functional spaces with quality craftsmanship and client-focused solutions.
+                    </p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li>Interior design</li>
+                        <li>Architecture</li>
+                        <li>Construction</li>
+                        <li>Government Tender</li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><img src="images/jfam/Circled Envelope.png"> info@jfamco.in</p>
+                    <p><img src="images/jfam/Map Pin.png"> DWARKA, DELHI 110077</p>
+
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/jfamskillindia?mibextid=rS40aB7S9Ucbxw6v"><img src="images/jfam/Facebook.png"></a>
+                        <a href="#"><img src="images/jfam/Twitter.png"></a>
+                        <a href="https://www.instagram.com/jfam__official?igsh=MTJseTNvNDFmbGh0dw=="><img src="images/jfam/Instagram.png"></a>
+                        <a href="https://www.linkedin.com/company/jfamindia/"><img src="images/jfam/Linkdin.png"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- <script>document.write(getJFAMFooter());</script> -->
 
     <script src="js/connect-form.js"></script>
     <script src="js/loader.js"></script>
