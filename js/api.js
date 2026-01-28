@@ -2,7 +2,7 @@
  * API Configuration and Helper Functions
  */
 
-const API_BASE_URL = 'https://rohit-portfolio-backend.vercel.app/api/v1';
+const API_BASE_URL = 'https://rohit-portfolio-backend-two.vercel.app/api/v1';
 
 
 /**
@@ -45,7 +45,7 @@ async function submitPitch(formData) {
 
 async function submitConnect(formData) {
     try {
-        const response = await fetch(`${API_BASE_URL}/connect/`, {
+        const response = await fetch(`${API_BASE_URL}/connect`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
@@ -80,7 +80,7 @@ async function getMentorshipAvailability(meetingDate, durationMinutes) {
             duration_minutes: durationMinutes
         }).toString();
 
-        const response = await fetch(`${API_BASE_URL}/mentorship/availability?${queryParams}`, {
+        const response = await fetch(`${API_BASE_URL}/mentorship/availability`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -232,7 +232,7 @@ const RAZORPAY_KEY = 'rzp_test_RS3fi4SsM1ltwU';
  */
 async function getConnectRequests(skip = 0, limit = 10) {
     try {
-        const response = await fetch(`${API_BASE_URL}/connect/?skip=${skip}&limit=${limit}`);
+        const response = await fetch(`${API_BASE_URL}/connect/?skip=0&limit=10`);
 
         if (!response.ok) {
             throw new Error(await response.text());
@@ -252,7 +252,7 @@ async function getConnectRequests(skip = 0, limit = 10) {
  */
 async function getPitchRequests(skip = 0, limit = 10) {
     try {
-        const response = await fetch(`${API_BASE_URL}/pitch/?skip=${skip}&limit=${limit}`);
+        const response = await fetch(`${API_BASE_URL}/pitch/?skip=0&limit=10`);
 
         if (!response.ok) {
             throw new Error(await response.text());
@@ -272,7 +272,7 @@ async function getPitchRequests(skip = 0, limit = 10) {
  */
 async function getMentorshipRequests(skip = 0, limit = 20) {
     try {
-        const response = await fetch(`${API_BASE_URL}/mentorship/?skip=${skip}&limit=${limit}`);
+        const response = await fetch(`${API_BASE_URL}/mentorship/?skip=0&limit=20`);
 
         if (!response.ok) {
             throw new Error(await response.text());
