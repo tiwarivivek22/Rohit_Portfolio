@@ -735,8 +735,8 @@ body::before {
 }
 
 .join-us-btn {
-    width: 159px;
-    height: 58px;
+    width: 200px;
+    height: 70px;
     border-radius: 25px;
     background: rgba(224, 222, 222, 0.24);
     border: none;
@@ -763,7 +763,7 @@ body::before {
 .join-us-btn span {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 35px;
     line-height: 1.21;
     background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0.11) 94%);
     -webkit-background-clip: text;
