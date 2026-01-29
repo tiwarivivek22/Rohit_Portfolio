@@ -4,7 +4,7 @@
 
 /* HERO */
 .resources-hero {
-    background: linear-gradient(180deg, #0d1b2a, #101828);
+    background: linear-gradient(180deg, #101C35 20%, #D4A643 100%);
     color: #ffffff;
     text-align: center;
     padding: 150px 0px;
@@ -43,10 +43,11 @@
     margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
+    gap: 50px;
 }
 
 /* CARD */
+
 .resource-card {
     background: #ffffff;
     border-radius: 12px;
@@ -54,29 +55,34 @@
     text-decoration: none;
     color: inherit;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    outline: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
+    transform-style: preserve-3d;
 }
 
 .resource-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
+.resource-card:hover .card-content h3 {
+    color: #D4A643;
+}
+
 
 /* IMAGE */
 .resource-card img,
 .resource-card .card-image {
     width: 100%;
-    height: 45px;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
 
 /* CONTENT */
 .card-content {
-    padding: 18px;
+    padding: 20px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -84,7 +90,7 @@
 }
 
 .card-content h3 {
-    font-size: 1.05rem;
+    font-size: 1.3rem;
     margin-bottom: 8px;
     color: #000;
     line-height: 1.4;
@@ -92,7 +98,7 @@
 }
 
 .card-content p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #000000;
     line-height: 1.6;
     margin-bottom: 14px;
