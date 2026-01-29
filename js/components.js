@@ -341,8 +341,8 @@ function getAARUCareFooter() {
         socialLinks: [
             { name: "Facebook", href: "#", icon: "images/logos/Facebook.png" },
             { name: "Twitter", href: "#", icon: "images/logos/Twitter.png" },
-            { name: "Instagram", href: "#", icon: "images/logos/Instagram.png" },
-            { name: "LinkedIn", href: "#", icon: "images/logos/LinkedIn.png" }
+            { name: "Instagram", href: "https://www.instagram.com/aaru.foundation_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", icon: "images/logos/Instagram.png" },
+            { name: "LinkedIn", href: "https://www.linkedin.com/company/aaru-foundation/", icon: "images/logos/LinkedIn.png" }
         ]
     });
 }
@@ -367,12 +367,12 @@ function getAARUDevelopersFooter() {
             // { name: "Construction Management", href: "#" },
             // { name: "Sustainable Building Solutions", href: "#" }
         ],
-        contactEmail: "info@aarudevelopers.com",
+        contactEmail: "Info@aarumobility.com",
         contactAddress: "Dwarka, Delhi",
         socialLinks: [
             { name: "Facebook", href: "#", icon: "images/logos/Facebook.png" },
             { name: "Twitter", href: "#", icon: "images/logos/Twitter.png" },
-            { name: "Instagram", href: "#", icon: "images/logos/Instagram.png" },
+            { name: "Instagram", href: "https://www.instagram.com/aarudevelopers__?igsh=MTNpYWJ5OGd3MDI3", icon: "images/logos/Instagram.png" },
             { name: "LinkedIn", href: "#", icon: "images/logos/LinkedIn.png" }
         ]
     });
@@ -397,14 +397,14 @@ function getAARUMobilityFooter() {
             // { name: "Electric Vehicle Mobility", href: "#" },
             // { name: "On-Demand Mobility Services", href: "#" }
         ],
-        contactEmail: "info@aaruobility.com",
+        contactEmail: "Info@aarumobility.com",
         contactAddress: "Dwarka, Delhi",
         // phone: "+91 98765 43210",
         socialLinks: [
             { name: "Facebook", href: "#", icon: "images/logos/Facebook.png" },
             { name: "Twitter", href: "#", icon: "images/logos/Twitter.png" },
-            { name: "Instagram", href: "#", icon: "images/logos/Instagram.png" },
-            { name: "LinkedIn", href: "#", icon: "images/logos/LinkedIn.png" }
+            { name: "Instagram", href: "https://www.instagram.com/aaru_mobility?igsh=MWxleGxjbnVyZXZqeg==", icon: "images/logos/Instagram.png" },
+            { name: "LinkedIn", href: "https://www.linkedin.com/company/aaru-mobility/", icon: "images/logos/LinkedIn.png" }
         ]
     });
 }

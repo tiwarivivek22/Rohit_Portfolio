@@ -134,7 +134,7 @@ function initPitchForm(form) {
         // Allow currency symbols, numbers, and common terms
         const investmentRegex = /^[₹$€£]?\s*\d+(\.\d+)?\s*(Lakhs?|Crore[s]?|K|Million[s]?|Billion[s]?|Thousand[s]?)?$/i;
         if (!investmentRegex.test(trimmed)) {
-            return { isValid: false, message: 'Please enter a valid amount (e.g., ₹10 Lakhs, ₹1 Crore)' };
+            return { isValid: false, message: 'Please enter a valid amount (e.g., ₹100000)' };
         }
 
         return { isValid: true, message: '' };
