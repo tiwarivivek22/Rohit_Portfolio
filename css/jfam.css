@@ -15,18 +15,17 @@ body {
 /* JFAM Body */
 .jfam-body {
     font-family: "Inter", sans-serif;
-    padding-top: 130px;
-    /* Adjusted for even taller navbar */
+    padding-top: 110px;
     background: #EFEBE2;
     min-height: 100vh;
 }
 
 .jfam-navbar {
-    margin-top: -130px;
+    margin-top: -110px;
     width: 100%;
     max-width: 100%;
     background: #f3efe6;
-    padding: 15px 20px;
+    padding: 10px 20px 5px;
     position: relative;
     z-index: 100;
     box-sizing: border-box;
@@ -84,12 +83,12 @@ body {
 /* Tablet */
 @media (max-width: 992px) {
     .jfam-body {
-        padding-top: 110px;
+        padding-top: 90px;
     }
 
     .jfam-navbar {
-        margin-top: -110px;
-        padding: 12px 15px;
+        margin-top: -90px;
+        padding: 8px 15px 4px;
     }
 
     .jfam-logo img {
@@ -110,12 +109,12 @@ body {
 /* Mobile */
 @media (max-width: 600px) {
     .jfam-body {
-        padding-top: 85px;
+        padding-top: 70px;
     }
 
     .jfam-navbar {
-        margin-top: -85px;
-        padding: 10px 15px;
+        margin-top: -70px;
+        padding: 6px 15px 3px;
     }
 
     .jfam-container {
@@ -140,12 +139,12 @@ body {
 /* Small mobile */
 @media (max-width: 400px) {
     .jfam-body {
-        padding-top: 75px;
+        padding-top: 60px;
     }
 
     .jfam-navbar {
-        margin-top: -75px;
-        padding: 8px 12px;
+        margin-top: -60px;
+        padding: 5px 12px 2px;
     }
 
     .jfam-logo img {
@@ -218,32 +217,32 @@ body {
 .jfam-hero-float1 {
     position: absolute;
     display: flex;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 12px 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    gap: 15px;
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     align-items: center;
     z-index: 2;
     box-sizing: border-box;
 }
 
 .jfam-hero-float1 img {
-    width: 80px;
-    height: 60px;
+    width: 95px;
+    height: 75px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 .jfam-hero-float2 {
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.96);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     align-items: center;
     z-index: 2;
     box-sizing: border-box;
@@ -251,23 +250,23 @@ body {
 
 .float {
     width: 100%;
-    max-width: 150px;
-    aspect-ratio: 1 / 1;
+    max-width: 170px;
 }
 
 .float img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 18px;
     display: block;
 }
 
 .jfam-float-text {
-    font-size: 0.85rem;
-    color: #333;
-    max-width: 150px;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    max-width: 220px;
+    line-height: 1.35;
+    font-weight: 500;
 }
 
 .btn {
@@ -278,28 +277,33 @@ body {
 
 .btn button {
     background-color: #000;
-    color: white;
+    color: #fff;
     border-radius: 30px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 10px;
     border: none;
-    padding: 8px 16px;
+    padding: 12px 28px;
+    width: 100%;
     white-space: nowrap;
+    transition: transform 0.2s ease;
 }
 
 .btn button img {
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
 }
 
 .jfam-float-left {
     bottom: 8%;
     left: 5%;
     width: auto;
-    max-width: 280px;
+    max-width: 360px;
 }
 
 .jfam-float-right {
@@ -322,32 +326,47 @@ body {
         top: 35%;
     }
 
-    .jfam-float-left {
-        bottom: 5%;
-        left: 3%;
-        max-width: 220px;
-        padding: 10px 15px;
+    .jfam-hero-float1 {
+        padding: 8px 12px;
+        border-radius: 18px;
+        max-width: 320px;
     }
 
     .jfam-hero-float1 img {
-        width: 60px;
-        height: 50px;
+        width: 70px;
+        height: 55px;
+        border-radius: 12px;
     }
 
     .jfam-float-text {
         font-size: 0.8rem;
-        max-width: 120px;
+        max-width: 200px;
     }
 
     .jfam-float-right {
         bottom: 5%;
         right: 3%;
-        max-width: 160px;
-        padding: 12px;
+        max-width: 155px;
+        padding: 10px;
+        border-radius: 20px;
     }
 
     .float {
-        max-width: 120px;
+        max-width: 135px;
+    }
+
+    .float img {
+        border-radius: 15px;
+    }
+
+    .btn button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    .btn button img {
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -384,10 +403,17 @@ body {
         bottom: auto;
         left: auto;
         right: auto;
-        margin-top: 20px;
+        margin-top: 30px;
         max-width: 90%;
         width: 90%;
         order: 2;
+        padding: 12px 15px;
+        border-radius: 20px;
+    }
+
+    .jfam-hero-float1 img {
+        width: 70px;
+        height: 55px;
     }
 
     .jfam-float-right {
@@ -396,14 +422,20 @@ body {
         left: auto;
         right: auto;
         margin-top: 15px;
-        max-width: 200px;
+        max-width: 180px;
         width: auto;
         order: 3;
+        padding: 10px;
+        border-radius: 22px;
+    }
+
+    .float {
+        max-width: 150px;
     }
 
     .btn button {
-        font-size: 11px;
-        padding: 6px 12px;
+        font-size: 13px;
+        padding: 10px 20px;
     }
 }
 
@@ -1461,54 +1493,85 @@ body {
         z-index: 2;
     }
 
-    /* Keep both cards as small floating overlays on tablet/mobile */
+    .jfam-hero-floats {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 12px;
+        margin-top: 0;
+        padding: 0 10px;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+
     .jfam-hero-float1,
     .jfam-hero-float2 {
-        position: absolute;
-        bottom: 16px;
-        margin-bottom: 0;
-        transform: none;
-        width: auto;
-        max-width: 240px;
-        padding: 12px 14px;
-        gap: 10px;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin-top: 0;
+        background: #fff;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 1;
     }
 
     .jfam-float-left {
-        left: 16px;
-        right: auto;
+        max-width: 220px;
+        width: auto;
+        margin: 0;
     }
 
     .jfam-float-right {
-        right: 16px;
-        left: auto;
+        max-width: 130px;
+        flex-direction: column;
+        padding: 8px;
+        margin: 0;
     }
 
     .jfam-hero-float1 img {
-        width: 44px;
-        height: 44px;
+        width: 55px;
+        height: 45px;
+        border-radius: 10px;
     }
 
-    .jfam-hero-float2 {
-        width: auto;
-        max-width: 240px;
-        padding: 12px 14px;
-        gap: 12px;
+    .jfam-float-text {
+        font-size: 0.7rem;
+        max-width: 140px;
+        line-height: 1.25;
+        font-weight: 500;
     }
 
     .jfam-hero-float2 .float {
-        max-width: 110px;
+        max-width: 100px;
+    }
+
+    .float img {
+        border-radius: 12px;
     }
 
     .btn button {
-        padding: 10px 16px;
-        font-size: 13px;
-        gap: 8px;
+        padding: 8px 14px;
+        font-size: 11px;
+        gap: 6px;
+        border-radius: 20px;
     }
 
     .btn button img {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
 
     .jfam-why {
@@ -1623,20 +1686,40 @@ body {
         width: 100%;
     }
 
-    .jfam-hero-float1,
-    .jfam-hero-float2 {
-        max-width: 200px;
-        padding: 10px 12px;
+    .jfam-hero-floats {
+        gap: 8px;
+        padding: 0 5px;
+    }
+
+    .jfam-float-left {
+        max-width: 190px;
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    .jfam-hero-float1 img {
+        width: 45px;
+        height: 35px;
+        border-radius: 8px;
+    }
+
+    .jfam-float-text {
+        font-size: 0.65rem;
+    }
+
+    .jfam-float-right {
+        max-width: 110px;
+        padding: 6px;
+        border-radius: 18px;
     }
 
     .jfam-hero-float2 .float {
-        max-width: 90px;
+        max-width: 95px;
     }
 
     .btn button {
-        width: auto;
-        max-width: none;
-        justify-content: center;
+        padding: 8px 12px;
+        font-size: 11px;
     }
 }
 
