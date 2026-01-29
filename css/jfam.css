@@ -15,13 +15,14 @@ body {
 /* JFAM Body */
 .jfam-body {
     font-family: "Inter", sans-serif;
-    padding-top: 70px;
+    padding-top: 130px;
+    /* Adjusted for even taller navbar */
     background: #EFEBE2;
     min-height: 100vh;
 }
 
 .jfam-navbar {
-    margin-top: -70px;
+    margin-top: -130px;
     width: 100%;
     max-width: 100%;
     background: #f3efe6;
@@ -52,7 +53,8 @@ body {
 }
 
 .jfam-logo img {
-    height: 60px;
+    height: 100px;
+    /* Increased to 100px */
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -74,23 +76,25 @@ body {
 }
 
 .jfam-back img {
-    height: 60px;
+    height: 100px;
+    /* Increased to 100px */
     width: auto;
 }
 
 /* Tablet */
 @media (max-width: 992px) {
     .jfam-body {
-        padding-top: 65px;
+        padding-top: 110px;
     }
 
     .jfam-navbar {
-        margin-top: -65px;
+        margin-top: -110px;
         padding: 12px 15px;
     }
 
     .jfam-logo img {
-        height: 50px;
+        height: 80px;
+        /* Increased to 80px */
     }
 
     .jfam-back {
@@ -98,18 +102,19 @@ body {
     }
 
     .jfam-back img {
-        height: 50px;
+        height: 80px;
+        /* Increased to 80px */
     }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
     .jfam-body {
-        padding-top: 60px;
+        padding-top: 85px;
     }
 
     .jfam-navbar {
-        margin-top: -60px;
+        margin-top: -85px;
         padding: 10px 15px;
     }
 
@@ -118,7 +123,8 @@ body {
     }
 
     .jfam-logo img {
-        height: 40px;
+        height: 60px;
+        /* Increased to 60px */
     }
 
     .jfam-back {
@@ -126,23 +132,25 @@ body {
     }
 
     .jfam-back img {
-        height: 40px;
+        height: 60px;
+        /* Increased to 60px */
     }
 }
 
 /* Small mobile */
 @media (max-width: 400px) {
     .jfam-body {
-        padding-top: 55px;
+        padding-top: 75px;
     }
 
     .jfam-navbar {
-        margin-top: -55px;
+        margin-top: -75px;
         padding: 8px 12px;
     }
 
     .jfam-logo img {
-        height: 35px;
+        height: 50px;
+        /* Increased to 50px */
     }
 
     .jfam-back {
@@ -178,26 +186,25 @@ body {
     display: block;
 }
 
+/* Overlay removed as per user request */
 .jfam-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    display: none;
 }
 
 .jfam-hero-text {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%;
+    /* Center vertically */
+    left: 60px;
+    /* Align left with padding */
+    transform: translateY(-50%);
+    /* Correct vertical centering */
     color: #fff;
-    width: 100%;
-    max-width: 1000px;
-    padding: 0 20px;
+    max-width: 800px;
+    width: auto;
+    padding: 0;
     text-align: left;
+    /* Align text left */
     z-index: 2;
 }
 
@@ -631,6 +638,22 @@ body {
     box-sizing: border-box;
 }
 
+/* Mask for cutout */
+.jfam-expert-card::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 65px;
+    /* Tighter width gap */
+    height: 85px;
+    /* Tighter height gap */
+    background: #EFEBE2;
+    border-top-left-radius: 10px;
+    /* Tighter curve, closer to box radius */
+    z-index: 1;
+}
+
 /* Tablet: 2 columns */
 @media (max-width: 992px) {
     .jfam-expertise-grid {
@@ -694,23 +717,27 @@ body {
 /* NUMBER BOX */
 .jfam-count {
     position: absolute;
-    bottom: 10px;
-    margin-left: 82%;
-    transform: translateX(-50%);
-    width: 62px;
-    height: 80px;
+    bottom: 0;
+    right: 0;
+    width: 55px;
+    /* Rectangular width */
+    height: 75px;
+    /* Rectangular height */
     background: #000;
-    border-radius: 8px;
-
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+    /* Sit above mask */
+    margin: 0;
+    transform: none;
 }
 
 .jfam-count p {
     color: #fff;
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     margin: 0;
 }
 
@@ -924,13 +951,13 @@ body {
 
 /* JFAM Testimonials */
 .jfam-testimonials-v2 h2 {
-    font-size: 64px;
+    font-size: clamp(24px, 4vw, 56px);
     font-weight: 500;
     line-height: 1.15;
     margin-bottom: 60px;
-    text-align: left;
-    margin-left: 40%;
-
+    text-align: center;
+    margin-left: 0;
+    white-space: nowrap;
 }
 
 .about-us {
@@ -944,66 +971,59 @@ body {
 }
 
 .jfam-testimonial-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
-    align-items: start;
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 
-.jfam-testimonial-image {
-    margin-top: -180px;
-    margin-left: 10px;
-}
+
 
 .jfam-testimonial-cards {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 110px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
 .jfam-testimonial-card {
     background: #1c1c1c;
-    margin-left: -87%;
-    margin-top: -4.5%;
     padding: 50px 40px;
-    width: 400px;
-    height: auto;
-    position: relative;
-    min-height: 420px;
+    border-radius: 16px;
+    /* Increased for better card look */
+    /* Slight rounding based on image */
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
 }
 
-.jfam-testimonial-card .quote {
-    position: relative;
-    top: auto;
-    left: auto;
-    font-size: 80px;
-    line-height: 1;
-    opacity: 0.9;
-    margin-bottom: 10px;
+.jfam-testimonial-card .quote-img {
+    width: 40px;
+    height: auto;
+    margin-bottom: 25px;
+    display: block;
 }
 
 .jfam-testimonial-card p {
-    margin-top: 0;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
-    color: #f1f1f1;
+    color: #fff;
+    margin-bottom: 40px;
+    flex-grow: 1;
 }
 
 .jfam-testimonial-card .author {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    text-align: left;
-    font-weight: 400;
-    margin-top: 20px;
+    text-align: right;
+    font-size: 16px;
+    color: #fff;
 }
 
 .jfam-testimonial-card .author small {
     display: block;
-    opacity: 0.6;
-    font-weight: 400;
+    color: #bbb;
+    margin-top: 4px;
 }
 
 /* .jfam-testimonials-v2 h2 {
@@ -1499,6 +1519,11 @@ body {
     .jfam-testimonial-layout {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding-left: 20px;
+        /* Add side margins */
+        padding-right: 20px;
+        box-sizing: border-box;
+        /* Ensure padding doesn't affect width */
     }
 
     .jfam-testimonials-v2 h2 {
@@ -1506,11 +1531,15 @@ body {
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 40px;
+        white-space: normal;
+        /* Allow text to wrap on mobile */
     }
 
     .jfam-testimonial-cards {
+        display: flex;
+        /* Switch to flex column for better mobile stack control */
+        flex-direction: column;
         gap: 30px;
-        grid-template-columns: 1fr;
     }
 
     .jfam-testimonial-card {
@@ -1518,7 +1547,10 @@ body {
         margin: 0;
         min-height: auto;
         height: auto;
-        padding: 40px 30px;
+        padding: 30px 25px;
+        /* Reduced mobile padding */
+        box-sizing: border-box;
+        /* Ensure padding doesn't overflow width */
     }
 
     .jfam-testimonial-image {
