@@ -169,7 +169,7 @@ body {
     height: min(90vh, 680px);
     min-height: 360px;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 0;
     margin-left: 20px;
     margin-right: 20px;
     background-color: transparent;
@@ -356,7 +356,7 @@ body {
     .jfam-hero {
         margin-left: 10px;
         margin-right: 10px;
-        margin-top: 10px;
+        margin-top: 0;
         height: auto;
         min-height: 400px;
         padding: 20px 0;
@@ -1569,10 +1569,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .jfam-body {
-        padding-top: 60px;
-    }
-
     .jfam-hero-text h1 {
         font-size: clamp(2rem, 5vw, 3rem);
     }
@@ -1615,10 +1611,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    .jfam-body {
-        padding-top: 55px;
-    }
-
     .jfam-about-stats {
         grid-template-columns: 1fr;
     }
