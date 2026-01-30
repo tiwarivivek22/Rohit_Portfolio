@@ -2,7 +2,8 @@
  * API Configuration and Helper Functions
  */
 
-const API_BASE_URL = 'https://rohit-portfolio-backend-two.vercel.app/api/v1';
+// const API_BASE_URL = 'https://rohit-portfolio-backend-two.vercel.app/api/v1';
+const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
 
 
 /**
@@ -72,17 +73,44 @@ async function submitConnect(formData) {
 /**
  * Step 1️⃣ Get Available Mentorship Slots
  */
+// async function getMentorshipAvailability(meetingDate, durationMinutes) {
+//     try {
+//         // Send params as query string for GET request
+//         const queryParams = new URLSearchParams({
+//             meeting_date: meetingDate,
+//             duration_minutes: durationMinutes
+//         }).toString();
+
+//         const response = await fetch(`${API_BASE_URL}/mentorship/availability?${queryParams}`, {
+//             method: 'GET',
+//             headers: { 'Content-Type': 'application/json' }
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(await response.text());
+//         }
+
+//         const data = await response.json();
+//         return { success: true, slots: data.slots };
+
+//     } catch (error) {
+//         console.error("Availability Error:", error);
+//         return { success: false, error: error.message };
+//     }
+// }
+
+
 async function getMentorshipAvailability(meetingDate, durationMinutes) {
     try {
-        // Send params as query string for GET request
-        const queryParams = new URLSearchParams({
-            meeting_date: meetingDate,
-            duration_minutes: durationMinutes
-        }).toString();
-
         const response = await fetch(`${API_BASE_URL}/mentorship/availability`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                meeting_date: meetingDate,      // "31-01-2026"
+                duration_minutes: durationMinutes // number
+            })
         });
 
         if (!response.ok) {
@@ -97,6 +125,7 @@ async function getMentorshipAvailability(meetingDate, durationMinutes) {
         return { success: false, error: error.message };
     }
 }
+
 
 /**
  * Step 2️⃣ Create Razorpay Order

@@ -289,41 +289,80 @@ function convertDurationToMinutes(value) {
   return durationMap[value] || 60;
 }
 
+// async function fetchAvailability() {
+//   if (!selectedDate || !durationSelect || !durationSelect.value) {
+//     if (timeSlotsContainer) {
+//       timeSlotsContainer.innerHTML = '<p class="no-slots">Select a date and duration to see available slots</p>';
+//     }
+//     availableSlots = [];
+//     return;
+//   }
+
+//   if (timeSlotsContainer) {
+//     timeSlotsContainer.innerHTML = '<div class="loading-slots"><span class="spinner"></span> Checking availability...</div>';
+//   }
+
+//   const durationMinutes = convertDurationToMinutes(durationSelect.value);
+//   const dateStr = formatDateForAPI(selectedDate);
+
+//   console.log("Fetching availability for:", dateStr, "duration:", durationMinutes);
+
+//   try {
+//     const result = await getMentorshipAvailability(dateStr, durationMinutes);
+
+//     if (result.success && result.data && result.data.slots && result.data.slots.length > 0) {
+//       availableSlots = result.data.slots;
+//       renderTimeSlots(availableSlots);
+//     } else {
+//       console.log("No slots from API, generating mock slots...");
+//       availableSlots = generateMockSlots(durationMinutes);
+//       renderTimeSlots(availableSlots);
+//     }
+//   } catch (error) {
+//     console.error("Error fetching availability:", error);
+//     availableSlots = generateMockSlots(durationMinutes);
+//     renderTimeSlots(availableSlots);
+//   }
+// }
+
 async function fetchAvailability() {
   if (!selectedDate || !durationSelect || !durationSelect.value) {
     if (timeSlotsContainer) {
-      timeSlotsContainer.innerHTML = '<p class="no-slots">Select a date and duration to see available slots</p>';
+      timeSlotsContainer.innerHTML =
+        '<p class="no-slots">Select a date and duration to see available slots</p>';
     }
     availableSlots = [];
     return;
   }
 
-  if (timeSlotsContainer) {
-    timeSlotsContainer.innerHTML = '<div class="loading-slots"><span class="spinner"></span> Checking availability...</div>';
-  }
+  timeSlotsContainer.innerHTML =
+    '<div class="loading-slots"><span class="spinner"></span> Checking availability...</div>';
 
   const durationMinutes = convertDurationToMinutes(durationSelect.value);
   const dateStr = formatDateForAPI(selectedDate);
 
-  console.log("Fetching availability for:", dateStr, "duration:", durationMinutes);
+  console.log("Fetching availability:", dateStr, durationMinutes);
 
   try {
     const result = await getMentorshipAvailability(dateStr, durationMinutes);
 
-    if (result.success && result.data && result.data.slots && result.data.slots.length > 0) {
-      availableSlots = result.data.slots;
+    if (result.success && Array.isArray(result.slots)) {
+      availableSlots = result.slots;
       renderTimeSlots(availableSlots);
     } else {
-      console.log("No slots from API, generating mock slots...");
-      availableSlots = generateMockSlots(durationMinutes);
-      renderTimeSlots(availableSlots);
+      timeSlotsContainer.innerHTML =
+        '<p class="no-slots">No slots available</p>';
+      availableSlots = [];
     }
+
   } catch (error) {
-    console.error("Error fetching availability:", error);
-    availableSlots = generateMockSlots(durationMinutes);
-    renderTimeSlots(availableSlots);
+    console.error("Availability API error:", error);
+    timeSlotsContainer.innerHTML =
+      '<p class="no-slots">Failed to load slots</p>';
+    availableSlots = [];
   }
 }
+
 
 function generateMockSlots(durationMinutes) {
   const slots = [];
@@ -357,36 +396,74 @@ function formatTime(minutes) {
   return `${h}:${m}`;
 }
 
+// function renderTimeSlots(slots) {
+//   if (!timeSlotsContainer) return;
+
+//   timeSlotsContainer.innerHTML = "";
+
+//   if (!slots || slots.length === 0) {
+//     timeSlotsContainer.innerHTML = '<p class="no-slots">No slots available for this date</p>';
+//     return;
+//   }
+
+//   slots.forEach((slot) => {
+//     const btn = document.createElement("button");
+//     btn.type = "button";
+//     btn.className = "time-slot-btn";
+//     btn.dataset.start = slot.start;
+//     btn.dataset.end = slot.end;
+//     btn.innerText = `${slot.start} - ${slot.end}`;
+
+//     btn.onclick = () => {
+//       document.querySelectorAll(".time-slots button").forEach(b => b.classList.remove("active"));
+//       btn.classList.add("active");
+//       selectedTimeSlot = { start: slot.start, end: slot.end, startMinutes: slot.startMinutes, endMinutes: slot.endMinutes };
+
+//       const timeBox = document.querySelector(".time-box");
+//       if (timeBox) timeBox.classList.remove("validation-pending");
+//     };
+
+//     timeSlotsContainer.appendChild(btn);
+//   });
+// }
+
+
 function renderTimeSlots(slots) {
   if (!timeSlotsContainer) return;
 
   timeSlotsContainer.innerHTML = "";
 
-  if (!slots || slots.length === 0) {
-    timeSlotsContainer.innerHTML = '<p class="no-slots">No slots available for this date</p>';
+  if (!slots.length) {
+    timeSlotsContainer.innerHTML =
+      '<p class="no-slots">No slots available for this date</p>';
     return;
   }
 
-  slots.forEach((slot) => {
+  slots.forEach(slot => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "time-slot-btn";
-    btn.dataset.start = slot.start;
-    btn.dataset.end = slot.end;
     btn.innerText = `${slot.start} - ${slot.end}`;
 
     btn.onclick = () => {
-      document.querySelectorAll(".time-slots button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedTimeSlot = { start: slot.start, end: slot.end, startMinutes: slot.startMinutes, endMinutes: slot.endMinutes };
+      document
+        .querySelectorAll(".time-slots button")
+        .forEach(b => b.classList.remove("active"));
 
-      const timeBox = document.querySelector(".time-box");
-      if (timeBox) timeBox.classList.remove("validation-pending");
+      btn.classList.add("active");
+
+      // backend ka data 그대로 store
+      selectedTimeSlot = slot;
+
+      document
+        .querySelector(".time-box")
+        ?.classList.remove("validation-pending");
     };
 
     timeSlotsContainer.appendChild(btn);
   });
 }
+
 
 function formatDateForAPI(date) {
   const year = date.getFullYear();
