@@ -351,66 +351,107 @@
 }
 
 /* AARU Care Footer */
-.aarucare-footer {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 60px 20px;
+.aaru-footer {
+    background: #d9d9d9;
+    padding: 60px 0;
+    font-family: Arial, sans-serif;
 }
 
-.aarucare-footer-logo {
-    height: 50px;
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
 }
 
-.aarucare-footer-about h4 {
-    font-size: 1.5rem;
-    margin: 15px 0 10px;
-    color: #fff;
-}
-
-.aarucare-footer-about p {
-    color: #fff;
-    font-size: 0.9rem;
-    max-width: 400px;
-    margin-top: -10px;
-}
-
-.aarucare-footer-links h4 {
+.footer-logo {
+    width: 120px;
     margin-bottom: 15px;
-    font-size: 1.1rem;
 }
 
-.aarucare-footer-links a {
-    color: #999;
+.footer-about p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #000;
+}
+
+.footer-col h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 14px;
+    font-size: 16px;
+    color: #000;
+}
+
+.footer-col ul li a {
     text-decoration: none;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 8px;
+    color: #000;
 }
 
-.aarucare-footer-links a:hover {
-    color: #fff;
+.footer-col ul li a:hover {
+    text-decoration: underline;
 }
 
-.aarucare-footer-contact h4 {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-.aarucare-footer-contact p {
-    color: #999;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-}
-
-.aarucare-socials {
+.contact-list li {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-social {
     margin-top: 15px;
 }
 
-.aarucare-socials a {
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    background: #5c5652;
     color: #fff;
-    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .contact-list li {
+        justify-content: center;
+    }
 }
 
 /* AARU Care Responsive */
