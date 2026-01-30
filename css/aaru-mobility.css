@@ -247,30 +247,57 @@
 .aaru-how-cards {
     position: absolute;
     top: 50%;
-    transform: translateY(-27%);
+    transform: translateY(-41.5%);
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 40px;
     flex: 1;
-    max-width: 500px;
+    max-width: 600px;
     margin-top: -50px;
     z-index: 5;
 }
 
 .aaru-how-card {
-    width: 600px;
+    width: 100%;
     background: #fff;
-    padding: 40px 30px;
-    border: 1px solid #e0e0e0;
+    padding: 35px 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 24px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.aaru-icon-box {
+    width: 60px;
+    height: 72px;
+    background-color: #f4f4f4;
     border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.aaru-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .aaru-how-card h4 {
     color: #000;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.25rem;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.aaru-card-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 .aaru-how-card p {
@@ -281,7 +308,6 @@
 /* Engine Toggle Button Styles */
 .aaru-engine-section {
     position: relative;
-    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -563,6 +589,52 @@
 
 .aaru-footer a:hover {
     color: #fff;
+}
+
+/* Center align all footer sections for AARU Mobility page */
+.aaru-body footer .footer-col {
+    text-align: center;
+}
+
+.aaru-body footer .footer-brand-col {
+    align-items: center;
+}
+
+/* Fix footer alignment */
+.aaru-body footer .footer-brand-col {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    text-align: center;
+}
+
+.aaru-body footer .footer-logo {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.aaru-body footer .footer-logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.aaru-body footer .footer-col h4 {
+    margin-bottom: 45px;
+    /* Matches Logo (45px) + Logo Margin (25px) - H4 Height (~25px) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    /* Fixed height for alignment */
+}
+
+.aaru-body footer .footer-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aaru-body footer .social-links {
+    justify-content: center;
 }
 
 /* RESPONSIVE STYLES - TABLET (769px - 992px)*/

@@ -400,8 +400,8 @@
     }
 
     .footer-right {
-        justify-content: flex-start;
-        /* Ensure left alignment on mobile */
+        justify-content: center;
+        /* Ensure center alignment on mobile */
     }
 }
 

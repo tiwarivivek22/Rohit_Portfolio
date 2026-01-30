@@ -705,6 +705,10 @@ body::before {
     margin-bottom: 700px;
 }
 
+.hero-content a {
+    text-decoration: none;
+}
+
 .hero-title {
     font-family: 'Inter', sans-serif;
     font-weight: 800;

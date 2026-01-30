@@ -1442,8 +1442,8 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
     align-items: flex-start;
 }
 
@@ -1459,9 +1459,25 @@ body {
     margin-bottom: 15px;
 }
 
+.footer-section.services {
+    padding-left: 80px;
+}
+
 .footer-section p {
     font-size: 14px;
     line-height: 1.6;
+    margin: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-item span {
+    font-size: 14px;
 }
 
 .footer-section ul {
@@ -1476,9 +1492,11 @@ body {
 
 .footer-section img {
     vertical-align: middle;
-    margin-right: 8px;
+    margin-right: 0;
     width: 20px;
     height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .social-icons {
@@ -1489,8 +1507,10 @@ body {
 
 .social-icons img {
     width: 24px;
+    height: 24px;
     cursor: pointer;
     transition: transform 0.3s;
+    object-fit: contain;
 }
 
 .social-icons img:hover {
@@ -1525,12 +1545,17 @@ body {
         text-align: center;
     }
 
+    .footer-section.services {
+        padding-left: 0;
+    }
+
     .footer-section img {
         margin-right: 5px;
         margin-left: 5px;
     }
 
-    .social-icons {
+    .social-icons,
+    .contact-item {
         justify-content: center;
     }
 

@@ -73,20 +73,16 @@
     }
 
     .footer-left {
+        /* On tablet, Desc acts as normal column, Logo is already 1/-1 */
         grid-column: 1 / -1;
-        /* Full width for logo/desc on tablet */
         text-align: center;
         align-items: center;
-        display: flex;
-        flex-direction: column;
     }
 
     .footer-center,
     .footer-right {
-        /* center alignments inside columns for symmetry on tablet layout if desired, 
-           BUT user asked for left aligned list. Let's keep them left aligned but centered roughly in their grid cells?
-           Actually, let's keep them left aligned. */
-        align-items: flex-start;
+        /* Keep centered on tablet as well */
+        align-items: center;
     }
 }
 
@@ -105,9 +101,9 @@
 
     .footer-left {
         grid-column: 1 / -1;
-        /* Logo and description span full width */
-        text-align: left;
-        align-items: flex-start;
+        /* Description full width on mobile */
+        text-align: center;
+        align-items: center;
         width: 100%;
         margin-bottom: 20px;
     }
@@ -169,32 +165,43 @@
 
 .footer-container {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    /* 2 parts left, 1 part center, 1 part right */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* 3 equal columns for content */
     max-width: 1400px;
     margin: 0 auto;
-    gap: 60px;
-    /* Generous gap between columns */
+    column-gap: 60px;
+    row-gap: 20px;
     align-items: start;
+    text-align: left;
 }
 
-/* Footer Left */
+/* Logo Spanning Full Width */
+.footer-container>.logo-container.footer-logo {
+    grid-column: 1 / -1;
+    /* Span all columns */
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Footer Left (Now just Desc) */
 .footer-left {
-    /* Grid item, no specific flex properties needed */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.footer-left .logo-container.footer-logo {
-    margin-bottom: 25px;
-}
+/* Removed internal logo styles since it's moved */
 
 .footer-left .footer-desc {
     font-size: 14px;
-    /* Smaller font for tidy look */
     line-height: 1.5;
     color: #CCCCCC;
-    /* Softer white */
     max-width: 300px;
-    margin-top: 20px;
+    margin-top: 0;
+    text-align: left;
+    margin-top: 40px;
+    /* Align with Quick Links title somewhat */
 }
 
 
@@ -203,6 +210,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-left: 80px;
+    /* Shift right slightly */
 }
 
 /* Explicitly left align links if column is centered, or keep centered? 
@@ -213,6 +222,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    /* Left align */
 }
 
 .footer-column-title {
@@ -221,8 +231,10 @@
     /* Slightly smaller title */
     font-weight: 600;
     color: #FFFFFF;
-    margin-bottom: 12px;
-    /* Tighter spacing below title */
+    margin-bottom: 20px;
+    /* Increased margin to match logo+desc offset approx */
+    text-align: left;
+    /* Left align */
 }
 
 .footer-nav {
@@ -232,7 +244,12 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    /* Very tight gap as per reference */
+    align-items: flex-start;
+    /* Left align */
+}
+
+.footer-nav li {
+    margin-bottom: 0;
 }
 
 .footer-nav li a {
@@ -256,6 +273,7 @@
 .footer-right {
     display: flex;
     justify-content: flex-start;
+    /* Left align */
     padding-top: 0;
 }
 
@@ -272,6 +290,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    /* Left align */
 }
 
 .footer-socials {
@@ -279,6 +298,8 @@
     gap: 15px;
     margin-top: 20px;
     margin-bottom: 0;
+    justify-content: flex-start;
+    /* Left align */
 }
 
 .footer-socials a img {
@@ -294,8 +315,9 @@
 .footer-contact {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
     align-items: flex-start;
+    /* Left align */
 }
 
 .contact-row {
@@ -304,7 +326,9 @@
     gap: 12px;
     font-size: 14px;
     color: #CCCCCC;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    justify-content: flex-start;
+    /* Left align */
 }
 
 /* Update icons to be white/light grey to match text */

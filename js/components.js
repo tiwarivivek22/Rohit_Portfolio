@@ -381,7 +381,7 @@ function getAARUDevelopersFooter() {
 // Pre-configured footer for AARU Mobility
 function getAARUMobilityFooter() {
     return getSubBrandFooter({
-        logoSrc: "images/ventures/aaru-mobility.png",
+        logoSrc: "images/aaru-mobility/aaru-mobility.png",
         logoAlt: "AARU Mobility",
         description: "Reliable and sustainable mobility solutions designed for efficient, safe, and smart transportation.",
         bgColor: "#F5F5F5", // Light gray for AARU Mobility
