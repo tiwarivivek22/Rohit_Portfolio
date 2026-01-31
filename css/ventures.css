@@ -393,10 +393,16 @@
         padding: 20px;
     }
 
-    .infographic-box.infographic-box-media {
+    .media-link {
         order: -1;
         grid-column: 1 / -1;
         justify-self: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .infographic-box.infographic-box-media {
         width: 100%;
         max-width: 180px;
         aspect-ratio: 1 / 1;
