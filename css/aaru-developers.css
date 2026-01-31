@@ -13,7 +13,6 @@
     width: 100%;
     z-index: 1000;
     padding: 5px 0
-
 }
 
 .navbar {
@@ -610,6 +609,10 @@
 
     .aarudev-footer-about p {
         margin: 0 auto;
+    }
+
+    .aarudev-project-card img {
+        width: calc(100% - 40px);
     }
 }
 
