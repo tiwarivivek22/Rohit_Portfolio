@@ -218,18 +218,19 @@
 
 .infographic-box-aaru .infographic-box-heading {
     color: #CD00AC;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .infographic-box-aronix .infographic-box-heading {
     color: #8B00CD;
     margin-left: 35px;
+    margin-top: -25px;
 }
 
 .infographic-box-care .infographic-box-heading {
     color: #0077CD;
     margin-left: 15px;
-    margin-top: 65px;
+    margin-top: 75px;
 }
 
 .infographic-box-text {
@@ -258,7 +259,7 @@
 
 .infographic-box-text-aaru {
     color: #3B3B3B;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .infographic-box-text-care {
@@ -273,8 +274,8 @@
 }
 
 .infographic-box-aaru {
-    top: 42%;
-    left: 59.5%;
+    top: 40%;
+    left: 58.5%;
 }
 
 .infographic-box-jfam {
