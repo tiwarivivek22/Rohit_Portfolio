@@ -149,7 +149,7 @@
 
 .aarudev-img-2 {
     width: 220px;
-    height: 280px;
+    height: 300px;
     top: 80px;
     left: 150px;
 }
@@ -723,12 +723,14 @@
 
     .aarudev-img-2 {
         width: 145px;
+        height: 180px;
         top: 70px;
         left: 120px;
     }
 
     .aarudev-img-3 {
         width: 155px;
+        height: 140px;
         top: 140px;
         left: 35px;
     }
