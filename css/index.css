@@ -307,7 +307,9 @@
 .why-point:hover {
     border-radius: 10px;
 }
-
+.why-image video {
+    border-radius: 18px;
+}
 /* INDEX PAGE RESPONSIVE STYLES*/
 
 /* Tablet (769px - 992px) */

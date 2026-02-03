@@ -127,10 +127,25 @@
 
                 <!-- Right image -->
                 <div class="why-image reveal-right">
-                    <img src="images/ventures/global/why.png" alt="Working together" class="image-zoom">
+                    <video id="myVideo" width="550" autoplay loop muted playsinline controls>
+                        <source src="images/logos/video.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
+        <script>
+            const video = document.getElementById("myVideo");
+
+            video.addEventListener("click", () => {
+                if (video.muted) {
+                    video.muted = false;
+                    video.volume = 1;
+                } else {
+                        video.muted = true;
+                }
+            });
+        </script>
+
 
         <script>document.write(getCTA());</script>
 
