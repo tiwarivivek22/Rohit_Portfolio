@@ -251,7 +251,7 @@ function formatConnectData(formElements) {
 
 
 
-const RAZORPAY_KEY = 'rzp_test_RS3fi4SsM1ltwU';
+const RAZORPAY_KEY = 'MvyhsogbwjMewwzL25vP1q68';
 
 /* ADMIN GET APIs */
 
